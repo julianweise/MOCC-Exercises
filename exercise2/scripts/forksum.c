@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <stdio.h>
+#include <sys/wait.h>
 
 
 struct Interval {
@@ -15,6 +16,9 @@ struct IntervalTuple {
 	struct Interval lower;
 	struct Interval higher;
 };
+
+const int C_READ_END = 0;
+const int C_WRITE_END = 1;
 
 int forkProccess() {
 	int pid = fork();
@@ -36,7 +40,14 @@ void createPipe(int lPipe[]) {
 
 struct IntervalTuple getNewIntervals(int start, int end) {
 
-	struct Interval firstInterval = {start, (int) (start + floor((end - start) / 2))};
+    int intervalWidth = end - start;
+
+    if (intervalWidth < 1) {
+        fprintf(stderr, "Can not create new intervals: Interval width < 1! (start: %d, end: %d)", start, end);
+        exit(EXIT_FAILURE);
+    }
+
+	struct Interval firstInterval = {start, (int) (start + floor((float)intervalWidth * 0.5f))};
 	struct Interval secondInterval = {firstInterval.higher + 1, end};
 
 	struct IntervalTuple newIntervals = { firstInterval, secondInterval };
@@ -49,7 +60,7 @@ struct IntervalTuple getNewIntervals(int start, int end) {
 }
 
 void writeToPipe(int pipe[], int message) {
-	write(pipe[1], &message, sizeof(message) + 1);
+	write(pipe[C_WRITE_END], &message, sizeof(message) + 1);
 }
 
 int main(int argc, char *argv[]) 
@@ -61,7 +72,7 @@ int main(int argc, char *argv[])
 
 	struct Interval interval = {atoi(argv[1]), atoi(argv[2])};
 
-	if (interval.lower == interval.higher) {
+	if (interval.lower >= interval.higher) {
 		printf("%d", interval.lower);
 		return 0;
 	} 
@@ -85,74 +96,70 @@ int main(int argc, char *argv[])
         pidLowerChild = forkProccess();
 
         if (pidLowerChild == 0 && pidHigherChild == 0) {
+            // lower child process
+            close(parentWritePipeLower[C_WRITE_END]);
+            read(parentWritePipeLower[C_READ_END], &interval.lower, sizeof(interval.lower));
+            read(parentWritePipeLower[C_READ_END], &interval.higher, sizeof(interval.higher));
+            close(parentWritePipeLower[C_READ_END]);
 
-            close(parentWritePipeLower[1]);
-            read(parentWritePipeLower[0], &interval.lower, sizeof(interval.lower));
-            read(parentWritePipeLower[0], &interval.higher, sizeof(interval.higher));
-            close(parentWritePipeLower[0]);
+            close(parentReadPipeLower[C_READ_END]);
+            dup2(1, parentReadPipeLower[C_WRITE_END]);
 
-            close(parentReadPipeLower[0]);
-            dup2(parentReadPipeLower[1], 1);
-
-            if (interval.lower <= interval.higher) {
+            // interval consists of same values ==> stop recursion
+            if (interval.lower >= interval.higher) {
                 fprintf(stdout, "%d", interval.lower);
-                close(parentReadPipeLower[1]);
+                close(parentReadPipeLower[C_WRITE_END]);
                 return 0;
             }
         }
 
         if (pidLowerChild > 0) {
-
+            // parent process
             struct IntervalTuple intervals = getNewIntervals(interval.lower, interval.higher);
-            close(parentWritePipeLower[0]);
+            close(parentWritePipeLower[C_READ_END]);
             writeToPipe(parentWritePipeLower, intervals.lower.lower);
             writeToPipe(parentWritePipeLower, intervals.lower.higher);
-            close(parentWritePipeLower[1]);
+            close(parentWritePipeLower[C_WRITE_END]);
             pidHigherChild = forkProccess();
         }
 
         if (pidLowerChild != 0 && pidHigherChild == 0) {
-            close(parentWritePipeHigher[1]);
-            read(parentWritePipeHigher[0], &interval.lower, sizeof(interval.lower));
-            read(parentWritePipeHigher[0], &interval.higher, sizeof(interval.higher));
-            close(parentWritePipeHigher[0]);
+            // higher child process
+            close(parentWritePipeHigher[C_WRITE_END]);
+            read(parentWritePipeHigher[C_READ_END], &interval.lower, sizeof(interval.lower));
+            read(parentWritePipeHigher[C_READ_END], &interval.higher, sizeof(interval.higher));
+            close(parentWritePipeHigher[C_READ_END]);
 
-            close(parentReadPipeHigher[0]);
-            dup2(parentReadPipeHigher[1], 1);
+            close(parentReadPipeHigher[C_READ_END]);
+            dup2(1, parentReadPipeHigher[C_WRITE_END]);
 
-            if (interval.lower <= interval.higher) {
+            if (interval.lower == interval.higher) {
                 fprintf(stdout, "%d", interval.lower);
-                close(parentReadPipeHigher[1]);
+                close(parentReadPipeHigher[C_WRITE_END]);
                 return 0;
             }
         }
 
         if (pidHigherChild > 0) {
-
+            // parent process
             struct IntervalTuple intervals = getNewIntervals(interval.lower, interval.higher);
-            close(parentWritePipeHigher[0]);
+            close(parentWritePipeHigher[C_READ_END]);
             writeToPipe(parentWritePipeHigher, intervals.higher.lower);
             writeToPipe(parentWritePipeHigher, intervals.higher.higher);
-            close(parentWritePipeHigher[1]);
+            close(parentWritePipeHigher[C_WRITE_END]);
             break;
         }
 	}
 
-    int result = 0;
-
     if (pidLowerChild > 0) {
+        // parent process
+        wait(NULL);
         wait(NULL);
         int lowerResult;
-        read(parentReadPipeLower[0], &lowerResult, sizeof(lowerResult));
-        result += lowerResult;
-    }
-
-    if (pidLowerChild > 0) {
-        wait(NULL);
         int higherResult;
-        read(parentReadPipeHigher[0], &higherResult, sizeof(higherResult));
-        result += higherResult;
-    }
+        read(parentReadPipeLower[C_READ_END], &lowerResult, sizeof(lowerResult));
+        read(parentReadPipeHigher[C_READ_END], &higherResult, sizeof(higherResult));
 
-    fprintf(stdout, "%d", result);
+        fprintf(stdout, "%d", lowerResult + higherResult);
+    }
 } 
