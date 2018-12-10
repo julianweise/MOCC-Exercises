@@ -1,0 +1,834 @@
+Script started on Mon Dec 10 19:11:15 2018
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                                              ]2;julianweise@Julians-MBP: ~/Documents/Studium/Methods of Cloud Computing/exercises/exercise2]1;..ses/exercise2[0m[27m[24m[J[39m[0m[49m[44m [30m~/Documents/Studium/Methods of Cloud Computing/exercises/exercise2 [49m[34m[39m [K[150C[39m[0m[49m[30m[39m[40m[32m [32m✔[39m [39m[32m[39m[42m[30m  master ? [39m[00m[49m[167D[?1h=[?2004h[32mscript[39m[32mc[32ml[32me[32ma[32mr[39m[39m [32mr[32mm[39m[39m [39m[4mt[39m[4my[4mpescript[24m[13D[32me[32mx[32mi[24m[32mt[39m[24m [24m [24m [24m [24m [24m [24m [24m [24m [9D[32mg[32mc[32ml[32mo[32mud[39m compute instances create mocc-machine-2 --zone europe-west1-d --image mocc-image[87D[32me[32mc[32mh[32mo[39m[39m [33m"[33mA[33m [33md[33mi[33ms[33mk[33m [33mh[33ma[33ms[33m [33mb[33me[33me[33mn[33m [33mc[33mr[33me[33ma[33mt[33me[33md[33m [33mi[33mn[33m [33mz[33mo[33mn[33me[33m-[33me[33mu[33mr[33mo[33mp[33me[33m-[33mw[33me[33ms[33mt[33m1[33m-[33md[33m [33mb[33me[33mc[33ma[33mu[33ms[33me[33m [33mt[33mh[33mi[33ms[33m [33mi[33ms[33m [33mt[33mh[33me[33m [33mo[33mn[33ml[33my[33m [33me[33mu[33mr[33mo[33mp[33me[33ma[33mn[33m [33mzone that allows nested virtualization"[39m[126D[32mg[32mc[32ml[32mo[32mu[32md[39m[39m [39mc[39mo[39mm[39mp[39mu[39mt[39me[39m [39md[39mi[39ms[39mk[39ms[39m [39mc[39mr[39me[39ma[39mt[39me[39m [39mm[39mo[39mc[39mc[39m-[39md[39mi[39ms[39mk[39m [39m-[39m-[39mi[39mm[39ma[39mg[39me[39m-[39mp[39mr[39mo[39mj[39me[39mc[39mt[39m [39md[39me[39mb[39mi[39ma[39mn[39m-[39mc[39ml[39mo[39mu[39md[39m [39m-[39m-[39mi[39mm[39ma[39mg[39me[39m-[39mf[39ma[39mm[39mi[39ml[39my[39m [39md[39me[39mb[39mi[39ma[39mn[39m-[39m9[39m [39m-[39m-[39mz[39mo[39mn[39me[39m [39me[39mu[39mr[39mo[39mp[39me[39m-[39mw[39me[39ms[39mt[39m1[39m-[39md[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [14D[112D[32me[32mc[32mh[32mo[39m[39m [33m"[33mS[33me[33mt[33mt[33mi[33mn[33mg[33m [33mu[33mp[33m [33ma[33m [33mn[33me[33ms[33mt[33mi[33mn[33mg[33m-[33mv[33mi[33mr[33mt[33mu[33ma[33ml[33mi[33mz[33ma[33mt[33mi[33mo[33mn[33m [33me[33mn[33ma[33mb[33ml[33me[33md[33m [33mc[33mo[33mm[33mp[33mu[33mt[33me[33m [33me[33mn[33mg[33mi[33mn[33me[33m [33mo[33mn[33m [33mg[33mo[33mo[33mg[33ml[33me[33m [33mc[33ml[33mo[33mu[33md[33m"[39m                               [31D[?1l>[?2004l
+]2;echo ]1;echoSetting up a nesting-virtualization enabled compute engine on google cloud
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                                              ]2;julianweise@Julians-MBP: ~/Documents/Studium/Methods of Cloud Computing/exercises/exercise2]1;..ses/exercise2[0m[27m[24m[J[39m[0m[49m[44m [30m~/Documents/Studium/Methods of Cloud Computing/exercises/exercise2 [49m[34m[39m [K[150C[39m[0m[49m[30m[39m[40m[32m [32m✔[39m [39m[32m[39m[42m[30m  master ? [39m[00m[49m[167D[?1h=[?2004h[32mecho[39m [33m"Setting up a nesting-virtualization enabled compute engine on google cloud"[39m[81D[32ms[32mc[32mr[32mi[32mp[32mt[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [75D[32mc[32ml[32me[32ma[32mr[39m[39m [32mr[32mm[39m[39m [39m[4mt[39m[4my[4mpescript[24m[13D[32me[32mx[32mi[24m[32mt[39m[24m [24m [24m [24m [24m [24m [24m [24m [24m [9D[32mg[32mc[32ml[32mo[32mud[39m compute instances create mocc-machine-2 --zone europe-west1-d --image mocc-image[87D[32me[32mc[32mh[32mo[39m[39m [33m"[33mA[33m [33md[33mi[33ms[33mk[33m [33mh[33ma[33ms[33m [33mb[33me[33me[33mn[33m [33mc[33mr[33me[33ma[33mt[33me[33md[33m [33mi[33mn[33m [33mz[33mo[33mn[33me[33m-[33me[33mu[33mr[33mo[33mp[33me[33m-[33mw[33me[33ms[33mt[33m1[33m-[33md[33m [33mb[33me[33mc[33ma[33mu[33ms[33me[33m [33mt[33mh[33mi[33ms[33m [33mi[33ms[33m [33mt[33mh[33me[33m [33mo[33mn[33ml[33my[33m [33me[33mu[33mr[33mo[33mp[33me[33ma[33mn[33m [33mzone that allows nested virtualization"[39m[126D[32mg[32mc[32ml[32mo[32mu[32md[39m[39m [39mc[39mo[39mm[39mp[39mu[39mt[39me[39m [39md[39mi[39ms[39mk[39ms[39m [39mc[39mr[39me[39ma[39mt[39me[39m [39mm[39mo[39mc[39mc[39m-[39md[39mi[39ms[39mk[39m [39m-[39m-[39mi[39mm[39ma[39mg[39me[39m-[39mp[39mr[39mo[39mj[39me[39mc[39mt[39m [39md[39me[39mb[39mi[39ma[39mn[39m-[39mc[39ml[39mo[39mu[39md[39m [39m-[39m-[39mi[39mm[39ma[39mg[39me[39m-[39mf[39ma[39mm[39mi[39ml[39my[39m [39md[39me[39mb[39mi[39ma[39mn[39m-[39m9[39m [39m-[39m-[39mz[39mo[39mn[39me[39m [39me[39mu[39mr[39mo[39mp[39me[39m-[39mw[39me[39ms[39mt[39m1[39m-[39md[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [14D[?1l>[?2004l
+]2;gcloud compute disks create mocc-disk --image-project debian-cloud  debian-9 ]1;gcloudCreated [https://www.googleapis.com/compute/v1/projects/mocc-2/zones/europe-west1-d/disks/mocc-disk].
+NAME       ZONE            SIZE_GB  TYPE         STATUS
+mocc-disk  europe-west1-d  10       pd-standard  READY
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                                              ]2;julianweise@Julians-MBP: ~/Documents/Studium/Methods of Cloud Computing/exercises/exercise2]1;..ses/exercise2[0m[27m[24m[J[39m[0m[49m[44m [30m~/Documents/Studium/Methods of Cloud Computing/exercises/exercise2 [49m[34m[39m [K[150C[39m[0m[49m[30m[39m[40m[32m [32m✔[39m [39m[32m[39m[42m[30m  master ? [39m[00m[49m[167D[?1h=[?2004h[32mgcloud[39m compute disks create mocc-disk --image-project debian-cloud --image-family debian-9 --zone europe-west1-d[112D[32me[32mc[32mh[32mo[39m[39m [33m"[33mS[33me[33mt[33mt[33mi[33mn[33mg[33m [33mu[33mp[33m [33ma[33m [33mn[33me[33ms[33mt[33mi[33mn[33mg[33m-[33mv[33mi[33mr[33mt[33mu[33ma[33ml[33mi[33mz[33ma[33mt[33mi[33mo[33mn[33m [33me[33mn[33ma[33mb[33ml[33me[33md[33m [33mc[33mo[33mm[33mp[33mu[33mt[33me[33m [33me[33mn[33mg[33mi[33mn[33me[33m [33mo[33mn[33m [33mg[33mo[33mo[33mg[33ml[33me[33m [33mc[33ml[33mo[33mu[33md[33m"[39m                               [31D[81D[32ms[32mc[32mr[32mi[32mp[32mt[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [75D[32mc[32ml[32me[32ma[32mr[39m[39m [32mr[32mm[39m[39m [39m[4mt[39m[4my[4mpescript[24m[13D[32me[32mx[32mi[24m[32mt[39m[24m [24m [24m [24m [24m [24m [24m [24m [24m [9D[32mg[32mc[32ml[32mo[32mud[39m compute instances create mocc-machine-2 --zone europe-west1-d --image mocc-image[87D[32me[32mc[32mh[32mo[39m[39m [33m"[33mA[33m [33md[33mi[33ms[33mk[33m [33mh[33ma[33ms[33m [33mb[33me[33me[33mn[33m [33mc[33mr[33me[33ma[33mt[33me[33md[33m [33mi[33mn[33m [33mz[33mo[33mn[33me[33m-[33me[33mu[33mr[33mo[33mp[33me[33m-[33mw[33me[33ms[33mt[33m1[33m-[33md[33m [33mb[33me[33mc[33ma[33mu[33ms[33me[33m [33mt[33mh[33mi[33ms[33m [33mi[33ms[33m [33mt[33mh[33me[33m [33mo[33mn[33ml[33my[33m [33me[33mu[33mr[33mo[33mp[33me[33ma[33mn[33m [33mzone that allows nested virtualization"[39m[?1l>[?2004l
+]2;echo ]1;echoA disk has been created in zone-europe-west1-d because this is the only european zone that allows nested virtualization
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                                              ]2;julianweise@Julians-MBP: ~/Documents/Studium/Methods of Cloud Computing/exercises/exercise2]1;..ses/exercise2[0m[27m[24m[J[39m[0m[49m[44m [30m~/Documents/Studium/Methods of Cloud Computing/exercises/exercise2 [49m[34m[39m [K[150C[39m[0m[49m[30m[39m[40m[32m [32m✔[39m [39m[32m[39m[42m[30m  master ? [39m[00m[49m[167D[?1h=[?2004h[32mecho[39m [33m"A disk has been created in zone-europe-west1-d because this is the only european zone that allows nested virtualization"[39m[126D[32mg[32mc[32ml[32mo[32mu[32md[39m[39m [39mc[39mo[39mm[39mp[39mu[39mt[39me[39m [39md[39mi[39ms[39mk[39ms[39m [39mc[39mr[39me[39ma[39mt[39me[39m [39mm[39mo[39mc[39mc[39m-[39md[39mi[39ms[39mk[39m [39m-[39m-[39mi[39mm[39ma[39mg[39me[39m-[39mp[39mr[39mo[39mj[39me[39mc[39mt[39m [39md[39me[39mb[39mi[39ma[39mn[39m-[39mc[39ml[39mo[39mu[39md[39m [39m-[39m-[39mi[39mm[39ma[39mg[39me[39m-[39mf[39ma[39mm[39mi[39ml[39my[39m [39md[39me[39mb[39mi[39ma[39mn[39m-[39m9[39m [39m-[39m-[39mz[39mo[39mn[39me[39m [39me[39mu[39mr[39mo[39mp[39me[39m-[39mw[39me[39ms[39mt[39m1[39m-[39md[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [14D[112D[32me[32mc[32mh[32mo[39m[39m [33m"[33mS[33me[33mt[33mt[33mi[33mn[33mg[33m [33mu[33mp[33m [33ma[33m [33mn[33me[33ms[33mt[33mi[33mn[33mg[33m-[33mv[33mi[33mr[33mt[33mu[33ma[33ml[33mi[33mz[33ma[33mt[33mi[33mo[33mn[33m [33me[33mn[33ma[33mb[33ml[33me[33md[33m [33mc[33mo[33mm[33mp[33mu[33mt[33me[33m [33me[33mn[33mg[33mi[33mn[33me[33m [33mo[33mn[33m [33mg[33mo[33mo[33mg[33ml[33me[33m [33mc[33ml[33mo[33mu[33md[33m"[39m                               [31D[81D[32ms[32mc[32mr[32mi[32mp[32mt[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [75D[32mc[32ml[32me[32ma[32mr[39m[39m [32mr[32mm[39m[39m [39m[4mt[39m[4my[4mpescript[24m[13D[32me[32mx[32mi[24m[32mt[39m[24m [24m [24m [24m [24m [24m [24m [24m [24m [9D[32mg[32mc[32ml[32mo[32mud[39m compute instances create mocc-machine-2 --zone europe-west1-d --image mocc-image[87D[32me[32mc[32mh[32mo[39m[39m [33m"[33mA[33m [33md[33mi[33ms[33mk[33m [33mh[33ma[33ms[33m [33mb[33me[33me[33mn[33m [33mc[33mr[33me[33ma[33mt[33me[33md[33m [33mi[33mn[33m [33mz[33mo[33mn[33me[33m-[33me[33mu[33mr[33mo[33mp[33me[33m-[33mw[33me[33ms[33mt[33m1[33m-[33md[33m [33mb[33me[33mc[33ma[33mu[33ms[33me[33m [33mt[33mh[33mi[33ms[33m [33mi[33ms[33m [33mt[33mh[33me[33m [33mo[33mn[33ml[33my[33m [33me[33mu[33mr[33mo[33mp[33me[33ma[33mn[33m [33mzone that allows nested virtualization"[39m[126D[32mg[32mc[32ml[32mo[32mu[32md[39m[39m [39mc[39mo[39mm[39mp[39mu[39mt[39me[39m [39md[39mi[39ms[39mk[39ms[39m [39mc[39mr[39me[39ma[39mt[39me[39m [39mm[39mo[39mc[39mc[39m-[39md[39mi[39ms[39mk[39m [39m-[39m-[39mi[39mm[39ma[39mg[39me[39m-[39mp[39mr[39mo[39mj[39me[39mc[39mt[39m [39md[39me[39mb[39mi[39ma[39mn[39m-[39mc[39ml[39mo[39mu[39md[39m [39m-[39m-[39mi[39mm[39ma[39mg[39me[39m-[39mf[39ma[39mm[39mi[39ml[39my[39m [39md[39me[39mb[39mi[39ma[39mn[39m-[39m9[39m [39m-[39m-[39mz[39mo[39mn[39me[39m [39me[39mu[39mr[39mo[39mp[39me[39m-[39mw[39me[39ms[39mt[39m1[39m-[39md[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [14D[112D[32me[32mc[32mh[32mo[39m[39m [33m"[33mS[33me[33mt[33mt[33mi[33mn[33mg[33m [33mu[33mp[33m [33ma[33m [33mn[33me[33ms[33mt[33mi[33mn[33mg[33m-[33mv[33mi[33mr[33mt[33mu[33ma[33ml[33mi[33mz[33ma[33mt[33mi[33mo[33mn[33m [33me[33mn[33ma[33mb[33ml[33me[33md[33m [33mc[33mo[33mm[33mp[33mu[33mt[33me[33m [33me[33mn[33mg[33mi[33mn[33me[33m [33mo[33mn[33m [33mg[33mo[33mo[33mg[33ml[33me[33m [33mc[33ml[33mo[33mu[33md[33m"[39m                               [31D[81D[32ms[32mc[32mr[32mi[32mp[32mt[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [75D[32mc[32ml[32me[32ma[32mr[39m[39m [32mc[32ma[32mt[39m[39m [39m[4ml[4misting_exercise2.txt[24m[21D[4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[4mt[24m[24m [24m>[24m [4ml[4mi[4ms[4mt[4mi[4mn[4mg[4m_[4mexercise2.txt[24m[24D[90m [90m>[90m [24m[90ml[24m[90mi[24m[90ms[24m[90mt[24m[90mi[24m[90mn[24m[90mg[24m[90m_[24m[90me[24m[90mx[24m[90me[24m[90mr[24m[90mc[24m[90mi[24m[90ms[24m[90me[24m[90m2[24m[90m.[24m[90mt[24m[90mx[24m[90mt[39m[24D[14D[32ms[32mu[32mb[32ml[39m[24m [4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[39m[4mt[24m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [23D[15D[32mc[32ma[32mt[39m[39m [4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[4mt[24m[24m[90m [90m> listing_exercise2.txt[39m[24D[14D[32ms[32mu[32mb[32ml[39m[24m [4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[39m[4mt[24m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [23D[15D[32mc[32ma[32mt[39m[39m [4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[4mt[24m[24m[90m [90m> listing_exercise2.txt[39m[24D[14D[32mc[32ml[32me[32ma[24m[32mr[39m[24m [24m [24m [24m [24m [24m [24m [24m [24m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [33D[32mc[32ma[32mt[39m[39m [39m[4mt[4mypescript[24m[90m > listing_exercise2.txt[39m[24D[14D[32ms[32mu[32mb[32ml[39m[24m [4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[39m[4mt[24m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [23D[15D[32me[32mx[32mi[32mt[39m [24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [11D[32mg[32mc[32ml[32mo[32mud[39m compute ssh mocc-machine-2[18Dinstances create mocc-machine-2 --zone europe-west1-d --image mocc-image[71Dmag[3P[15Cimage --source-disk mocc-disk --source-disk-zone europe-west1-d --licenses [33m"https://www.googleapis.com/compute/v1/projects/vm-options/[33mg[33mlobal/licenses/enable-vmx"[39m[K[A[58Cdisk[P[14Cdisk --image-project debian-cloud --image-family debian-9 --zone europe-wes[39mt[39m1[39m-[39md[K[38C[39m[0m[49m[30m[39m[40m[32m [32m✔[39m [39m[32m[39m[42m[30m  master ? [39m[00m[49m[1B[K[A[182C[112D[32me[32mc[32mh[32mo[39m[39m [33m"[33mS[33me[33mt[33mt[33mi[33mn[33mg[33m [33mu[33mp[33m [33ma[33m [33mn[33me[33ms[33mt[33mi[33mn[33mg[33m-[33mv[33mi[33mr[33mt[33mu[33ma[33ml[33mi[33mz[33ma[33mt[33mi[33mo[33mn[33m [33me[33mn[33ma[33mb[33ml[33me[33md[33m [33mc[33mo[33mm[33mp[33mu[33mt[33me[33m [33me[33mn[33mg[33mi[33mn[33me[33m [33mo[33mn[33m [33mg[33mo[33mo[33mg[33ml[33me[33m [33mc[33ml[33mo[33mu[33md[33m"[39m                               [31D[81D[32ms[32mc[32mr[32mi[32mp[32mt[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [75D[32ml[32ms[39m[39m [39m [39m [39m [32mc[32md[39m Documents/Studium/Methods\ of\ Cloud\ Computing/exercises/exercise2[70D[32ml[32ms[39m                                                                    [68D[32me[32mx[32mit[39m[32mg[32mc[32ml[32mo[32mud[39m compute disks create mocc-disk --image-project debian-cloud --image-family debian-9 --zone europe-west1-d[112D[32me[32mx[32mi[32mt[39m[39m [39m                                                                                                           [108D[32mg[32mc[32ml[32mo[32mud[39m compute disks create mocc-disk --image-project debian-cloud --image-family debian-9 --zone europe-west1-d[112D[32me[32mx[32mi[32mt[39m[39m [39m                                                                                                           [108D[32ml[32ms[39m[39m [39m [32mc[32md[39m Documents/Studium/Methods\ of\ Cloud\ Computing/exercises/exercise2[70D[32ml[32ms[39m                                                                    [68D[32ms[32mc[32mript[39m[32me[32mc[32mh[32mo[39m[39m [33m"[33mSetting up a nesting-virtualization enabled compute engine on google cloud"[39m[81D[32mg[32mc[32ml[32mo[32mu[32md[39m[39m [39mc[39mo[39mm[39mp[39mu[39mt[39me[39m [39md[39mi[39ms[39mk[39ms[39m [39mc[39mr[39me[39ma[39mt[39me[39m [39mm[39mo[39mc[39mc[39m-[39md[39mi[39ms[39mk[39m [39m-[39m-[39mi[39mm[39ma[39mg[39me[39m-[39mp[39mr[39mo[39mj[39me[39mc[39mt[39m [39md[39me[39mb[39mi[39ma[39mn[39m-[39mc[39ml[39mo[39mu[39md[39m [39m-[39m-[39mi[39mm[39ma[39mg[39me[39m-[39mf[39ma[39mm[39mi[39ml[39my debian-9 --zone europe-west1-d[97Dimages create mocc-image --source-disk mocc-disk --source-disk[15P[20C --licenses [33m"https://www.googleapis.com/compute/v1/projects/vm-options/[33mg[33mlobal/licenses/enable-vmx"[39m[K[A[59Cnstances create mocc-machine-2 -[29P[23Cimage moc[39mc[39m-[39mi[39mm[39ma[39mg[39me[K[63C[39m[0m[49m[30m[39m[40m[32m [32m✔[39m [39m[32m[39m[42m[30m  master ? [39m[00m[49m[1B[K[A[157C[72Dssh mocc-machine-2                                                      [54D[33D[32me[32mx[32mi[32mt[39m[39m [39m                            [29D[32ms[32mu[32mb[32ml[39m [4mtypescript[24m[15D[32mc[32ma[32mt[39m[39m [4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[4mt[24m[24m[90m [90m> listing_exercise2.txt[39m[24D[14D[32mc[32ml[32me[32ma[24m[32mr[39m[24m [24m [24m [24m [24m [24m [24m [24m [24m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [33D[32mc[32ma[32mt[39m[39m [39m[4mt[4mypescript[24m[90m > listing_exercise2.txt[39m[24D[14D[32ms[32mu[32mb[32ml[39m[24m [4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[39m[4mt[24m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [23D[15D[32mc[32ma[32mt[39m[39m [4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[4mt[24m[24m[90m [90m> listing_exercise2.txt[39m[24D[14D[32ms[32mu[32mb[32ml[39m[24m [4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[39m[4mt[24m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [23D[15D[32mc[32ma[32mt[39m[39m [4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[4mt[24m[24m[90m [90m> listing_exercise2.txt[39m[24D[39m [39m>[39m [39m[4ml[39m[4mi[39m[4ms[39m[4mt[39m[4mi[39m[4mn[39m[4mg[39m[4m_[39m[4me[39m[4mx[39m[4me[39m[4mr[39m[4mc[39m[4mi[39m[4ms[39m[4me[39m[4m2[39m[4m.[39m[4mt[39m[4mx[39m[4mt[24m[34D[4ml[4mi[4ms[4mt[4mi[4mn[4mg[4m_[4me[4mx[4me[4mr[4mc[4mi[4ms[4me[4m2[4m.[4mt[4mx[4mt[24m[24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [13D[25D[32mc[32ml[32me[32ma[24m[32mr[39m[24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [20D[32ms[32mc[32mr[32mi[32mp[32mt[39m[32mc[32ml[32me[32ma[32mr[39m[39m [32mc[32ma[32mt[39m[39m [39m[4ml[4misting_exercise2.txt[24m[21D[4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[4mt[24m[24m [24m>[24m [4ml[4mi[4ms[4mt[4mi[4mn[4mg[4m_[4mexercise2.txt[24m[24D[90m [90m>[90m [24m[90ml[24m[90mi[24m[90ms[24m[90mt[24m[90mi[24m[90mn[24m[90mg[24m[90m_[24m[90me[24m[90mx[24m[90me[24m[90mr[24m[90mc[24m[90mi[24m[90ms[24m[90me[24m[90m2[24m[90m.[24m[90mt[24m[90mx[24m[90mt[39m[24D[14D[32ms[32mu[32mb[32ml[39m[24m [4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[39m[4mt[24m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [23D[15D[32mc[32ma[32mt[39m[39m [4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[4mt[24m[24m[90m [90m> listing_exercise2.txt[39m[24D[14D[32ms[32mu[32mb[32ml[39m[24m [4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[39m[4mt[24m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [23D[15D[32mc[32ma[32mt[39m[39m [4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[4mt[24m[24m[90m [90m> listing_exercise2.txt[39m[24D[14D[32mc[32ml[32me[32ma[24m[32mr[39m[24m [24m [24m [24m [24m [24m [24m [24m [24m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [33D[32mc[32ma[32mt[39m[39m [39m[4mt[4mypescript[24m[90m > listing_exercise2.txt[39m[24D[14D[32ms[32mu[32mb[32ml[39m[24m [4mt[4my[4mp[4me[4ms[4mc[4mr[4mi[4mp[39m[4mt[24m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [23D[15D[32me[32mx[32mi[32mt[39m [24m [24m [24m [24m [24m [24m [24m [24m [24m [24m [11D[32mg[32mc[32ml[32mo[32mud[39m compute ssh mocc-machine-2[18Dinstances create mocc-machine-2 --zone europe-west1-d --image mocc-image[71Dmag[3P[15Cimage --source-disk mocc-disk --source-disk-zone europe-west1-d --licenses [33m"https://www.googleapis.com/compute/v1/projects/vm-options/[33mg[33mlobal/licenses/enable-vmx"[39m[K[A[59Cnstances create mocc-machine-2 -[29P[23Cimage moc[39mc[39m-[39mi[39mm[39ma[39mg[39me[K[63C[39m[0m[49m[30m[39m[40m[32m [32m✔[39m [39m[32m[39m[42m[30m  master ? [39m[00m[49m[1B[K[A[157C[71Dmag[3P[15Cimage --source-disk mocc-disk --source-disk-zone europe-west1-d --licenses [33m"https://www.googleapis.com/compute/v1/projects/vm-options/[33mg[33mlobal/licenses/enable-vmx"[39m[K[A[58Cdisk[P[14Cdisk --image-project debian-cloud --image-family debian-9 --zone europe-wes[39mt[39m1[39m-[39md[K[38C[39m[0m[49m[30m[39m[40m[32m [32m✔[39m [39m[32m[39m[42m[30m  master ? [39m[00m[49m[1B[K[A[182C[97Dimages create mocc-image --source-disk mocc-disk --source-disk[15P[20C --licenses [33m"https://www.googleapis.com/compute/v1/projects/vm-options/[33mg[33mlobal/licenses/enable-vmx"[39m[K[?1l>[?2004l
+]2;gcloud compute images create mocc-image --source-disk mocc-disk   --licenses ]1;gcloudCreated [https://www.googleapis.com/compute/v1/projects/mocc-2/global/images/mocc-image].
+NAME        PROJECT  FAMILY  DEPRECATED  STATUS
+mocc-image  mocc-2                       READY
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                                              ]2;julianweise@Julians-MBP: ~/Documents/Studium/Methods of Cloud Computing/exercises/exercise2]1;..ses/exercise2[0m[27m[24m[J[39m[0m[49m[44m [30m~/Documents/Studium/Methods of Cloud Computing/exercises/exercise2 [49m[34m[39m [K[150C[39m[0m[49m[30m[39m[40m[32m [32m✔[39m [39m[32m[39m[42m[30m  master ? [39m[00m[49m[167D[?1h=[?2004h[1m[31me[0m[39m[90mcho "A disk has been created in zone-europe-west1-d because this is the only european zone that allows nested virtualization"[39m[125D[1m[31me[1m[31mc[0m[39m[1m[31me[1m[31mc[1m[31mh[0m[39m[0m[32me[0m[32mc[0m[32mh[32mo[39m[39m [33m"[39m[33m"[33mC[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [119D[33mC[33mr[39m[33mr[33me[39m[33me[33ma[39m[33ma[33mt[39m[33mt[33me[39m[33me[33md[39m[33md[33m [39m[33m [33ma[39m[33ma[33m [39m[33m [33ms[39m[33ms[33mp[39m[33mp[33me[39m[33me[33mc[39m[33mc[33mi[39m[33mi[33ma[39m[33ma[33ml[39m[33ml[33mi[39m[33mi[33mz[39m[33mz[33me[39m[33me[33md[39m[33md[33m [39m[33m [33mg[39m[33mg[33mc[39m[33mc[33ml[39m[33ml[33mo[39m[33mo[33mu[39m[33mu[33md[39m[33md[33m [39m[33m [33mi[39m[33mi[33mm[39m[33mm[33ma[39m[33ma[33mg[39m[33mg[33me[39m[33me[33m [39m[33m [33mt[39m[33mt[33mh[39m[33mh[33ma[39m[33ma[33mt[39m[33mt[33m [39m[33m [33mu[39m[33mu[33ms[39m[33ms[33me[39m[33me[33ms[39m[33ms[33m [39m[33m [33ma[39m[33ma[33m [39m[33m [33ml[39m[33ml[33mi[39m[33mi[33mc[39m[33mc[33me[39m[33me[33mn[39m[33mn[33ms[39m[33ms[33me[39m[33me[33m [39m[33m [33mt[39m[33mt[33mo[39m[33mo[33m [39m[33m [33ma[39m[33ma[33ml[39m[33ml[33ml[39m[33ml[33mo[39m[33mo[33mw[39m[33mw[33m [39m[33m [33mn[39m[33mn[33me[39m[33me[33ms[39m[33ms[33mt[39m[33mt[33me[39m[33me[33md[39m[33md[33m [39m[33m [33mv[39m[33mv[33mi[39m[33mi[33mr[39m[33mr[33mt[39m[33mt[33mu[39m[33mu[33ma[39m[33ma[33ml[39m[33ml[33mi[39m[33mi[33mz[39m[33mz[33ma[39m[33ma[33mt[39m[33mt[33mi[39m[33mi[33mo[39m[33mo[33mn[39m[33mn[33m"[39m[?1l>[?2004l
+]2;echo ]1;echoCreated a specialized gcloud image that uses a license to allow nested virtualization
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                                              ]2;julianweise@Julians-MBP: ~/Documents/Studium/Methods of Cloud Computing/exercises/exercise2]1;..ses/exercise2[0m[27m[24m[J[39m[0m[49m[44m [30m~/Documents/Studium/Methods of Cloud Computing/exercises/exercise2 [49m[34m[39m [K[150C[39m[0m[49m[30m[39m[40m[32m [32m✔[39m [39m[32m[39m[42m[30m  master ? [39m[00m[49m[167D[?1h=[?2004h
+bck-i-search: _[K[A[55Cecho "Created a specialized gcloud ima[4mg[24me that uses a license to allow nested virtualization"[1B[148Dg_[A[92C[10D[4mg[4mc[24m[8C[24mg[1B[94Dc_[A[81C[1C[4mc[4ml[24m[1B[85Dl_[A[80C[2C[4ml[4mo[24m[1B[85Do_[A[79C[3C[4mo[4mu[24m[1B[85Du_[A[78C[4C[4mu[4md[24m[1B[85Dd_[A[77C[5C[4md[4m [24m[1B[85D _[A[76C[6C[4m [4mi[24m[1B[85Di_[A[75C[28D[4mg[4mc[4ml[4mo[4mu[4md[4m [4mi[4mn[24mfo                 [24m [24m [24m [24m [24m [24m [24m [24m                                                         [1B[140Dn_[A[46C[24mg[24mc[24ml[24mo[24mu[24md[24m [24mi[24mn[1Bfailing bck-i-search: gcloud ins_[A[37C[1B[38Dt_[A[36C[1B[37Da_[A[35C[1B[37D_ [A[35C[1B[38D_ [A[36C[4mg[4mc[4ml[4mo[4mu[4md[4m [4mi[4mn[24m[1B[8P[23C_         [A[37C[24me[24mc[24mh[24mo[24m [24m"[24mC[24mr[24meated a specialized [4mgcloud i[24mmage that uses a license to allow nested virtualization"[1B[140D_ [A[74C[6C[4m [24m[24mi[1B[85D_ [A[75C[5C[4md[24m[24m [1B[85D_ [A[76C[4C[4mu[24m[24md[1B[85D_ [A[77C[3C[4mo[24m[24mu[1B[85D_ [A[78C[2C[4ml[24m[24mo[1B[85D_ [A[79C[1C[4mc[24m[24ml[1B[85D_ [A[80C[24mg[24mc[8C[4mg[24m[1B[94D_ [A[91C[38D                                      [24m                                                      [1B[148D_ [A[54Cecho "Created a specialized gcloud ima[4mg[24me that uses a license to allow nested virtualization"[1B[148Dg_[A[92C[10D[4mg[4mc[24m[8C[24mg[1B[94Dc_[A[81C[1C[4mc[4ml[24m[1B[85Dl_[A[80C[2C[4ml[4mo[24m[1B[85Do_[A[79C[3C[4mo[4mu[24m[1B[85Du_[A[78C[4C[4mu[4md[24m[1B[85Dd_[A[77C[5C[4md[4m [24m[1B[85D _[A[76C[5C[4md[24m[24m [1B[85D_ [A[76C[4C[4mu[24m[24md[1B[85D_ [A[77C[3C[4mo[24m[24mu[1B[85D_ [A[78C[2C[4ml[24m[24mo[1B[85D_ [A[79C[1C[4mc[24m[24ml[1B[85D_ [A[80C[24mg[24mc[8C[4mg[24m[1B[94D_ [A[91C[38D                                      [24m                                                      [1B[148D_ [A[54C[1B[K[A[70C[?1l>[?2004l[1B[1m[7m%[27m[1m[0m                                                                                                                                                                                                                                              ]2;julianweise@Julians-MBP: ~/Documents/Studium/Methods of Cloud Computing/exercises/exercise2]1;..ses/exercise2[0m[27m[24m[J[39m[0m[49m[44m [30m~/Documents/Studium/Methods of Cloud Computing/exercises/exercise2 [49m[34m[39m [K[150C[39m[0m[49m[30m[39m[40m[32m [32m✔[39m [39m[32m[39m[42m[30m  master ? [39m[00m[49m[167D[?1h=[?2004h[32mg[39m[90mcloud compute images create mocc-image --source-disk mocc-disk --source-disk-zone europe-west1-d --licenses "https://www.googleapis.com/compute/v1/projects/vm-options/[90mg[90mlobal/licenses/enable-vmx"[39m[K[A[44C[32mg[32mc[39m[32mg[32mc[32ml[39m[1m[31mg[1m[31mc[1m[31ml[1m[31mo[0m[39m[1m[31mo[1m[31mu[0m[39m[0m[32mg[0m[32mc[0m[32ml[0m[32mo[0m[32mu[32md[39m[39m [39mc[39mo[39mm[39mp[39mu[39mt[39me[39m [39mi[39mn[90ms[90mt[90ma[90mn[90mc[90me[90ms[90m [90mc[90mr[90me[90ma[90mt[90me[90m [90mm[90mo[90mc[90mc[90m-[90mm[90ma[90mc[90mh[90mi[90mn[90me[90m-[90m2[90m [90m-[39m[29P[23C[90mi[90mm[90ma[90mg[90me[90m [90mm[90mo[90mc[90mc[90m-[90mi[90mm[90ma[90mg[90me[39m[K[63C[39m[0m[49m[30m[39m[40m[32m [32m✔[39m [39m[32m[39m[42m[30m  master ? [39m[00m[49m[1B[K[A[87C[39ms[39mt[39ma[39mn[39mc[39me[39ms[39m [39mc[39mr[39me[39ma[39mt[39me[39m [39mm[39mo[39mc[39mc[39m-[39mm[39ma[39mc[39mh[39mi[39mn[39me[39m-[39m2[39m [39m-[39m-[39mz[39mo[39mn[39me[39m [39me[39mu[39mr[39mo[39mp[39me[39m-[39mw[39me[39ms[39mt[39m1[39m-[39md[39m [39m-[39m-[39mi[39mm[39ma[39mg[39me[39m [39mm[39mo[39mc[39mc[39m-[39mi[39mm[39ma[39mg[39me[?1l>[?2004l[1B]2;gcloud compute instances create mocc-machine-2 --zone europe-west1-d --image ]1;gcloudCreated [https://www.googleapis.com/compute/v1/projects/mocc-2/zones/europe-west1-d/instances/mocc-machine-2].
+NAME            ZONE            MACHINE_TYPE   PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP    STATUS
+mocc-machine-2  europe-west1-d  n1-standard-1               10.132.0.2   35.233.28.200  RUNNING
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                                              ]2;julianweise@Julians-MBP: ~/Documents/Studium/Methods of Cloud Computing/exercises/exercise2]1;..ses/exercise2[0m[27m[24m[J[39m[0m[49m[44m [30m~/Documents/Studium/Methods of Cloud Computing/exercises/exercise2 [49m[34m[39m [K[150C[39m[0m[49m[30m[39m[40m[32m [32m✔[39m [39m[32m[39m[42m[30m  master ? [39m[00m[49m[167D[?1h=[?2004h[32mg[39m[90mcloud compute instances create mocc-machine-2 --zone europe-west1-d --image mocc-image[39m[86D[32mg[32mc[39m[32mg[32mc[32ml[39m[1m[31mg[1m[31mc[1m[31ml[1m[31mo[0m[39m[1m[31mo[1m[31mu[0m[39m[0m[32mg[0m[32mc[0m[32ml[0m[32mo[0m[32mu[32md[39m[39m [39mc[39mo[39mm[39mp[39mu[39mt[39me[39m [39m[4ms[24m[90ms[90mh[90m [90mm[90mo[90mc[90mc[90m-[90mm[90ma[90mc[90mh[90mi[90mn[90me[90m-[90m2[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [71D[24ms[39ms[39mh[39m [39mm[39mo[39mc[39mc[39m-[39mm[39ma[39mc[39mh[39mi[39mn[39me[39m-[39m2[?1l>[?2004l
+]2;gcloud compute ssh mocc-machine-2]1;gcloudNo zone specified. Using zone [europe-west1-d] for instance: [mocc-machine-2].
+Warning: Permanently added 'compute.4678107522348028926' (ECDSA) to the list of known hosts.
+Linux mocc-machine-2 4.9.0-8-amd64 #1 SMP Debian 4.9.130-2 (2018-10-27) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+]0;julianweise@mocc-machine-2: ~[01;32mjulianweise@mocc-machine-2[00m:[01;34m~[00m$ apt-get install docje[K[K[Kcc[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kecho "Installting docjker[K[K[K[Kker on host machine"
+Installting docker on host machine
+]0;julianweise@mocc-machine-2: ~[01;32mjulianweise@mocc-machine-2[00m:[01;34m~[00m$ sudo apt-get install docker
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 1%Reading state information... Done
+The following additional packages will be installed:
+  libglib2.0-0 libglib2.0-data libicu57 libx11-6 libx11-data libxau6 libxcb1 libxdmcp6 libxml2 sgml-base shared-mime-info xdg-user-dirs xml-core
+Suggested packages:
+  sgml-base-doc debhelper
+The following NEW packages will be installed:
+  docker libglib2.0-0 libglib2.0-data libicu57 libx11-6 libx11-data libxau6 libxcb1 libxdmcp6 libxml2 sgml-base shared-mime-info xdg-user-dirs xml-core
+0 upgraded, 14 newly installed, 0 to remove and 0 not upgraded.
+Need to get 15.9 MB of archives.
+After this operation, 56.8 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+0% [Working]            Get:1 http://deb.debian.org/debian stretch/main amd64 libxau6 amd64 1:1.0.8-1 [20.7 kB]
+0% [1 libxau6 0 B/20.7 kB 0%]                             2% [Working]            Get:2 http://deb.debian.org/debian stretch/main amd64 sgml-base all 1.29 [14.8 kB]
+2% [2 sgml-base 0 B/14.8 kB 0%]                               3% [Working]            Get:3 http://deb.debian.org/debian stretch/main amd64 libicu57 amd64 57.1-6+deb9u2 [7,700 kB]
+3% [3 libicu57 0 B/7,700 kB 0%]                               43% [Working]             Get:4 http://deb.debian.org/debian stretch/main amd64 libxml2 amd64 2.9.4+dfsg1-2.2+deb9u2 [920 kB]
+43% [4 libxml2 0 B/920 kB 0%]                             49% [Working]             Get:5 http://deb.debian.org/debian stretch/main amd64 libglib2.0-0 amd64 2.50.3-2 [2,691 kB]
+49% [5 libglib2.0-0 0 B/2,691 kB 0%]                                    64% [Working]             Get:6 http://deb.debian.org/debian stretch/main amd64 libxdmcp6 amd64 1:1.1.2-3 [26.3 kB]
+64% [6 libxdmcp6 0 B/26.3 kB 0%]                                66% [Working]             Get:7 http://deb.debian.org/debian stretch/main amd64 libxcb1 amd64 1.12-1 [133 kB]
+66% [7 libxcb1 0 B/133 kB 0%]                             68% [Working]             Get:8 http://deb.debian.org/debian stretch/main amd64 libx11-data all 2:1.6.4-3+deb9u1 [287 kB]
+68% [8 libx11-data 0 B/287 kB 0%]                                 71% [Working]             Get:9 http://deb.debian.org/debian stretch/main amd64 libx11-6 amd64 2:1.6.4-3+deb9u1 [748 kB]
+71% [9 libx11-6 0 B/748 kB 0%]                              76% [Working]             Get:10 http://deb.debian.org/debian stretch/main amd64 docker amd64 1.5-1+b1 [12.8 kB]
+76% [10 docker 0 B/12.8 kB 0%]                              78% [Working]             Get:11 http://deb.debian.org/debian stretch/main amd64 libglib2.0-data all 2.50.3-2 [2,517 kB]
+78% [11 libglib2.0-data 0 B/2,517 kB 0%]                                        92% [Working]             Get:12 http://deb.debian.org/debian stretch/main amd64 shared-mime-info amd64 1.8-1+deb9u1 [731 kB]
+92% [12 shared-mime-info 0 B/731 kB 0%]                                       97% [Working]             Get:13 http://deb.debian.org/debian stretch/main amd64 xdg-user-dirs amd64 0.15-2+b1 [52.2 kB]
+97% [13 xdg-user-dirs 0 B/52.2 kB 0%]                                     98% [Working]             Get:14 http://deb.debian.org/debian stretch/main amd64 xml-core all 0.17 [23.2 kB]
+98% [14 xml-core 0 B/23.2 kB 0%]                                100% [Working]              Fetched 15.9 MB in 0s (55.3 MB/s)
+Selecting previously unselected package libxau6:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 33847 files and directories currently installed.)
+Preparing to unpack .../00-libxau6_1%3a1.0.8-1_amd64.deb ...
+Unpacking libxau6:amd64 (1:1.0.8-1) ...
+Selecting previously unselected package sgml-base.
+Preparing to unpack .../01-sgml-base_1.29_all.deb ...
+Unpacking sgml-base (1.29) ...
+Selecting previously unselected package libicu57:amd64.
+Preparing to unpack .../02-libicu57_57.1-6+deb9u2_amd64.deb ...
+Unpacking libicu57:amd64 (57.1-6+deb9u2) ...
+Selecting previously unselected package libxml2:amd64.
+Preparing to unpack .../03-libxml2_2.9.4+dfsg1-2.2+deb9u2_amd64.deb ...
+Unpacking libxml2:amd64 (2.9.4+dfsg1-2.2+deb9u2) ...
+Selecting previously unselected package libglib2.0-0:amd64.
+Preparing to unpack .../04-libglib2.0-0_2.50.3-2_amd64.deb ...
+Unpacking libglib2.0-0:amd64 (2.50.3-2) ...
+Selecting previously unselected package libxdmcp6:amd64.
+Preparing to unpack .../05-libxdmcp6_1%3a1.1.2-3_amd64.deb ...
+Unpacking libxdmcp6:amd64 (1:1.1.2-3) ...
+Selecting previously unselected package libxcb1:amd64.
+Preparing to unpack .../06-libxcb1_1.12-1_amd64.deb ...
+Unpacking libxcb1:amd64 (1.12-1) ...
+Selecting previously unselected package libx11-data.
+Preparing to unpack .../07-libx11-data_2%3a1.6.4-3+deb9u1_all.deb ...
+Unpacking libx11-data (2:1.6.4-3+deb9u1) ...
+Selecting previously unselected package libx11-6:amd64.
+Preparing to unpack .../08-libx11-6_2%3a1.6.4-3+deb9u1_amd64.deb ...
+Unpacking libx11-6:amd64 (2:1.6.4-3+deb9u1) ...
+Selecting previously unselected package docker.
+Preparing to unpack .../09-docker_1.5-1+b1_amd64.deb ...
+Unpacking docker (1.5-1+b1) ...
+Selecting previously unselected package libglib2.0-data.
+Preparing to unpack .../10-libglib2.0-data_2.50.3-2_all.deb ...
+Unpacking libglib2.0-data (2.50.3-2) ...
+Selecting previously unselected package shared-mime-info.
+Preparing to unpack .../11-shared-mime-info_1.8-1+deb9u1_amd64.deb ...
+Unpacking shared-mime-info (1.8-1+deb9u1) ...
+Selecting previously unselected package xdg-user-dirs.
+Preparing to unpack .../12-xdg-user-dirs_0.15-2+b1_amd64.deb ...
+Unpacking xdg-user-dirs (0.15-2+b1) ...
+Selecting previously unselected package xml-core.
+Preparing to unpack .../13-xml-core_0.17_all.deb ...
+Unpacking xml-core (0.17) ...
+Setting up libglib2.0-0:amd64 (2.50.3-2) ...
+No schema files found: doing nothing.
+Setting up sgml-base (1.29) ...
+Setting up libicu57:amd64 (57.1-6+deb9u2) ...
+Setting up libxml2:amd64 (2.9.4+dfsg1-2.2+deb9u2) ...
+Setting up libglib2.0-data (2.50.3-2) ...
+Processing triggers for libc-bin (2.24-11+deb9u3) ...
+Processing triggers for man-db (2.7.6.1-2) ...
+Setting up shared-mime-info (1.8-1+deb9u1) ...
+Setting up libxdmcp6:amd64 (1:1.1.2-3) ...
+Setting up xml-core (0.17) ...
+Setting up xdg-user-dirs (0.15-2+b1) ...
+Setting up libx11-data (2:1.6.4-3+deb9u1) ...
+Setting up libxau6:amd64 (1:1.0.8-1) ...
+Setting up libxcb1:amd64 (1.12-1) ...
+Setting up libx11-6:amd64 (2:1.6.4-3+deb9u1) ...
+Setting up docker (1.5-1+b1) ...
+Processing triggers for libc-bin (2.24-11+deb9u3) ...
+Processing triggers for sgml-base (1.29) ...
+]0;julianweise@mocc-machine-2: ~[01;32mjulianweise@mocc-machine-2[00m:[01;34m~[00m$ sudo[K[K[K[Kecho "Installing qemu on host machine"
+Installing qemu on host machine
+]0;julianweise@mocc-machine-2: ~[01;32mjulianweise@mocc-machine-2[00m:[01;34m~[00m$ sudo apt-get install qemu-kvm -y
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 1%Reading state information... Done
+The following additional packages will be installed:
+  dbus ipxe-qemu libaio1 libasound2 libasound2-data libasyncns0 libbluetooth3 libbrlapi0.6 libcaca0 libcacard0 libdbus-1-3 libfdt1 libflac8 libice6 libjpeg62-turbo libnspr4 libnss3 libnuma1 libogg0 libopus0 libpixman-1-0 libpulse0
+  libsdl1.2debian libsm6 libsndfile1 libspice-server1 libusb-1.0-0 libusbredirparser1 libvdeplug2 libvorbis0a libvorbisenc2 libx11-xcb1 libxen-4.8 libxenstore3.0 libxext6 libxi6 libxtst6 libyajl2 qemu-system-common qemu-system-x86
+  qemu-utils seabios x11-common
+Suggested packages:
+  default-dbus-session-bus | dbus-session-bus libasound2-plugins alsa-utils opus-tools pulseaudio samba vde2 qemu-block-extra sgabios ovmf debootstrap
+The following NEW packages will be installed:
+  dbus ipxe-qemu libaio1 libasound2 libasound2-data libasyncns0 libbluetooth3 libbrlapi0.6 libcaca0 libcacard0 libdbus-1-3 libfdt1 libflac8 libice6 libjpeg62-turbo libnspr4 libnss3 libnuma1 libogg0 libopus0 libpixman-1-0 libpulse0
+  libsdl1.2debian libsm6 libsndfile1 libspice-server1 libusb-1.0-0 libusbredirparser1 libvdeplug2 libvorbis0a libvorbisenc2 libx11-xcb1 libxen-4.8 libxenstore3.0 libxext6 libxi6 libxtst6 libyajl2 qemu-kvm qemu-system-common
+  qemu-system-x86 qemu-utils seabios x11-common
+0 upgraded, 44 newly installed, 0 to remove and 0 not upgraded.
+Need to get 13.8 MB of archives.
+After this operation, 51.7 MB of additional disk space will be used.
+0% [Working]            Get:1 http://deb.debian.org/debian stretch/main amd64 libogg0 amd64 1.3.2-1 [19.9 kB]
+0% [1 libogg0 0 B/19.9 kB 0%] [Waiting for headers]                                                   Get:2 http://security.debian.org stretch/updates/main amd64 qemu-system-common amd64 1:2.8+dfsg-6+deb9u5 [502 kB]
+0% [1 libogg0 12.7 kB/19.9 kB 64%] [2 qemu-system-common 5,632 B/502 kB 1%]                                                                           1% [2 qemu-system-common 12.7 kB/502 kB 3%]                                           Get:3 http://deb.debian.org/debian stretch/main amd64 libdbus-1-3 amd64 1.10.26-0+deb9u1 [194 kB]
+1% [3 libdbus-1-3 0 B/194 kB 0%] [2 qemu-system-common 40.8 kB/502 kB 8%]                                                                         5% [2 qemu-system-common 418 kB/502 kB 83%]                                           Get:4 http://deb.debian.org/debian stretch/main amd64 dbus amd64 1.10.26-0+deb9u1 [210 kB]
+5% [4 dbus 0 B/210 kB 0%] [2 qemu-system-common 418 kB/502 kB 83%]                                                                  6% [4 dbus 118 kB/210 kB 56%]                             7% [Waiting for headers]                        Get:5 http://deb.debian.org/debian stretch/main amd64 ipxe-qemu all 1.0.0+git-20161027.b991c67-1 [605 kB]
+7% [5 ipxe-qemu 0 B/605 kB 0%] [Waiting for headers]                                                    Get:6 http://security.debian.org stretch/updates/main amd64 qemu-system-x86 amd64 1:2.8+dfsg-6+deb9u5 [4,818 kB]
+8% [5 ipxe-qemu 143 kB/605 kB 24%] [6 qemu-system-x86 0 B/4,818 kB 0%]                                                                      14% [6 qemu-system-x86 453 kB/4,818 kB 9%]                                          Get:7 http://deb.debian.org/debian stretch/main amd64 libaio1 amd64 0.3.110-3 [9,412 B]
+15% [7 libaio1 0 B/9,412 B 0%] [6 qemu-system-x86 742 kB/4,818 kB 15%]                                                                      16% [6 qemu-system-x86 742 kB/4,818 kB 15%]                                           Get:8 http://deb.debian.org/debian stretch/main amd64 libasound2-data all 1.1.3-5 [173 kB]
+16% [8 libasound2-data 0 B/173 kB 0%] [6 qemu-system-x86 742 kB/4,818 kB 15%]                                                                             17% [6 qemu-system-x86 742 kB/4,818 kB 15%]                                           Get:9 http://deb.debian.org/debian stretch/main amd64 libasound2 amd64 1.1.3-5 [497 kB]
+17% [9 libasound2 0 B/497 kB 0%] [6 qemu-system-x86 742 kB/4,818 kB 15%]                                                                        23% [6 qemu-system-x86 1,070 kB/4,818 kB 22%]                                             Get:10 http://deb.debian.org/debian stretch/main amd64 libasyncns0 amd64 0.8-6 [12.5 kB]
+23% [10 libasyncns0 0 B/12.5 kB 0%] [6 qemu-system-x86 1,201 kB/4,818 kB 25%]                                                                             24% [6 qemu-system-x86 1,201 kB/4,818 kB 25%]                                             Get:11 http://deb.debian.org/debian stretch/main amd64 libbluetooth3 amd64 5.43-2+deb9u1 [97.8 kB]
+24% [11 libbluetooth3 0 B/97.8 kB 0%] [6 qemu-system-x86 1,201 kB/4,818 kB 25%]                                                                               26% [6 qemu-system-x86 1,436 kB/4,818 kB 30%]                                             Get:12 http://deb.debian.org/debian stretch/main amd64 libcaca0 amd64 0.99.beta19-2+b2 [347 kB]
+26% [12 libcaca0 0 B/347 kB 0%] [6 qemu-system-x86 1,436 kB/4,818 kB 30%]                                                                         30% [6 qemu-system-x86 1,725 kB/4,818 kB 36%]                                             Get:13 http://deb.debian.org/debian stretch/main amd64 libnspr4 amd64 2:4.12-6 [117 kB]
+30% [13 libnspr4 0 B/117 kB 0%] [6 qemu-system-x86 1,725 kB/4,818 kB 36%]                                                                         32% [6 qemu-system-x86 1,725 kB/4,818 kB 36%]                                             Get:14 http://deb.debian.org/debian stretch/main amd64 libnss3 amd64 2:3.26.2-1.1+deb9u1 [1,161 kB]
+32% [14 libnss3 0 B/1,161 kB 0%] [6 qemu-system-x86 1,725 kB/4,818 kB 36%]                                                                          45% [6 qemu-system-x86 2,774 kB/4,818 kB 58%]                                             Get:15 http://deb.debian.org/debian stretch/main amd64 libcacard0 amd64 1:2.5.0-3 [47.2 kB]
+45% [15 libcacard0 0 B/47.2 kB 0%] [6 qemu-system-x86 2,774 kB/4,818 kB 58%]                                                                            47% [6 qemu-system-x86 3,008 kB/4,818 kB 62%]                                             Get:16 http://deb.debian.org/debian stretch/main amd64 libflac8 amd64 1.3.2-1 [221 kB]
+47% [16 libflac8 0 B/221 kB 0%] [6 qemu-system-x86 3,008 kB/4,818 kB 62%]                                                                         49% [6 qemu-system-x86 3,008 kB/4,818 kB 62%]                                             Get:17 http://deb.debian.org/debian stretch/main amd64 x11-common all 1:7.7+19 [251 kB]
+50% [17 x11-common 0 B/251 kB 0%] [6 qemu-system-x86 3,298 kB/4,818 kB 68%]                                                                           52% [6 qemu-system-x86 3,298 kB/4,818 kB 68%]                                             Get:18 http://deb.debian.org/debian stretch/main amd64 libice6 amd64 2:1.0.9-2 [58.7 kB]
+52% [18 libice6 0 B/58.7 kB 0%] [6 qemu-system-x86 3,298 kB/4,818 kB 68%]                                                                         Get:19 http://deb.debian.org/debian stretch/main amd64 libjpeg62-turbo amd64 1:1.5.1-2 [134 kB]
+                                                                         Get:20 http://deb.debian.org/debian stretch/main amd64 libnuma1 amd64 2.0.11-2.1 [33.3 kB]
+                                                                         Get:21 http://deb.debian.org/debian stretch/main amd64 libopus0 amd64 1.2~alpha2-1 [171 kB]
+62% [21 libopus0 65.5 kB/171 kB 38%] [6 qemu-system-x86 4,516 kB/4,818 kB 94%]                                                                              65% [6 qemu-system-x86 4,778 kB/4,818 kB 99%]                                             Get:22 http://deb.debian.org/debian stretch/main amd64 libpixman-1-0 amd64 0.34.0-1 [530 kB]
+65% [22 libpixman-1-0 0 B/530 kB 0%] [6 qemu-system-x86 4,778 kB/4,818 kB 99%]                                                                              67% [22 libpixman-1-0 179 kB/530 kB 34%]                                        Get:23 http://security.debian.org stretch/updates/main amd64 qemu-utils amd64 1:2.8+dfsg-6+deb9u5 [985 kB]
+68% [22 libpixman-1-0 369 kB/530 kB 70%] [23 qemu-utils 0 B/985 kB 0%]                                                                      70% [23 qemu-utils 250 kB/985 kB 25%]                                     Get:24 http://deb.debian.org/debian stretch/main amd64 libsm6 amd64 2:1.2.2-1+b3 [33.3 kB]
+70% [24 libsm6 0 B/33.3 kB 0%] [23 qemu-utils 250 kB/985 kB 25%]                                                                71% [23 qemu-utils 250 kB/985 kB 25%]                                     Get:25 http://deb.debian.org/debian stretch/main amd64 libvorbis0a amd64 1.3.5-4+deb9u2 [91.7 kB]
+71% [25 libvorbis0a 0 B/91.7 kB 0%] [23 qemu-utils 250 kB/985 kB 25%]                                                                     74% [23 qemu-utils 577 kB/985 kB 59%]                                     Get:26 http://deb.debian.org/debian stretch/main amd64 libvorbisenc2 amd64 1.3.5-4+deb9u2 [79.4 kB]
+74% [26 libvorbisenc2 0 B/79.4 kB 0%] [23 qemu-utils 577 kB/985 kB 59%]                                                                       75% [23 qemu-utils 577 kB/985 kB 59%]                                     Get:27 http://deb.debian.org/debian stretch/main amd64 libsndfile1 amd64 1.0.27-3 [248 kB]
+75% [27 libsndfile1 0 B/248 kB 0%] [23 qemu-utils 577 kB/985 kB 59%]                                                                    77% [23 qemu-utils 577 kB/985 kB 59%]                                     Get:28 http://deb.debian.org/debian stretch/main amd64 libx11-xcb1 amd64 2:1.6.4-3+deb9u1 [183 kB]
+78% [28 libx11-xcb1 0 B/183 kB 0%] [23 qemu-utils 708 kB/985 kB 72%]                                                                    79% [23 qemu-utils 708 kB/985 kB 72%]                                     81% [Working]             Get:29 http://deb.debian.org/debian stretch/main amd64 libxext6 amd64 2:1.3.3-1+b2 [52.5 kB]
+81% [29 libxext6 0 B/52.5 kB 0%]                                82% [Working]             Get:30 http://deb.debian.org/debian stretch/main amd64 libxi6 amd64 2:1.7.9-1 [82.6 kB]
+82% [30 libxi6 0 B/82.6 kB 0%]                              83% [Working]             Get:31 http://deb.debian.org/debian stretch/main amd64 libxtst6 amd64 2:1.2.3-1 [27.8 kB]
+83% [31 libxtst6 0 B/27.8 kB 0%]                                83% [Working]             Get:32 http://deb.debian.org/debian stretch/main amd64 libpulse0 amd64 10.0-1+deb9u1 [283 kB]
+83% [32 libpulse0 0 B/283 kB 0%]                                Get:33 http://security.debian.org stretch/updates/main amd64 qemu-kvm amd64 1:2.8+dfsg-6+deb9u5 [66.8 kB]
+84% [32 libpulse0 127 kB/283 kB 45%] [33 qemu-kvm 0 B/66.8 kB 0%]                                                                 85% [32 libpulse0 127 kB/283 kB 45%]                                    86% [Working]             Get:34 http://deb.debian.org/debian stretch/main amd64 libsdl1.2debian amd64 1.2.15+dfsg1-4 [185 kB]
+86% [34 libsdl1.2debian 0 B/185 kB 0%]                                      88% [Working]             Get:35 http://deb.debian.org/debian stretch/main amd64 libspice-server1 amd64 0.12.8-2.1+deb9u2 [505 kB]
+88% [35 libspice-server1 0 B/505 kB 0%]                                       91% [Working]             Get:36 http://deb.debian.org/debian stretch/main amd64 libusb-1.0-0 amd64 2:1.0.21-1 [53.9 kB]
+91% [36 libusb-1.0-0 0 B/53.9 kB 0%]                                    92% [Working]             Get:37 http://deb.debian.org/debian stretch/main amd64 libusbredirparser1 amd64 0.7.1-1 [16.4 kB]
+92% [37 libusbredirparser1 0 B/16.4 kB 0%]                                          93% [Working]             Get:38 http://deb.debian.org/debian stretch/main amd64 libvdeplug2 amd64 2.3.2+r586-2.1 [23.5 kB]
+93% [38 libvdeplug2 0 B/23.5 kB 0%]                                   93% [Working]             Get:39 http://deb.debian.org/debian stretch/main amd64 libxenstore3.0 amd64 4.8.4+xsa273+shim4.10.1+xsa273-1+deb9u10 [34.8 kB]
+93% [39 libxenstore3.0 0 B/34.8 kB 0%]                                      94% [Working]             Get:40 http://deb.debian.org/debian stretch/main amd64 libyajl2 amd64 2.1.0-2+b3 [23.2 kB]
+94% [40 libyajl2 0 B/23.2 kB 0%]                                94% [Working]             Get:41 http://deb.debian.org/debian stretch/main amd64 libxen-4.8 amd64 4.8.4+xsa273+shim4.10.1+xsa273-1+deb9u10 [413 kB]
+94% [41 libxen-4.8 0 B/413 kB 0%]                                 97% [Working]             Get:42 http://deb.debian.org/debian stretch/main amd64 libbrlapi0.6 amd64 5.4-7+deb9u1 [88.3 kB]
+97% [42 libbrlapi0.6 0 B/88.3 kB 0%]                                    98% [Working]             Get:43 http://deb.debian.org/debian stretch/main amd64 libfdt1 amd64 1.4.2-1 [14.8 kB]
+98% [43 libfdt1 0 B/14.8 kB 0%]                               99% [Working]             Get:44 http://deb.debian.org/debian stretch/main amd64 seabios all 1.10.2-1 [131 kB]
+99% [44 seabios 0 B/131 kB 0%]                              100% [Working]              Fetched 13.8 MB in 0s (52.9 MB/s)
+Extracting templates from packages: 68%Extracting templates from packages: 100%
+Selecting previously unselected package libogg0:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 34592 files and directories currently installed.)
+Preparing to unpack .../00-libogg0_1.3.2-1_amd64.deb ...
+Unpacking libogg0:amd64 (1.3.2-1) ...
+Selecting previously unselected package qemu-system-common.
+Preparing to unpack .../01-qemu-system-common_1%3a2.8+dfsg-6+deb9u5_amd64.deb ...
+Unpacking qemu-system-common (1:2.8+dfsg-6+deb9u5) ...
+Selecting previously unselected package libdbus-1-3:amd64.
+Preparing to unpack .../02-libdbus-1-3_1.10.26-0+deb9u1_amd64.deb ...
+Unpacking libdbus-1-3:amd64 (1.10.26-0+deb9u1) ...
+Selecting previously unselected package dbus.
+Preparing to unpack .../03-dbus_1.10.26-0+deb9u1_amd64.deb ...
+Unpacking dbus (1.10.26-0+deb9u1) ...
+Selecting previously unselected package ipxe-qemu.
+Preparing to unpack .../04-ipxe-qemu_1.0.0+git-20161027.b991c67-1_all.deb ...
+Unpacking ipxe-qemu (1.0.0+git-20161027.b991c67-1) ...
+Selecting previously unselected package libaio1:amd64.
+Preparing to unpack .../05-libaio1_0.3.110-3_amd64.deb ...
+Unpacking libaio1:amd64 (0.3.110-3) ...
+Selecting previously unselected package libasound2-data.
+Preparing to unpack .../06-libasound2-data_1.1.3-5_all.deb ...
+Unpacking libasound2-data (1.1.3-5) ...
+Selecting previously unselected package libasound2:amd64.
+Preparing to unpack .../07-libasound2_1.1.3-5_amd64.deb ...
+Unpacking libasound2:amd64 (1.1.3-5) ...
+Selecting previously unselected package libasyncns0:amd64.
+Preparing to unpack .../08-libasyncns0_0.8-6_amd64.deb ...
+Unpacking libasyncns0:amd64 (0.8-6) ...
+Selecting previously unselected package libbluetooth3:amd64.
+Preparing to unpack .../09-libbluetooth3_5.43-2+deb9u1_amd64.deb ...
+Unpacking libbluetooth3:amd64 (5.43-2+deb9u1) ...
+Selecting previously unselected package libcaca0:amd64.
+Preparing to unpack .../10-libcaca0_0.99.beta19-2+b2_amd64.deb ...
+Unpacking libcaca0:amd64 (0.99.beta19-2+b2) ...
+Selecting previously unselected package libnspr4:amd64.
+Preparing to unpack .../11-libnspr4_2%3a4.12-6_amd64.deb ...
+Unpacking libnspr4:amd64 (2:4.12-6) ...
+Selecting previously unselected package libnss3:amd64.
+Preparing to unpack .../12-libnss3_2%3a3.26.2-1.1+deb9u1_amd64.deb ...
+Unpacking libnss3:amd64 (2:3.26.2-1.1+deb9u1) ...
+Selecting previously unselected package libcacard0:amd64.
+Preparing to unpack .../13-libcacard0_1%3a2.5.0-3_amd64.deb ...
+Unpacking libcacard0:amd64 (1:2.5.0-3) ...
+Selecting previously unselected package libflac8:amd64.
+Preparing to unpack .../14-libflac8_1.3.2-1_amd64.deb ...
+Unpacking libflac8:amd64 (1.3.2-1) ...
+Selecting previously unselected package x11-common.
+Preparing to unpack .../15-x11-common_1%3a7.7+19_all.deb ...
+Unpacking x11-common (1:7.7+19) ...
+Selecting previously unselected package libice6:amd64.
+Preparing to unpack .../16-libice6_2%3a1.0.9-2_amd64.deb ...
+Unpacking libice6:amd64 (2:1.0.9-2) ...
+Selecting previously unselected package libjpeg62-turbo:amd64.
+Preparing to unpack .../17-libjpeg62-turbo_1%3a1.5.1-2_amd64.deb ...
+Unpacking libjpeg62-turbo:amd64 (1:1.5.1-2) ...
+Selecting previously unselected package libnuma1:amd64.
+Preparing to unpack .../18-libnuma1_2.0.11-2.1_amd64.deb ...
+Unpacking libnuma1:amd64 (2.0.11-2.1) ...
+Selecting previously unselected package libopus0:amd64.
+Preparing to unpack .../19-libopus0_1.2~alpha2-1_amd64.deb ...
+Unpacking libopus0:amd64 (1.2~alpha2-1) ...
+Selecting previously unselected package libpixman-1-0:amd64.
+Preparing to unpack .../20-libpixman-1-0_0.34.0-1_amd64.deb ...
+Unpacking libpixman-1-0:amd64 (0.34.0-1) ...
+Selecting previously unselected package libsm6:amd64.
+Preparing to unpack .../21-libsm6_2%3a1.2.2-1+b3_amd64.deb ...
+Unpacking libsm6:amd64 (2:1.2.2-1+b3) ...
+Selecting previously unselected package libvorbis0a:amd64.
+Preparing to unpack .../22-libvorbis0a_1.3.5-4+deb9u2_amd64.deb ...
+Unpacking libvorbis0a:amd64 (1.3.5-4+deb9u2) ...
+Selecting previously unselected package libvorbisenc2:amd64.
+Preparing to unpack .../23-libvorbisenc2_1.3.5-4+deb9u2_amd64.deb ...
+Unpacking libvorbisenc2:amd64 (1.3.5-4+deb9u2) ...
+Selecting previously unselected package libsndfile1:amd64.
+Preparing to unpack .../24-libsndfile1_1.0.27-3_amd64.deb ...
+Unpacking libsndfile1:amd64 (1.0.27-3) ...
+Selecting previously unselected package libx11-xcb1:amd64.
+Preparing to unpack .../25-libx11-xcb1_2%3a1.6.4-3+deb9u1_amd64.deb ...
+Unpacking libx11-xcb1:amd64 (2:1.6.4-3+deb9u1) ...
+Selecting previously unselected package libxext6:amd64.
+Preparing to unpack .../26-libxext6_2%3a1.3.3-1+b2_amd64.deb ...
+Unpacking libxext6:amd64 (2:1.3.3-1+b2) ...
+Selecting previously unselected package libxi6:amd64.
+Preparing to unpack .../27-libxi6_2%3a1.7.9-1_amd64.deb ...
+Unpacking libxi6:amd64 (2:1.7.9-1) ...
+Selecting previously unselected package libxtst6:amd64.
+Preparing to unpack .../28-libxtst6_2%3a1.2.3-1_amd64.deb ...
+Unpacking libxtst6:amd64 (2:1.2.3-1) ...
+Selecting previously unselected package libpulse0:amd64.
+Preparing to unpack .../29-libpulse0_10.0-1+deb9u1_amd64.deb ...
+Unpacking libpulse0:amd64 (10.0-1+deb9u1) ...
+Selecting previously unselected package libsdl1.2debian:amd64.
+Preparing to unpack .../30-libsdl1.2debian_1.2.15+dfsg1-4_amd64.deb ...
+Unpacking libsdl1.2debian:amd64 (1.2.15+dfsg1-4) ...
+Selecting previously unselected package libspice-server1:amd64.
+Preparing to unpack .../31-libspice-server1_0.12.8-2.1+deb9u2_amd64.deb ...
+Unpacking libspice-server1:amd64 (0.12.8-2.1+deb9u2) ...
+Selecting previously unselected package libusb-1.0-0:amd64.
+Preparing to unpack .../32-libusb-1.0-0_2%3a1.0.21-1_amd64.deb ...
+Unpacking libusb-1.0-0:amd64 (2:1.0.21-1) ...
+Selecting previously unselected package libusbredirparser1:amd64.
+Preparing to unpack .../33-libusbredirparser1_0.7.1-1_amd64.deb ...
+Unpacking libusbredirparser1:amd64 (0.7.1-1) ...
+Selecting previously unselected package libvdeplug2.
+Preparing to unpack .../34-libvdeplug2_2.3.2+r586-2.1_amd64.deb ...
+Unpacking libvdeplug2 (2.3.2+r586-2.1) ...
+Selecting previously unselected package libxenstore3.0:amd64.
+Preparing to unpack .../35-libxenstore3.0_4.8.4+xsa273+shim4.10.1+xsa273-1+deb9u10_amd64.deb ...
+Unpacking libxenstore3.0:amd64 (4.8.4+xsa273+shim4.10.1+xsa273-1+deb9u10) ...
+Selecting previously unselected package libyajl2:amd64.
+Preparing to unpack .../36-libyajl2_2.1.0-2+b3_amd64.deb ...
+Unpacking libyajl2:amd64 (2.1.0-2+b3) ...
+Selecting previously unselected package libxen-4.8:amd64.
+Preparing to unpack .../37-libxen-4.8_4.8.4+xsa273+shim4.10.1+xsa273-1+deb9u10_amd64.deb ...
+Unpacking libxen-4.8:amd64 (4.8.4+xsa273+shim4.10.1+xsa273-1+deb9u10) ...
+Selecting previously unselected package libbrlapi0.6:amd64.
+Preparing to unpack .../38-libbrlapi0.6_5.4-7+deb9u1_amd64.deb ...
+Unpacking libbrlapi0.6:amd64 (5.4-7+deb9u1) ...
+Selecting previously unselected package libfdt1:amd64.
+Preparing to unpack .../39-libfdt1_1.4.2-1_amd64.deb ...
+Unpacking libfdt1:amd64 (1.4.2-1) ...
+Selecting previously unselected package seabios.
+Preparing to unpack .../40-seabios_1.10.2-1_all.deb ...
+Unpacking seabios (1.10.2-1) ...
+Selecting previously unselected package qemu-system-x86.
+Preparing to unpack .../41-qemu-system-x86_1%3a2.8+dfsg-6+deb9u5_amd64.deb ...
+Unpacking qemu-system-x86 (1:2.8+dfsg-6+deb9u5) ...
+Selecting previously unselected package qemu-utils.
+Preparing to unpack .../42-qemu-utils_1%3a2.8+dfsg-6+deb9u5_amd64.deb ...
+Unpacking qemu-utils (1:2.8+dfsg-6+deb9u5) ...
+Selecting previously unselected package qemu-kvm.
+Preparing to unpack .../43-qemu-kvm_1%3a2.8+dfsg-6+deb9u5_amd64.deb ...
+Unpacking qemu-kvm (1:2.8+dfsg-6+deb9u5) ...
+Setting up seabios (1.10.2-1) ...
+Setting up libasyncns0:amd64 (0.8-6) ...
+Setting up libjpeg62-turbo:amd64 (1:1.5.1-2) ...
+Setting up libxext6:amd64 (2:1.3.3-1+b2) ...
+Setting up libnuma1:amd64 (2.0.11-2.1) ...
+Setting up libasound2-data (1.1.3-5) ...
+Setting up libusbredirparser1:amd64 (0.7.1-1) ...
+Setting up libbluetooth3:amd64 (5.43-2+deb9u1) ...
+Setting up libxenstore3.0:amd64 (4.8.4+xsa273+shim4.10.1+xsa273-1+deb9u10) ...
+Setting up libnspr4:amd64 (2:4.12-6) ...
+Setting up libopus0:amd64 (1.2~alpha2-1) ...
+Setting up libasound2:amd64 (1.1.3-5) ...
+Setting up libogg0:amd64 (1.3.2-1) ...
+Setting up libvdeplug2 (2.3.2+r586-2.1) ...
+Setting up libyajl2:amd64 (2.1.0-2+b3) ...
+Setting up libx11-xcb1:amd64 (2:1.6.4-3+deb9u1) ...
+Setting up libpixman-1-0:amd64 (0.34.0-1) ...
+Setting up libusb-1.0-0:amd64 (2:1.0.21-1) ...
+Processing triggers for libc-bin (2.24-11+deb9u3) ...
+Setting up libaio1:amd64 (0.3.110-3) ...
+Processing triggers for systemd (232-25+deb9u6) ...
+Processing triggers for man-db (2.7.6.1-2) ...
+Setting up libcaca0:amd64 (0.99.beta19-2+b2) ...
+Setting up libvorbis0a:amd64 (1.3.5-4+deb9u2) ...
+Setting up x11-common (1:7.7+19) ...
+update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+Setting up ipxe-qemu (1.0.0+git-20161027.b991c67-1) ...
+Setting up libdbus-1-3:amd64 (1.10.26-0+deb9u1) ...
+Setting up libbrlapi0.6:amd64 (5.4-7+deb9u1) ...
+Setting up libfdt1:amd64 (1.4.2-1) ...
+Setting up qemu-system-common (1:2.8+dfsg-6+deb9u5) ...
+Setting up libxi6:amd64 (2:1.7.9-1) ...
+Setting up libspice-server1:amd64 (0.12.8-2.1+deb9u2) ...
+Setting up libflac8:amd64 (1.3.2-1) ...
+Setting up libnss3:amd64 (2:3.26.2-1.1+deb9u1) ...
+Setting up qemu-utils (1:2.8+dfsg-6+deb9u5) ...
+Setting up libxen-4.8:amd64 (4.8.4+xsa273+shim4.10.1+xsa273-1+deb9u10) ...
+Setting up libxtst6:amd64 (2:1.2.3-1) ...
+Setting up libcacard0:amd64 (1:2.5.0-3) ...
+Setting up libice6:amd64 (2:1.0.9-2) ...
+Setting up dbus (1.10.26-0+deb9u1) ...
+Setting up libvorbisenc2:amd64 (1.3.5-4+deb9u2) ...
+Setting up libsm6:amd64 (2:1.2.2-1+b3) ...
+Setting up libsndfile1:amd64 (1.0.27-3) ...
+Setting up libpulse0:amd64 (10.0-1+deb9u1) ...
+Setting up libsdl1.2debian:amd64 (1.2.15+dfsg1-4) ...
+Setting up qemu-system-x86 (1:2.8+dfsg-6+deb9u5) ...
+Setting up qemu-kvm (1:2.8+dfsg-6+deb9u5) ...
+Processing triggers for libc-bin (2.24-11+deb9u3) ...
+Processing triggers for systemd (232-25+deb9u6) ...
+]0;julianweise@mocc-machine-2: ~[01;32mjulianweise@mocc-machine-2[00m:[01;34m~[00m$ echo [K[K[K[K[Kmkdir "[Kmocc-exercise-2
+]0;julianweise@mocc-machine-2: ~[01;32mjulianweise@mocc-machine-2[00m:[01;34m~[00m$ cd mocc-exercise-2/
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2[00m$ echo @[K"Downloading qemu debian image"
+Downloading qemu debian image
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2[00m$ wget https://people.debian.org/~aurel32/qemu/amd64/debian_wheezy_amd64_standard.qcow2
+--2018-12-10 18:17:20--  https://people.debian.org/~aurel32/qemu/amd64/debian_wheezy_amd64_standard.qcow2
+Resolving people.debian.org (people.debian.org)... 5.153.231.30, 2001:41c8:1000:21::21:30
+Connecting to people.debian.org (people.debian.org)|5.153.231.30|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 267064832 (255M)
+Saving to: ‘debian_wheezy_amd64_standard.qcow2’
+
+debian_wheezy_amd64_standard.qcow2                            0%[                                                                                                                                          ]       0  --.-KB/s               debian_wheezy_amd64_standard.qcow2                            2%[==>                                                                                                                                       ]   6.37M  31.8MB/s               debian_wheezy_amd64_standard.qcow2                            5%[======>                                                                                                                                   ]  14.55M  36.4MB/s               debian_wheezy_amd64_standard.qcow2                            9%[===========>                                                                                                                              ]  22.93M  38.2MB/s               debian_wheezy_amd64_standard.qcow2                           12%[================>                                                                                                                         ]  32.13M  40.1MB/s               debian_wheezy_amd64_standard.qcow2                           16%[=====================>                                                                                                                    ]  41.23M  41.2MB/s               debian_wheezy_amd64_standard.qcow2                           19%[==========================>                                                                                                               ]  50.54M  42.1MB/s               debian_wheezy_amd64_standard.qcow2                           23%[==============================>                                                                                                           ]  58.80M  42.0MB/s               debian_wheezy_amd64_standard.qcow2                           26%[===================================>                                                                                                      ]  67.51M  42.2MB/s               debian_wheezy_amd64_standard.qcow2                           29%[========================================>                                                                                                 ]  76.38M  42.4MB/s               debian_wheezy_amd64_standard.qcow2                           33%[=============================================>                                                                                            ]  85.27M  42.6MB/s               debian_wheezy_amd64_standard.qcow2                           36%[==================================================>                                                                                       ]  94.16M  42.8MB/s               debian_wheezy_amd64_standard.qcow2                           40%[======================================================>                                                                                   ] 102.11M  42.5MB/s               debian_wheezy_amd64_standard.qcow2                           43%[==========================================================>                                                                               ] 110.66M  42.5MB/s               debian_wheezy_amd64_standard.qcow2                           46%[===============================================================>                                                                          ] 118.68M  42.3MB/s               debian_wheezy_amd64_standard.qcow2                           49%[===================================================================>                                                                      ] 127.13M  42.3MB/s    eta 3s     debian_wheezy_amd64_standard.qcow2                           53%[========================================================================>                                                                 ] 136.12M  43.2MB/s    eta 3s     debian_wheezy_amd64_standard.qcow2                           56%[=============================================================================>                                                            ] 144.95M  43.4MB/s    eta 3s     debian_wheezy_amd64_standard.qcow2                           60%[==================================================================================>                                                       ] 153.49M  43.5MB/s    eta 3s     debian_wheezy_amd64_standard.qcow2                           63%[======================================================================================>                                                   ] 161.92M  43.2MB/s    eta 3s     debian_wheezy_amd64_standard.qcow2                           66%[===========================================================================================>                                              ] 170.10M  43.0MB/s    eta 2s     debian_wheezy_amd64_standard.qcow2                           70%[===============================================================================================>                                          ] 178.45M  42.6MB/s    eta 2s     debian_wheezy_amd64_standard.qcow2                           73%[====================================================================================================>                                     ] 187.15M  42.7MB/s    eta 2s     debian_wheezy_amd64_standard.qcow2                           76%[========================================================================================================>                                 ] 195.45M  42.5MB/s    eta 2s     debian_wheezy_amd64_standard.qcow2                           79%[=============================================================================================================>                            ] 203.40M  42.3MB/s    eta 2s     debian_wheezy_amd64_standard.qcow2                           83%[=================================================================================================================>                        ] 212.02M  42.1MB/s    eta 1s     debian_wheezy_amd64_standard.qcow2                           86%[======================================================================================================================>                   ] 220.93M  42.2MB/s    eta 1s     debian_wheezy_amd64_standard.qcow2                           89%[===========================================================================================================================>              ] 229.10M  42.2MB/s    eta 1s     debian_wheezy_amd64_standard.qcow2                           93%[===============================================================================================================================>          ] 237.88M  42.4MB/s    eta 1s     debian_wheezy_amd64_standard.qcow2                           96%[====================================================================================================================================>     ] 245.98M  42.2MB/s    eta 1s     debian_wheezy_amd64_standard.qcow2                           99%[========================================================================================================================================> ] 254.65M  42.5MB/s    eta 0s     debian_wheezy_amd64_standard.qcow2                          100%[=========================================================================================================================================>] 254.69M  42.5MB/s    in 6.0s    
+
+2018-12-10 18:17:26 (42.4 MB/s) - ‘debian_wheezy_amd64_standard.qcow2’ saved [267064832/267064832]
+
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2[00m$ echo "Start kvm enabled vm using qemu"
+Start kvm enabled vm using qemu
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2[00m$ sudo qemu-system-x86_64 -enable-kvm -hda debian_squeeze_amd64_standard.qcow2 -m 512 -curses[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@d[1@e[1@b[31@ian_wheezy_amd64_standard.qcow2
+[?1049h[1;62r(B[m[4l[?7h[?1h=[39;49m[39;49m[37m[40m[H[2J[39;49m[37m[40m[H[2J[?25l[39;49m[37m[40m[H[2J[31;113H(B[0;1m[34m[40mVGA Blank mode[H(B[m[39;49m[37m[40m[39;49m[37m[40m[H[2J[?12l[?25h[19;80H[37m[40mSeaBIOS (version 1.10.2-1)[20;80H(B[m[39;49m[37m[40m[22d[37m[40miPXE (http://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+(B[m[39;49m[37m[40m[C[37m[40m1FF90DC0+1FED0DC0 CA00[26;80H(B[m[39;49m[37m[40m[37m[40mBooting from Hard Disk...[27;80HGRUB loading(B[m[39;49m[37m[40m[37m[40m.[28;80H(B[m[39;49m[37m[40m[30m[47mWelcome to GRUB![30;80H(B[m[39;49m[37m[40m[?25l[39;49m[37m[40m[H[2J[31;109H(B[0;1m[34m[40m640 x 480 Graphic mode[H(B[m[39;49m[37m[40m[39;49m[37m[40m[H[2J[?12l[?25h[30;80H[19;80H[37m[40mSeaBIOS (version 1.10.2-1)[22;80HiPXE (http://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF90DC0+1FED0DC0 CA00[26;80HBooting from Hard Disk...[27;80HGRUB loading.[28;80H[30m[47mWelcome to GRUB![30;80H(B[m[39;49m[37m[40m[19;80H[37m[40m[26X[22d[74X[26d[25X[27d             [28;80H[16X[30d(B[m[39;49m[37m[40m[19;80H[37m[40mSeaBIOS (version 1.10.2-1)[22;80HiPXE (http://ipxe.org) 00:03.0 CA00 PCI2.10 PnP PMM+1FF90DC0+1FED0DC0 CA00[26;80HBooting from Hard Disk...[27;80HGRUB loading.[28;80H[30m[47mWelcome to GRUB![19;80H(B[m[39;49m[37m[40m[37m[40mLoading, please wait...[20;80H(B[m[39;49m[37m[40m[37m[40mINIT: version 2.88 booting[21;80H(B[m[39;49m[37m[40m[37m[40m[[36m[40minfo[37m[40m] Using makefile-style concurrent boot in runlevel S.[22;80H(B[m[39;49m[37m[40m[37m[40m[....] [80G(B[m[39;49m[37m[40m[87G[37m[40mStarting the hotplug events dispatcher: udevd(B[m[39;49m[37m[40m[22;81H[32m[40m ok [22;132H(B[m[39;49m[37m[40m[37m[40m.[23;80H(B[m[39;49m[37m[40m[37m[40m[....] Synthesizing the initial hotplug events...(B[m[39;49m[37m[40m[23;80H[C[32m[40m ok (B[m[39;49m[37m[40m[23;129H[37m[40mdone.[24;80H(B[m[39;49m[37m[40m[37m[40m[....] Waiting for /dev to be fully populated...(B[m[39;49m[37m[40m[37m[40m[    3.205906] Error: Driver 'pc[25;80Hspkr' is already registered, aborting...[26;80H(B[m[39;49m[37m[40m[37m[40m[[32m[40m ok [80G(B[m[39;49m[37m[40m[37m[40mdone.[27;80H(B[m[39;49m[37m[40m[37m[40m[....] Setting preliminary keymap...(B[m[39;49m[37m[40m[27;81H[32m[40m ok [27;116H[37m[40mdone.[28;80H(B[m[39;49m[37m[40m[37m[40m[...(B[m[39;49m[37m[40m[84G[37m[40m.] Activating swap...(B[m[39;49m[37m[40m[28;81H[32m[40m ok [28;105H[37m[40mdone.[29;80H[....] Checking root file system...(B[m[39;49m[37m[40m[37m[40mfsck from util-linux 2.20.1[30;80H(B[m[39;49m[37m[40m[37m[40m/dev/sda1: clean, 35106/1572864 files, 325975/6291456 blocks[31;80H(B[m[39;49m[37m[40m[37m[40mdone.[32;80H[....] Creating compatibility symlink from /etc/mtab to /proc/mounts. ...(B[m[39;49m[37m[40m[32;81H[33m[40mwarn[32;154H(warni[33;80Hng).[34;80H(B[m[39;49m[37m[40m[37m[40m[[36m[40minfo[37m[40m] Loading kernel module loop.[35;80H(B[m[39;49m[37m[40m[37m[40m[[32m[40m ok [37m[40m] Cleaning up temporary files... /tmp.[36;80H(B[m[39;49m[37m[40m[37m[40m[[32m[40m ok [37m[40m] Activating lvm and md swap...done.[37;80H[....] Checking file systems...(B[m[39;49m[37m[40m[37m[40mfsck from util-linux 2.20.1[38;80Hdone.[39;80H(B[m[39;49m[37m[40m[37m[40m[[32m[40m ok [37m[40m] Mounting local filesystems...done.[40;80H(B[m[39;49m[37m[40m[37m[40m[....] Activating swapfile swap...(B[m[39;49m[37m[40m[40;81H[32m[40m ok [40;114H[37m[40mdone.[41;80H(B[m[39;49m[37m[40m[37m[40m[[32m[40m ok [37m[40m] Cleaning up temporary files....[42;80H(B[m[39;49m[37m[40m[37m[40m[[32m[40m ok [37m[40m] Setting kernel variables ...[42;85H(B[m[39;49m[37m[40m[42;115H[37m[40mdone.[43;80H(B[m[39;49m[37m[40m[37m[40m[....] Configuring network interfaces...(B[m[39;49m[37m[40m[19d[M[42;81H[32m[40m ok [42;120H[37m[40mdone.[43;80H(B[m[39;49m[37m[40m[37m[40m[....] (B[m[39;49m[37m[40m[37m[40mStarting rpcbind daemon...(B[m[39;49m[37m[40m[43;81H[32m[40m ok [43;113H(B[m[39;49m[37m[40m[19d[M[42;113H[37m[40m.[43;80H(B[m[39;49m[37m[40m[37m[40m[....] Starting NFS common utilities:(B[m[39;49m[37m[40m[C[37m[40mstatd(B[m[39;49m[37m[40m[C[37m[40midmapd(B[m[39;49m[37m[40m[19d[M[42;81H[32m[40m ok [42;130H[37m[40m.[43;80H(B[m[39;49m[37m[40m[37m[40m[[32m[40m ok [37m[40m] Cleaning up temporary files....(B[m[39;49m[37m[40m[19d[M[43;80H[19;42r[42;1H
+[1;62r[42;80H[37m[40m[[36m[40minfo[37m[40m] Setting console screen modes.[43;80H(B[m[39;49m[37m[40m[37m[40m[[36m[40minfo[37m[40m] (B[m[39;49m[37m[40m[19;42r[42;1H
+[1;62r[42;80H[37m[40m[[36m[40minfo[37m[40m] Skipping font and keymap setup (handled by console-setup).[43;81H....] Setting up console font and keymap...(B[m[39;49m[37m[40m[43;81H[32m[40m ok [43;124H[37m[40mdone.(B[m[39;49m[37m[40m[19d[3M[41;80H[37m[40mINIT: Entering runlevel: 2[42;80H[[36m[40minfo[37m[40m] Using makefile-style concurrent boot in runlevel 2.[43;80H(B[m[39;49m[37m[40m[19;42r[42;1H
+[1;62r[42;80H[37m[40m[[32m[40m ok [37m[40m] Starting rpcbind daemon...[....] Already running..[43;80H(B[m[39;49m[37m[40m[19;42r[42;1H
+[1;62r[42;80H[37m[40m[[32m[40m ok [37m[40m] Starting NFS common utilities: statd idmapd.[43;80H[....] Starting enhanced syslogd: rsyslogd(B[m[39;49m[37m[40m[43;81H[32m[40m ok [43;122H(B[m[39;49m[37m[40m[19d[M[42;122H[37m[40m.[43;80H(B[m[39;49m[37m[40m[19d[2M[41;80H[37m[40m[[32m[40m ok [37m[40m] Starting ACPI services....[42;80H[[32m[40m ok [37m[40m] Starting deferred execution scheduler: atd.[43;80H[....] Starting periodic command s[43;80H(B[m[39;49m[37m[40m[19d[M[42;81H[32m[40m ok [42;114H[37m[40mcheduler: cron.[43;80H(B[m[39;49m[37m[40m[37m[40m[....] Starting MTA:(B[m[39;49m[37m[40m[C[37m[40mexim4(B[m[39;49m[37m[40m[19d[M[42;81H[32m[40m ok [42;106H[37m[40m.[43;80H(B[m[39;49m[37m[40m[37m[40m[....] Starting OpenBSD Secure Shell server: sshd(B[m[39;49m[37m[40m[43;81H[32m[40m ok [43;129H[37m[40m.(B[m[39;49m[37m[40m[19d[M[43;80H[19;80H[37m[40m[41X[20d[58X[21d     [22;80H[41X[23d[39X[24d[38X[25d[40X[26d[45X[27d[34X[28d[51X[29d[38X[30d[36X[31d[65X[32d[49X[33d[26X[34d[58X[35d[57X[43;80H(B[m[39;49m[37m[40m[20;80H[37m[40mDebian GNU[36;80H[51X[37d[43X[38d[33X[39d[50X[40d[49X[41d[27X[42d[50X[20;90H(B[m[39;49m[37m[40m[37m[40m/Linux 7 debian-amd64 tty1[22;80Hdebian-amd64 login: (B[m[39;49m[37m[40m[37m[40mr(B[m[39;49m[37m[40m[37m[40mo(B[m[39;49m[37m[40m[37m[40mo(B[m[39;49m[37m[40m[37m[40mt(B[m[39;49m[37m[40m[23;80H[37m[40mPassword: (B[m[39;49m[37m[40m[24;80H[37m[40mLinux debian-amd64 3.2.0-4-amd64 #1 SMP Debian 3.2.51-1 x86_64[26;80HThe programs included with the Debian GNU/Linux system are free software;[27;80Hthe exact distribution terms for each program are described in the[28;80Hindividual files in /usr/share/doc/*/copyright.(B[m[39;49m[37m[40m[30;80H[37m[40mDebian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent[31;80Hpermitted by applicable law.[32;80H(B[m[39;49m[37m[40m[37m[40mroot@debian-amd64:~# (B[m[39;49m[37m[40m[37m[40m:(B[m[39;49m[37m[40m[37m[40m (B[m[39;49m[37m[40m[37m[40m:(B[m[39;49m[37m[40m[37m[40m (B[m[39;49m[37m[40m[37m[40m:(B[m[39;49m[37m[40m[37m[40m:(B[m[39;49m[37m[40m[103G[37m[40m:(B[m[39;49m[37m[40m[37m[40mQ::(B[m[39;49m[37m[40m[37m[40m:: (B[m[39;49m[37m[40m[C[37m[40m (B[m[39;49m[37m[40m[C[C[37m[40m (B[m[39;49m[37m[40m[37m[40m (B[m[39;49m[37m[40m[20;80H[37m[40m[36X[22d[24X[23d         [24;80H[62X[26d[67X[32;101Hlogout[33;80H(B[m[39;49m[37m[40m[26;147H[37m[40m      [27;80H[66X[28d[47X[30d[65X[31d[28X[32d[27X[33d(B[m[39;49m[37m[40m[20;80H[37m[40mDebian GNU/Linux 7 debian-amd64 tty1[22;80Hdebian-amd64 login: (B[m[39;49m[37m[40m[37m[40m:(B[m[39;49m[37m[40m[37m[40mq(B[m[39;49m[37m[40m[23;80H[37m[40mPassword: (B[m[39;49m[37m[40mScript started on Mon 10 Dec 2018 06:35:01 PM UTC
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2/MOCC-Exercises/exercise2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2/MOCC-Exercises/exercise2[00m$ sudo apt-get install \
+>      apt-transport-https \
+>      ca-certificates \
+>      curl \
+>      gnupg2 \
+>      software-properties-common
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+ca-certificates is already the newest version (20161130+nmu1+deb9u1).
+curl is already the newest version (7.52.1-5+deb9u8).
+The following additional packages will be installed:
+  gir1.2-glib-2.0 gir1.2-packagekitglib-1.0 iso-codes libcap2-bin libdbus-glib-1-2 libgirepository-1.0-1 libglib2.0-bin libgstreamer1.0-0 libpackagekit-glib2-18 libpam-cap libpam-systemd libpolkit-agent-1-0 libpolkit-backend-1-0
+  libpolkit-gobject-1-0 packagekit packagekit-tools policykit-1 python3-dbus python3-gi python3-pycurl python3-software-properties
+Suggested packages:
+  isoquery gstreamer1.0-tools appstream python-dbus-doc python3-dbus-dbg libcurl4-gnutls-dev python-pycurl-doc python3-pycurl-dbg
+The following NEW packages will be installed:
+  apt-transport-https gir1.2-glib-2.0 gir1.2-packagekitglib-1.0 gnupg2 iso-codes libcap2-bin libdbus-glib-1-2 libgirepository-1.0-1 libglib2.0-bin libgstreamer1.0-0 libpackagekit-glib2-18 libpam-cap libpam-systemd libpolkit-agent-1-0
+  libpolkit-backend-1-0 libpolkit-gobject-1-0 packagekit packagekit-tools policykit-1 python3-dbus python3-gi python3-pycurl python3-software-properties software-properties-common
+0 upgraded, 24 newly installed, 0 to remove and 7 not upgraded.
+Need to get 8,867 kB of archives.
+After this operation, 33.0 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+0% [Working]            Get:1 http://security.debian.org stretch/updates/main amd64 libpolkit-gobject-1-0 amd64 0.105-18+deb9u1 [43.8 kB]
+0% [Waiting for headers] [1 libpolkit-gobject-1-0 12.7 kB/43.8 kB 29%]                                                                      Get:2 http://deb.debian.org/debian stretch/main amd64 libpam-systemd amd64 232-25+deb9u6 [188 kB]
+0% [2 libpam-systemd 0 B/188 kB 0%] [1 libpolkit-gobject-1-0 12.7 kB/43.8 kB 29%]                                                                                 2% [2 libpam-systemd 40.8 kB/188 kB 22%] [Waiting for headers]                                                              Get:3 http://security.debian.org stretch/updates/main amd64 libpolkit-agent-1-0 amd64 0.105-18+deb9u1 [24.4 kB]
+                                                              Get:4 http://security.debian.org stretch/updates/main amd64 libpolkit-backend-1-0 amd64 0.105-18+deb9u1 [45.7 kB]
+3% [2 libpam-systemd 97.2 kB/188 kB 52%] [4 libpolkit-backend-1-0 0 B/45.7 kB 0%]                                                                                 5% [4 libpolkit-backend-1-0 28.2 kB/45.7 kB 62%]                                                Get:5 http://security.debian.org stretch/updates/main amd64 policykit-1 amd64 0.105-18+deb9u1 [63.5 kB]
+                                                7% [Waiting for headers]                        Get:6 http://deb.debian.org/debian stretch/main amd64 apt-transport-https amd64 1.4.8 [171 kB]
+7% [6 apt-transport-https 0 B/171 kB 0%]                                        10% [Working]             Get:7 http://deb.debian.org/debian stretch/main amd64 libgirepository-1.0-1 amd64 1.50.0-1+b1 [89.0 kB]
+10% [7 libgirepository-1.0-1 0 B/89.0 kB 0%]                                            11% [Working]             Get:8 http://deb.debian.org/debian stretch/main amd64 gir1.2-glib-2.0 amd64 1.50.0-1+b1 [139 kB]
+11% [8 gir1.2-glib-2.0 0 B/139 kB 0%]                                     14% [Working]             Get:9 http://deb.debian.org/debian stretch/main amd64 libpackagekit-glib2-18 amd64 1.1.5-2+deb9u1 [114 kB]
+14% [9 libpackagekit-glib2-18 0 B/114 kB 0%]                                            15% [Working]             Get:10 http://deb.debian.org/debian stretch/main amd64 gir1.2-packagekitglib-1.0 amd64 1.1.5-2+deb9u1 [34.7 kB]
+15% [10 gir1.2-packagekitglib-1.0 0 B/34.7 kB 0%]                                                 17% [Working]             Get:11 http://deb.debian.org/debian stretch/main amd64 gnupg2 all 2.1.18-8~deb9u3 [299 kB]
+17% [11 gnupg2 0 B/299 kB 0%]                             20% [Working]             Get:12 http://deb.debian.org/debian stretch/main amd64 iso-codes all 3.75-1 [2,389 kB]
+20% [12 iso-codes 0 B/2,389 kB 0%]                                  42% [Working]             Get:13 http://deb.debian.org/debian stretch/main amd64 libcap2-bin amd64 1:2.25-1 [26.5 kB]
+42% [13 libcap2-bin 0 B/26.5 kB 0%]                                   44% [Working]             Get:14 http://deb.debian.org/debian stretch/main amd64 libdbus-glib-1-2 amd64 0.108-2 [206 kB]
+44% [14 libdbus-glib-1-2 0 B/206 kB 0%]                                       46% [Working]             Get:15 http://deb.debian.org/debian stretch/main amd64 libglib2.0-bin amd64 2.50.3-2 [1,615 kB]
+46% [15 libglib2.0-bin 0 B/1,615 kB 0%]                                       62% [Working]             Get:16 http://deb.debian.org/debian stretch/main amd64 libgstreamer1.0-0 amd64 1.10.4-1 [1,962 kB]
+62% [16 libgstreamer1.0-0 0 B/1,962 kB 0%]                                          80% [Working]             Get:17 http://deb.debian.org/debian stretch/main amd64 libpam-cap amd64 1:2.25-1 [13.5 kB]
+80% [17 libpam-cap 0 B/13.5 kB 0%]                                  81% [Working]             Get:18 http://deb.debian.org/debian stretch/main amd64 packagekit amd64 1.1.5-2+deb9u1 [546 kB]
+81% [18 packagekit 0 B/546 kB 0%]                                 87% [Working]             Get:19 http://deb.debian.org/debian stretch/main amd64 packagekit-tools amd64 1.1.5-2+deb9u1 [45.3 kB]
+87% [19 packagekit-tools 0 B/45.3 kB 0%]                                        88% [Working]             Get:20 http://deb.debian.org/debian stretch/main amd64 python3-dbus amd64 1.2.4-1+b1 [184 kB]
+88% [20 python3-dbus 0 B/184 kB 0%]                                   91% [Working]             Get:21 http://deb.debian.org/debian stretch/main amd64 python3-gi amd64 3.22.0-2 [473 kB]
+91% [21 python3-gi 0 B/473 kB 0%]                                 96% [Working]             Get:22 http://deb.debian.org/debian stretch/main amd64 python3-pycurl amd64 7.43.0-2 [61.3 kB]
+96% [22 python3-pycurl 0 B/61.3 kB 0%]                                      97% [Working]             Get:23 http://deb.debian.org/debian stretch/main amd64 python3-software-properties all 0.96.20.2-1 [49.5 kB]
+97% [23 python3-software-properties 0 B/49.5 kB 0%]                                                   98% [Working]             Get:24 http://deb.debian.org/debian stretch/main amd64 software-properties-common all 0.96.20.2-1 [83.6 kB]
+98% [24 software-properties-common 0 B/83.6 kB 0%]                                                  100% [Working]              Fetched 8,867 kB in 0s (59.1 MB/s)
+Selecting previously unselected package libpam-systemd:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 38063 files and directories currently installed.)
+Preparing to unpack .../00-libpam-systemd_232-25+deb9u6_amd64.deb ...
+Unpacking libpam-systemd:amd64 (232-25+deb9u6) ...
+Selecting previously unselected package apt-transport-https.
+Preparing to unpack .../01-apt-transport-https_1.4.8_amd64.deb ...
+Unpacking apt-transport-https (1.4.8) ...
+Selecting previously unselected package libgirepository-1.0-1:amd64.
+Preparing to unpack .../02-libgirepository-1.0-1_1.50.0-1+b1_amd64.deb ...
+Unpacking libgirepository-1.0-1:amd64 (1.50.0-1+b1) ...
+Selecting previously unselected package gir1.2-glib-2.0:amd64.
+Preparing to unpack .../03-gir1.2-glib-2.0_1.50.0-1+b1_amd64.deb ...
+Unpacking gir1.2-glib-2.0:amd64 (1.50.0-1+b1) ...
+Selecting previously unselected package libpackagekit-glib2-18:amd64.
+Preparing to unpack .../04-libpackagekit-glib2-18_1.1.5-2+deb9u1_amd64.deb ...
+Unpacking libpackagekit-glib2-18:amd64 (1.1.5-2+deb9u1) ...
+Selecting previously unselected package gir1.2-packagekitglib-1.0.
+Preparing to unpack .../05-gir1.2-packagekitglib-1.0_1.1.5-2+deb9u1_amd64.deb ...
+Unpacking gir1.2-packagekitglib-1.0 (1.1.5-2+deb9u1) ...
+Selecting previously unselected package gnupg2.
+Preparing to unpack .../06-gnupg2_2.1.18-8~deb9u3_all.deb ...
+Unpacking gnupg2 (2.1.18-8~deb9u3) ...
+Selecting previously unselected package iso-codes.
+Preparing to unpack .../07-iso-codes_3.75-1_all.deb ...
+Unpacking iso-codes (3.75-1) ...
+Selecting previously unselected package libcap2-bin.
+Preparing to unpack .../08-libcap2-bin_1%3a2.25-1_amd64.deb ...
+Unpacking libcap2-bin (1:2.25-1) ...
+Selecting previously unselected package libdbus-glib-1-2:amd64.
+Preparing to unpack .../09-libdbus-glib-1-2_0.108-2_amd64.deb ...
+Unpacking libdbus-glib-1-2:amd64 (0.108-2) ...
+Selecting previously unselected package libglib2.0-bin.
+Preparing to unpack .../10-libglib2.0-bin_2.50.3-2_amd64.deb ...
+Unpacking libglib2.0-bin (2.50.3-2) ...
+Selecting previously unselected package libgstreamer1.0-0:amd64.
+Preparing to unpack .../11-libgstreamer1.0-0_1.10.4-1_amd64.deb ...
+Unpacking libgstreamer1.0-0:amd64 (1.10.4-1) ...
+Selecting previously unselected package libpam-cap:amd64.
+Preparing to unpack .../12-libpam-cap_1%3a2.25-1_amd64.deb ...
+Unpacking libpam-cap:amd64 (1:2.25-1) ...
+Selecting previously unselected package libpolkit-gobject-1-0:amd64.
+Preparing to unpack .../13-libpolkit-gobject-1-0_0.105-18+deb9u1_amd64.deb ...
+Unpacking libpolkit-gobject-1-0:amd64 (0.105-18+deb9u1) ...
+Selecting previously unselected package libpolkit-agent-1-0:amd64.
+Preparing to unpack .../14-libpolkit-agent-1-0_0.105-18+deb9u1_amd64.deb ...
+Unpacking libpolkit-agent-1-0:amd64 (0.105-18+deb9u1) ...
+Selecting previously unselected package libpolkit-backend-1-0:amd64.
+Preparing to unpack .../15-libpolkit-backend-1-0_0.105-18+deb9u1_amd64.deb ...
+Unpacking libpolkit-backend-1-0:amd64 (0.105-18+deb9u1) ...
+Selecting previously unselected package policykit-1.
+Preparing to unpack .../16-policykit-1_0.105-18+deb9u1_amd64.deb ...
+Unit polkit.service does not exist, proceeding anyway.
+Created symlink /run/systemd/system/polkit.service → /dev/null.
+Unpacking policykit-1 (0.105-18+deb9u1) ...
+Selecting previously unselected package packagekit.
+Preparing to unpack .../17-packagekit_1.1.5-2+deb9u1_amd64.deb ...
+Unpacking packagekit (1.1.5-2+deb9u1) ...
+Selecting previously unselected package packagekit-tools.
+Preparing to unpack .../18-packagekit-tools_1.1.5-2+deb9u1_amd64.deb ...
+Unpacking packagekit-tools (1.1.5-2+deb9u1) ...
+Selecting previously unselected package python3-dbus.
+Preparing to unpack .../19-python3-dbus_1.2.4-1+b1_amd64.deb ...
+Unpacking python3-dbus (1.2.4-1+b1) ...
+Selecting previously unselected package python3-gi.
+Preparing to unpack .../20-python3-gi_3.22.0-2_amd64.deb ...
+Unpacking python3-gi (3.22.0-2) ...
+Selecting previously unselected package python3-pycurl.
+Preparing to unpack .../21-python3-pycurl_7.43.0-2_amd64.deb ...
+Unpacking python3-pycurl (7.43.0-2) ...
+Selecting previously unselected package python3-software-properties.
+Preparing to unpack .../22-python3-software-properties_0.96.20.2-1_all.deb ...
+Unpacking python3-software-properties (0.96.20.2-1) ...
+Selecting previously unselected package software-properties-common.
+Preparing to unpack .../23-software-properties-common_0.96.20.2-1_all.deb ...
+Unpacking software-properties-common (0.96.20.2-1) ...
+Setting up python3-pycurl (7.43.0-2) ...
+Setting up apt-transport-https (1.4.8) ...
+Setting up libpam-systemd:amd64 (232-25+deb9u6) ...
+Setting up libpam-cap:amd64 (1:2.25-1) ...
+Setting up iso-codes (3.75-1) ...
+Setting up libcap2-bin (1:2.25-1) ...
+Setting up libdbus-glib-1-2:amd64 (0.108-2) ...
+Setting up libpackagekit-glib2-18:amd64 (1.1.5-2+deb9u1) ...
+Processing triggers for sgml-base (1.29) ...
+Setting up libgirepository-1.0-1:amd64 (1.50.0-1+b1) ...
+Setting up gnupg2 (2.1.18-8~deb9u3) ...
+Setting up gir1.2-glib-2.0:amd64 (1.50.0-1+b1) ...
+Processing triggers for libc-bin (2.24-11+deb9u3) ...
+Processing triggers for man-db (2.7.6.1-2) ...
+Setting up gir1.2-packagekitglib-1.0 (1.1.5-2+deb9u1) ...
+Setting up python3-software-properties (0.96.20.2-1) ...
+Processing triggers for dbus (1.10.26-0+deb9u1) ...
+Setting up libglib2.0-bin (2.50.3-2) ...
+Setting up libpolkit-gobject-1-0:amd64 (0.105-18+deb9u1) ...
+Setting up python3-dbus (1.2.4-1+b1) ...
+Setting up libgstreamer1.0-0:amd64 (1.10.4-1) ...
+Setcap worked! gst-ptp-helper is not suid!
+Setting up libpolkit-agent-1-0:amd64 (0.105-18+deb9u1) ...
+Setting up python3-gi (3.22.0-2) ...
+Setting up libpolkit-backend-1-0:amd64 (0.105-18+deb9u1) ...
+Setting up software-properties-common (0.96.20.2-1) ...
+Setting up policykit-1 (0.105-18+deb9u1) ...
+Removed /run/systemd/system/polkit.service.
+polkit.service is a disabled or a static unit not running, not starting it.
+Setting up packagekit (1.1.5-2+deb9u1) ...
+Setting up packagekit-tools (1.1.5-2+deb9u1) ...
+Processing triggers for libc-bin (2.24-11+deb9u3) ...
+Processing triggers for dbus (1.10.26-0+deb9u1) ...
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2/MOCC-Exercises/exercise2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2/MOCC-Exercises/exercise2[00m$ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+OK
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2/MOCC-Exercises/exercise2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2/MOCC-Exercises/exercise2[00m$ sudo apt-key fingerprint 0EBFCD88
+pub   rsa4096 2017-02-22 [SCEA]
+      9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+uid           [ unknown] Docker Release (CE deb) <docker@docker.com>
+sub   rsa4096 2017-02-22 [S]
+
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2/MOCC-Exercises/exercise2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2/MOCC-Exercises/exercise2[00m$ sudo add-apt-repository \
+>    "deb [arch=amd64] https://download.docker.com/linux/debian \
+>    $(lsb_release -cs) \
+>    stable"
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2/MOCC-Exercises/exercise2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2/MOCC-Exercises/exercise2[00m$ sudo apt-get update
+0% [Working]            Hit:1 http://security.debian.org stretch/updates InRelease
+0% [Connecting to prod.debian.map.fastly.net (151.101.120.204)] [Waiting for headers]                                                                                     0% [1 InRelease gpgv 94.3 kB] [Waiting for headers] [Waiting for headers]                                                                         Ign:2 http://deb.debian.org/debian stretch InRelease
+0% [1 InRelease gpgv 94.3 kB] [Waiting for headers] [Waiting for headers]                                                                         Hit:3 http://deb.debian.org/debian stretch-updates InRelease
+0% [1 InRelease gpgv 94.3 kB] [Waiting for headers] [Waiting for headers]                                                                         Hit:4 http://deb.debian.org/debian stretch-backports InRelease
+0% [1 InRelease gpgv 94.3 kB] [Waiting for headers] [Waiting for headers]                                                                         Hit:5 http://deb.debian.org/debian stretch Release
+                                                                         0% [1 InRelease gpgv 94.3 kB] [Waiting for headers]                                                   0% [Waiting for headers]0% [3 InRelease gpgv 91.0 kB] [Waiting for headers]                                                   Hit:6 http://packages.cloud.google.com/apt cloud-sdk-stretch InRelease
+0% [3 InRelease gpgv 91.0 kB] [Waiting for headers]                                                   0% [Waiting for headers]0% [4 InRelease gpgv 91.8 kB] [Waiting for headers]                                                   Hit:7 http://packages.cloud.google.com/apt google-compute-engine-stretch-stable InRelease
+0% [4 InRelease gpgv 91.8 kB] [Waiting for headers]                                                   0% [Waiting for headers]0% [Release.gpg gpgv 118 kB] [Waiting for headers]                                                  Hit:8 http://packages.cloud.google.com/apt google-cloud-packages-archive-keyring-stretch InRelease
+                                                  0% [Release.gpg gpgv 118 kB]                            0% [Working]0% [6 InRelease gpgv 6,377 B]                             0% [Working]0% [7 InRelease gpgv 3,843 B]                             0% [Working]0% [8 InRelease gpgv 3,876 B]                             0% [Working]            Get:10 https://download.docker.com/linux/debian stretch InRelease [44.8 kB]
+0% [10 InRelease 0 B/44.8 kB 0%]                                0% [Working]0% [10 InRelease gpgv 44.8 kB]                              91% [Working]             Get:11 https://download.docker.com/linux/debian stretch/stable amd64 Packages [5,447 B]
+100% [Working]100% [11 Packages store 0 B]                            100% [Working]              Fetched 50.3 kB in 1s (48.5 kB/s)
+Reading package lists... 0%Reading package lists... 0%Reading package lists... 1%Reading package lists... 51%Reading package lists... 51%Reading package lists... 86%Reading package lists... 86%Reading package lists... 90%Reading package lists... 90%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 96%Reading package lists... 96%Reading package lists... 98%Reading package lists... 98%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... Done
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2/MOCC-Exercises/exercise2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2/MOCC-Exercises/exercise2[00m$ sudo apt-get install docker-ce
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following additional packages will be installed:
+  aufs-dkms aufs-tools binutils cgroupfs-mount containerd.io cpp cpp-6 dkms docker-ce-cli fakeroot gcc gcc-6 libasan3 libatomic1 libc-dev-bin libc6-dev libcc1-0 libcilkrts5 libfakeroot libgcc-6-dev libgomp1 libisl15 libitm1 liblsan0
+  libltdl7 libmpc3 libmpfr4 libmpx2 libquadmath0 libtsan0 libubsan0 linux-compiler-gcc-6-x86 linux-headers-4.9.0-8-amd64 linux-headers-4.9.0-8-common linux-headers-amd64 linux-kbuild-4.9 linux-libc-dev make manpages manpages-dev pigz
+Suggested packages:
+  aufs-dev binutils-doc cpp-doc gcc-6-locales python3-apport menu gcc-multilib autoconf automake libtool flex bison gdb gcc-doc gcc-6-multilib gcc-6-doc libgcc1-dbg libgomp1-dbg libitm1-dbg libatomic1-dbg libasan3-dbg liblsan0-dbg
+  libtsan0-dbg libubsan0-dbg libcilkrts5-dbg libmpx2-dbg libquadmath0-dbg glibc-doc make-doc
+The following NEW packages will be installed:
+  aufs-dkms aufs-tools binutils cgroupfs-mount containerd.io cpp cpp-6 dkms docker-ce docker-ce-cli fakeroot gcc gcc-6 libasan3 libatomic1 libc-dev-bin libc6-dev libcc1-0 libcilkrts5 libfakeroot libgcc-6-dev libgomp1 libisl15 libitm1
+  liblsan0 libltdl7 libmpc3 libmpfr4 libmpx2 libquadmath0 libtsan0 libubsan0 linux-compiler-gcc-6-x86 linux-headers-4.9.0-8-amd64 linux-headers-4.9.0-8-common linux-headers-amd64 linux-kbuild-4.9 linux-libc-dev make manpages
+  manpages-dev pigz
+0 upgraded, 42 newly installed, 0 to remove and 7 not upgraded.
+Need to get 90.3 MB of archives.
+After this operation, 417 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+0% [Working]            Get:1 http://deb.debian.org/debian stretch/main amd64 pigz amd64 2.3.4-1 [55.4 kB]
+0% [1 pigz 0 B/55.4 kB 0%]                          1% [Waiting for headers]                        Get:2 http://deb.debian.org/debian stretch/main amd64 manpages all 4.10-2 [1,222 kB]
+1% [2 manpages 0 B/1,222 kB 0%]                               2% [Working]            Get:3 http://deb.debian.org/debian stretch/main amd64 libisl15 amd64 0.18-1 [564 kB]
+2% [3 libisl15 0 B/564 kB 0%]                             3% [Working]            Get:4 http://deb.debian.org/debian stretch/main amd64 libmpfr4 amd64 3.1.5-1 [556 kB]
+3% [4 libmpfr4 0 B/556 kB 0%]                             4% [Working]            Get:5 http://deb.debian.org/debian stretch/main amd64 libmpc3 amd64 1.0.3-1+b2 [39.9 kB]
+4% [5 libmpc3 0 B/39.9 kB 0%]                             5% [Working]            Get:6 http://deb.debian.org/debian stretch/main amd64 cpp-6 amd64 6.3.0-18+deb9u1 [6,584 kB]
+5% [6 cpp-6 0 B/6,584 kB 0%]                            Get:7 https://download.docker.com/linux/debian stretch/stable amd64 containerd.io amd64 1.2.0-1 [19.9 MB]
+8% [6 cpp-6 3,801 kB/6,584 kB 58%] [7 containerd.io 0 B/19.9 MB 0%]                                                                   12% [7 containerd.io 880 kB/19.9 MB 4%]                                       Get:8 http://deb.debian.org/debian stretch/main amd64 cpp amd64 4:6.3.0-4 [18.7 kB]
+12% [8 cpp 0 B/18.7 kB 0%] [7 containerd.io 978 kB/19.9 MB 5%]                                                              12% [7 containerd.io 978 kB/19.9 MB 5%]                                       Get:9 http://deb.debian.org/debian stretch/main amd64 libcc1-0 amd64 6.3.0-18+deb9u1 [30.6 kB]
+12% [9 libcc1-0 0 B/30.6 kB 0%] [7 containerd.io 1,142 kB/19.9 MB 6%]                                                                     13% [7 containerd.io 1,142 kB/19.9 MB 6%]                                         Get:10 http://deb.debian.org/debian stretch/main amd64 binutils amd64 2.28-5 [3,770 kB]
+13% [10 binutils 0 B/3,770 kB 0%] [7 containerd.io 1,142 kB/19.9 MB 6%]                                                                       19% [7 containerd.io 3,214 kB/19.9 MB 16%]                                          Get:11 http://deb.debian.org/debian stretch/main amd64 libgomp1 amd64 6.3.0-18+deb9u1 [73.3 kB]
+19% [11 libgomp1 0 B/73.3 kB 0%] [7 containerd.io 3,215 kB/19.9 MB 16%]                                                                       19% [7 containerd.io 3,215 kB/19.9 MB 16%]                                          Get:12 http://deb.debian.org/debian stretch/main amd64 libitm1 amd64 6.3.0-18+deb9u1 [27.3 kB]
+19% [12 libitm1 0 B/27.3 kB 0%] [7 containerd.io 3,378 kB/19.9 MB 17%]                                                                      20% [7 containerd.io 3,378 kB/19.9 MB 17%]                                          Get:13 http://deb.debian.org/debian stretch/main amd64 libatomic1 amd64 6.3.0-18+deb9u1 [8,966 B]
+20% [13 libatomic1 0 B/8,966 B 0%] [7 containerd.io 3,378 kB/19.9 MB 17%]                                                                         20% [7 containerd.io 3,378 kB/19.9 MB 17%]                                          Get:14 http://deb.debian.org/debian stretch/main amd64 libasan3 amd64 6.3.0-18+deb9u1 [311 kB]
+20% [14 libasan3 0 B/311 kB 0%] [7 containerd.io 3,378 kB/19.9 MB 17%]                                                                      21% [7 containerd.io 3,607 kB/19.9 MB 18%]                                          Get:15 http://deb.debian.org/debian stretch/main amd64 liblsan0 amd64 6.3.0-18+deb9u1 [115 kB]
+21% [15 liblsan0 0 B/115 kB 0%] [7 containerd.io 3,607 kB/19.9 MB 18%]                                                                      22% [7 containerd.io 3,607 kB/19.9 MB 18%]                                          Get:16 http://deb.debian.org/debian stretch/main amd64 libtsan0 amd64 6.3.0-18+deb9u1 [257 kB]
+22% [16 libtsan0 0 B/257 kB 0%] [7 containerd.io 3,607 kB/19.9 MB 18%]                                                                      23% [7 containerd.io 3,853 kB/19.9 MB 19%]                                          Get:17 http://deb.debian.org/debian stretch/main amd64 libubsan0 amd64 6.3.0-18+deb9u1 [107 kB]
+23% [17 libubsan0 0 B/107 kB 0%] [7 containerd.io 3,853 kB/19.9 MB 19%]                                                                       23% [7 containerd.io 3,853 kB/19.9 MB 19%]                                          Get:18 http://deb.debian.org/debian stretch/main amd64 libcilkrts5 amd64 6.3.0-18+deb9u1 [40.5 kB]
+23% [18 libcilkrts5 0 B/40.5 kB 0%] [7 containerd.io 3,853 kB/19.9 MB 19%]                                                                          24% [7 containerd.io 4,050 kB/19.9 MB 20%]                                          Get:19 http://deb.debian.org/debian stretch/main amd64 libmpx2 amd64 6.3.0-18+deb9u1 [11.2 kB]
+24% [19 libmpx2 0 B/11.2 kB 0%] [7 containerd.io 4,050 kB/19.9 MB 20%]                                                                      24% [7 containerd.io 4,050 kB/19.9 MB 20%]                                          Get:20 http://deb.debian.org/debian stretch/main amd64 libquadmath0 amd64 6.3.0-18+deb9u1 [131 kB]
+24% [20 libquadmath0 0 B/131 kB 0%] [7 containerd.io 4,050 kB/19.9 MB 20%]                                                                          25% [7 containerd.io 4,050 kB/19.9 MB 20%]                                          Get:21 http://deb.debian.org/debian stretch/main amd64 libgcc-6-dev amd64 6.3.0-18+deb9u1 [2,296 kB]
+25% [21 libgcc-6-dev 0 B/2,296 kB 0%] [7 containerd.io 4,050 kB/19.9 MB 20%]                                                                            29% [7 containerd.io 5,520 kB/19.9 MB 28%]                                          Get:22 http://deb.debian.org/debian stretch/main amd64 gcc-6 amd64 6.3.0-18+deb9u1 [6,900 kB]
+29% [22 gcc-6 110 kB/6,900 kB 2%] [7 containerd.io 5,520 kB/19.9 MB 28%]                                                                        40% [7 containerd.io 10.6 MB/19.9 MB 53%]                                         Get:23 http://deb.debian.org/debian stretch/main amd64 gcc amd64 4:6.3.0-4 [5,196 B]
+40% [23 gcc 0 B/5,196 B 0%] [7 containerd.io 10.6 MB/19.9 MB 53%]                                                                 40% [7 containerd.io 10.6 MB/19.9 MB 53%]                                         Get:24 http://deb.debian.org/debian stretch/main amd64 make amd64 4.1-9.1 [302 kB]
+40% [24 make 0 B/302 kB 0%] [7 containerd.io 10.6 MB/19.9 MB 53%]                                                                 41% [7 containerd.io 10.8 MB/19.9 MB 54%]                                         Get:25 http://deb.debian.org/debian stretch/main amd64 dkms all 2.3-2 [74.8 kB]
+41% [25 dkms 0 B/74.8 kB 0%] [7 containerd.io 10.8 MB/19.9 MB 54%]                                                                  42% [7 containerd.io 10.9 MB/19.9 MB 55%]                                         Get:26 http://deb.debian.org/debian stretch/main amd64 linux-kbuild-4.9 amd64 4.9.130-2 [789 kB]
+42% [26 linux-kbuild-4.9 0 B/789 kB 0%] [7 containerd.io 10.9 MB/19.9 MB 55%]                                                                             Get:27 http://deb.debian.org/debian stretch/main amd64 aufs-dkms amd64 4.9+20161219-1 [169 kB]
+                                                                             44% [27 aufs-dkms 131 kB/169 kB 78%] [7 containerd.io 11.5 MB/19.9 MB 58%]                                                                          44% [7 containerd.io 11.5 MB/19.9 MB 58%]                                         Get:28 http://deb.debian.org/debian stretch/main amd64 aufs-tools amd64 1:4.1+20161219-1 [102 kB]
+44% [28 aufs-tools 0 B/102 kB 0%] [7 containerd.io 11.6 MB/19.9 MB 59%]                                                                       45% [7 containerd.io 11.6 MB/19.9 MB 59%]                                         Get:29 http://deb.debian.org/debian stretch/main amd64 cgroupfs-mount all 1.3 [5,716 B]
+45% [29 cgroupfs-mount 0 B/5,716 B 0%] [7 containerd.io 11.6 MB/19.9 MB 59%]                                                                            45% [7 containerd.io 11.6 MB/19.9 MB 59%]                                         Get:30 http://deb.debian.org/debian stretch/main amd64 libltdl7 amd64 2.4.6-2 [389 kB]
+45% [30 libltdl7 0 B/389 kB 0%] [7 containerd.io 11.6 MB/19.9 MB 59%]                                                                     46% [7 containerd.io 11.9 MB/19.9 MB 60%]                                         Get:31 http://deb.debian.org/debian stretch/main amd64 libfakeroot amd64 1.21-3.1 [45.7 kB]
+46% [31 libfakeroot 0 B/45.7 kB 0%] [7 containerd.io 11.9 MB/19.9 MB 60%]                                                                         47% [7 containerd.io 12.1 MB/19.9 MB 61%]                                         Get:32 http://deb.debian.org/debian stretch/main amd64 fakeroot amd64 1.21-3.1 [85.6 kB]
+47% [32 fakeroot 0 B/85.6 kB 0%] [7 containerd.io 12.1 MB/19.9 MB 61%]                                                                      48% [7 containerd.io 12.1 MB/19.9 MB 61%]                                         Get:33 http://deb.debian.org/debian stretch/main amd64 libc-dev-bin amd64 2.24-11+deb9u3 [258 kB]
+48% [33 libc-dev-bin 0 B/258 kB 0%] [7 containerd.io 12.1 MB/19.9 MB 61%]                                                                         48% [7 containerd.io 12.2 MB/19.9 MB 61%]                                         Get:34 http://deb.debian.org/debian stretch/main amd64 linux-libc-dev amd64 4.9.130-2 [1,373 kB]
+48% [34 linux-libc-dev 0 B/1,373 kB 0%] [7 containerd.io 12.2 MB/19.9 MB 61%]                                                                             51% [7 containerd.io 13.3 MB/19.9 MB 67%]                                         Get:35 http://deb.debian.org/debian stretch/main amd64 libc6-dev amd64 2.24-11+deb9u3 [2,361 kB]
+51% [35 libc6-dev 0 B/2,361 kB 0%] [7 containerd.io 13.3 MB/19.9 MB 67%]                                                                        55% [7 containerd.io 14.5 MB/19.9 MB 73%]                                         Get:36 http://deb.debian.org/debian stretch/main amd64 linux-compiler-gcc-6-x86 amd64 4.9.130-2 [582 kB]
+55% [36 linux-compiler-gcc-6-x86 0 B/582 kB 0%] [7 containerd.io 14.5 MB/19.9 MB 73%]                                                                                     56% [7 containerd.io 15.1 MB/19.9 MB 76%]                                         Get:37 http://deb.debian.org/debian stretch/main amd64 linux-headers-4.9.0-8-common all 4.9.130-2 [7,620 kB]
+56% [37 linux-headers-4.9.0-8-common 0 B/7,620 kB 0%] [7 containerd.io 15.1 MB/19.9 MB 76%]                                                                                           68% [7 containerd.io 19.9 MB/19.9 MB 100%]                                          Get:38 http://deb.debian.org/debian stretch/main amd64 linux-headers-4.9.0-8-amd64 amd64 4.9.130-2 [450 kB]
+68% [38 linux-headers-4.9.0-8-amd64 0 B/450 kB 0%] [7 containerd.io 19.9 MB/19.9 MB 100%]                                                                                         68% [38 linux-headers-4.9.0-8-amd64 181 kB/450 kB 40%]                                                      69% [Working]             Get:39 http://deb.debian.org/debian stretch/main amd64 linux-headers-amd64 amd64 4.9+80+deb9u6 [6,024 B]
+69% [39 linux-headers-amd64 0 B/6,024 B 0%]                                           70% [Working]             Get:40 http://deb.debian.org/debian stretch/main amd64 manpages-dev all 4.10-2 [2,145 kB]
+70% [40 manpages-dev 0 B/2,145 kB 0%]                                     Get:41 https://download.docker.com/linux/debian stretch/stable amd64 docker-ce-cli amd64 5:18.09.0~3-0~debian-stretch [13.1 MB]
+70% [40 manpages-dev 461 kB/2,145 kB 21%] [41 docker-ce-cli 15.9 kB/13.1 MB 0%]                                                                               74% [41 docker-ce-cli 1,785 kB/13.1 MB 14%]                                           84% [Working]             Get:42 https://download.docker.com/linux/debian stretch/stable amd64 docker-ce amd64 5:18.09.0~3-0~debian-stretch [17.4 MB]
+84% [42 docker-ce 0 B/17.4 MB 0%]                                 100% [Working]              Fetched 90.3 MB in 1s (64.0 MB/s)
+Extracting templates from packages: 71%Extracting templates from packages: 100%
+Selecting previously unselected package pigz.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 39507 files and directories currently installed.)
+Preparing to unpack .../00-pigz_2.3.4-1_amd64.deb ...
+Unpacking pigz (2.3.4-1) ...
+Selecting previously unselected package manpages.
+Preparing to unpack .../01-manpages_4.10-2_all.deb ...
+Unpacking manpages (4.10-2) ...
+Selecting previously unselected package libisl15:amd64.
+Preparing to unpack .../02-libisl15_0.18-1_amd64.deb ...
+Unpacking libisl15:amd64 (0.18-1) ...
+Selecting previously unselected package libmpfr4:amd64.
+Preparing to unpack .../03-libmpfr4_3.1.5-1_amd64.deb ...
+Unpacking libmpfr4:amd64 (3.1.5-1) ...
+Selecting previously unselected package libmpc3:amd64.
+Preparing to unpack .../04-libmpc3_1.0.3-1+b2_amd64.deb ...
+Unpacking libmpc3:amd64 (1.0.3-1+b2) ...
+Selecting previously unselected package cpp-6.
+Preparing to unpack .../05-cpp-6_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking cpp-6 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package cpp.
+Preparing to unpack .../06-cpp_4%3a6.3.0-4_amd64.deb ...
+Unpacking cpp (4:6.3.0-4) ...
+Selecting previously unselected package libcc1-0:amd64.
+Preparing to unpack .../07-libcc1-0_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libcc1-0:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package binutils.
+Preparing to unpack .../08-binutils_2.28-5_amd64.deb ...
+Unpacking binutils (2.28-5) ...
+Selecting previously unselected package libgomp1:amd64.
+Preparing to unpack .../09-libgomp1_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libgomp1:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libitm1:amd64.
+Preparing to unpack .../10-libitm1_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libitm1:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libatomic1:amd64.
+Preparing to unpack .../11-libatomic1_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libatomic1:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libasan3:amd64.
+Preparing to unpack .../12-libasan3_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libasan3:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package liblsan0:amd64.
+Preparing to unpack .../13-liblsan0_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking liblsan0:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libtsan0:amd64.
+Preparing to unpack .../14-libtsan0_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libtsan0:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libubsan0:amd64.
+Preparing to unpack .../15-libubsan0_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libubsan0:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libcilkrts5:amd64.
+Preparing to unpack .../16-libcilkrts5_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libcilkrts5:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libmpx2:amd64.
+Preparing to unpack .../17-libmpx2_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libmpx2:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libquadmath0:amd64.
+Preparing to unpack .../18-libquadmath0_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libquadmath0:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libgcc-6-dev:amd64.
+Preparing to unpack .../19-libgcc-6-dev_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libgcc-6-dev:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package gcc-6.
+Preparing to unpack .../20-gcc-6_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking gcc-6 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package gcc.
+Preparing to unpack .../21-gcc_4%3a6.3.0-4_amd64.deb ...
+Unpacking gcc (4:6.3.0-4) ...
+Selecting previously unselected package make.
+Preparing to unpack .../22-make_4.1-9.1_amd64.deb ...
+Unpacking make (4.1-9.1) ...
+Selecting previously unselected package dkms.
+Preparing to unpack .../23-dkms_2.3-2_all.deb ...
+Unpacking dkms (2.3-2) ...
+Selecting previously unselected package linux-kbuild-4.9.
+Preparing to unpack .../24-linux-kbuild-4.9_4.9.130-2_amd64.deb ...
+Unpacking linux-kbuild-4.9 (4.9.130-2) ...
+Selecting previously unselected package aufs-dkms.
+Preparing to unpack .../25-aufs-dkms_4.9+20161219-1_amd64.deb ...
+Unpacking aufs-dkms (4.9+20161219-1) ...
+Selecting previously unselected package aufs-tools.
+Preparing to unpack .../26-aufs-tools_1%3a4.1+20161219-1_amd64.deb ...
+Unpacking aufs-tools (1:4.1+20161219-1) ...
+Selecting previously unselected package cgroupfs-mount.
+Preparing to unpack .../27-cgroupfs-mount_1.3_all.deb ...
+Unpacking cgroupfs-mount (1.3) ...
+Selecting previously unselected package containerd.io.
+Preparing to unpack .../28-containerd.io_1.2.0-1_amd64.deb ...
+Unpacking containerd.io (1.2.0-1) ...
+Selecting previously unselected package libltdl7:amd64.
+Preparing to unpack .../29-libltdl7_2.4.6-2_amd64.deb ...
+Unpacking libltdl7:amd64 (2.4.6-2) ...
+Selecting previously unselected package docker-ce-cli.
+Preparing to unpack .../30-docker-ce-cli_5%3a18.09.0~3-0~debian-stretch_amd64.deb ...
+Unpacking docker-ce-cli (5:18.09.0~3-0~debian-stretch) ...
+Selecting previously unselected package docker-ce.
+Preparing to unpack .../31-docker-ce_5%3a18.09.0~3-0~debian-stretch_amd64.deb ...
+Unpacking docker-ce (5:18.09.0~3-0~debian-stretch) ...
+Selecting previously unselected package libfakeroot:amd64.
+Preparing to unpack .../32-libfakeroot_1.21-3.1_amd64.deb ...
+Unpacking libfakeroot:amd64 (1.21-3.1) ...
+Selecting previously unselected package fakeroot.
+Preparing to unpack .../33-fakeroot_1.21-3.1_amd64.deb ...
+Unpacking fakeroot (1.21-3.1) ...
+Selecting previously unselected package libc-dev-bin.
+Preparing to unpack .../34-libc-dev-bin_2.24-11+deb9u3_amd64.deb ...
+Unpacking libc-dev-bin (2.24-11+deb9u3) ...
+Selecting previously unselected package linux-libc-dev:amd64.
+Preparing to unpack .../35-linux-libc-dev_4.9.130-2_amd64.deb ...
+Unpacking linux-libc-dev:amd64 (4.9.130-2) ...
+Selecting previously unselected package libc6-dev:amd64.
+Preparing to unpack .../36-libc6-dev_2.24-11+deb9u3_amd64.deb ...
+Unpacking libc6-dev:amd64 (2.24-11+deb9u3) ...
+Selecting previously unselected package linux-compiler-gcc-6-x86.
+Preparing to unpack .../37-linux-compiler-gcc-6-x86_4.9.130-2_amd64.deb ...
+Unpacking linux-compiler-gcc-6-x86 (4.9.130-2) ...
+Selecting previously unselected package linux-headers-4.9.0-8-common.
+Preparing to unpack .../38-linux-headers-4.9.0-8-common_4.9.130-2_all.deb ...
+Unpacking linux-headers-4.9.0-8-common (4.9.130-2) ...
+Selecting previously unselected package linux-headers-4.9.0-8-amd64.
+Preparing to unpack .../39-linux-headers-4.9.0-8-amd64_4.9.130-2_amd64.deb ...
+Unpacking linux-headers-4.9.0-8-amd64 (4.9.130-2) ...
+Selecting previously unselected package linux-headers-amd64.
+Preparing to unpack .../40-linux-headers-amd64_4.9+80+deb9u6_amd64.deb ...
+Unpacking linux-headers-amd64 (4.9+80+deb9u6) ...
+Selecting previously unselected package manpages-dev.
+Preparing to unpack .../41-manpages-dev_4.10-2_all.deb ...
+Unpacking manpages-dev (4.10-2) ...
+Setting up libquadmath0:amd64 (6.3.0-18+deb9u1) ...
+Setting up aufs-tools (1:4.1+20161219-1) ...
+Setting up libgomp1:amd64 (6.3.0-18+deb9u1) ...
+Setting up libatomic1:amd64 (6.3.0-18+deb9u1) ...
+Setting up manpages (4.10-2) ...
+Setting up libcc1-0:amd64 (6.3.0-18+deb9u1) ...
+Setting up make (4.1-9.1) ...
+Setting up libasan3:amd64 (6.3.0-18+deb9u1) ...
+Setting up linux-headers-4.9.0-8-common (4.9.130-2) ...
+Setting up containerd.io (1.2.0-1) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service → /lib/systemd/system/containerd.service.
+Setting up libcilkrts5:amd64 (6.3.0-18+deb9u1) ...
+Setting up libubsan0:amd64 (6.3.0-18+deb9u1) ...
+Setting up libtsan0:amd64 (6.3.0-18+deb9u1) ...
+Setting up linux-libc-dev:amd64 (4.9.130-2) ...
+Setting up cgroupfs-mount (1.3) ...
+Setting up liblsan0:amd64 (6.3.0-18+deb9u1) ...
+Setting up libmpx2:amd64 (6.3.0-18+deb9u1) ...
+Setting up libisl15:amd64 (0.18-1) ...
+Setting up linux-kbuild-4.9 (4.9.130-2) ...
+Processing triggers for libc-bin (2.24-11+deb9u3) ...
+Setting up libfakeroot:amd64 (1.21-3.1) ...
+Processing triggers for systemd (232-25+deb9u6) ...
+Setting up libltdl7:amd64 (2.4.6-2) ...
+Setting up libmpfr4:amd64 (3.1.5-1) ...
+Processing triggers for man-db (2.7.6.1-2) ...
+Setting up libmpc3:amd64 (1.0.3-1+b2) ...
+Setting up binutils (2.28-5) ...
+Setting up cpp-6 (6.3.0-18+deb9u1) ...
+Setting up libc-dev-bin (2.24-11+deb9u3) ...
+Setting up docker-ce-cli (5:18.09.0~3-0~debian-stretch) ...
+Setting up manpages-dev (4.10-2) ...
+Setting up libc6-dev:amd64 (2.24-11+deb9u3) ...
+Setting up pigz (2.3.4-1) ...
+Setting up libitm1:amd64 (6.3.0-18+deb9u1) ...
+Setting up cpp (4:6.3.0-4) ...
+Setting up docker-ce (5:18.09.0~3-0~debian-stretch) ...
+update-alternatives: using /usr/bin/dockerd-ce to provide /usr/bin/dockerd (dockerd) in auto mode
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /lib/systemd/system/docker.service.
+Setting up libgcc-6-dev:amd64 (6.3.0-18+deb9u1) ...
+Setting up fakeroot (1.21-3.1) ...
+update-alternatives: using /usr/bin/fakeroot-sysv to provide /usr/bin/fakeroot (fakeroot) in auto mode
+Setting up gcc-6 (6.3.0-18+deb9u1) ...
+Setting up gcc (4:6.3.0-4) ...
+Setting up linux-compiler-gcc-6-x86 (4.9.130-2) ...
+Setting up dkms (2.3-2) ...
+Setting up linux-headers-4.9.0-8-amd64 (4.9.130-2) ...
+Setting up aufs-dkms (4.9+20161219-1) ...
+Loading new aufs-4.9+20161219 DKMS files...
+Building for 4.9.0-8-amd64
+Building initial module for 4.9.0-8-amd64
+Done.
+
+aufs:
+Running module version sanity check.
+ - Original module
+   - No original module exists within this kernel
+ - Installation
+   - Installing to /lib/modules/4.9.0-8-amd64/updates/dkms/
+
+depmod........
+
+DKMS: install completed.
+Setting up linux-headers-amd64 (4.9+80+deb9u6) ...
+Processing triggers for libc-bin (2.24-11+deb9u3) ...
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2/MOCC-Exercises/exercise2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2/MOCC-Exercises/exercise2[00m$ exit
+exit
+
+Script done on Mon 10 Dec 2018 06:37:33 PM UTC
