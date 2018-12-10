@@ -1,0 +1,440 @@
+Script started on Mon 10 Dec 2018 06:35:01 PM UTC
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2/MOCC-Exercises/exercise2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2/MOCC-Exercises/exercise2[00m$ sudo apt-get install \
+>      apt-transport-https \
+>      ca-certificates \
+>      curl \
+>      gnupg2 \
+>      software-properties-common
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+ca-certificates is already the newest version (20161130+nmu1+deb9u1).
+curl is already the newest version (7.52.1-5+deb9u8).
+The following additional packages will be installed:
+  gir1.2-glib-2.0 gir1.2-packagekitglib-1.0 iso-codes libcap2-bin libdbus-glib-1-2 libgirepository-1.0-1 libglib2.0-bin libgstreamer1.0-0 libpackagekit-glib2-18 libpam-cap libpam-systemd libpolkit-agent-1-0 libpolkit-backend-1-0
+  libpolkit-gobject-1-0 packagekit packagekit-tools policykit-1 python3-dbus python3-gi python3-pycurl python3-software-properties
+Suggested packages:
+  isoquery gstreamer1.0-tools appstream python-dbus-doc python3-dbus-dbg libcurl4-gnutls-dev python-pycurl-doc python3-pycurl-dbg
+The following NEW packages will be installed:
+  apt-transport-https gir1.2-glib-2.0 gir1.2-packagekitglib-1.0 gnupg2 iso-codes libcap2-bin libdbus-glib-1-2 libgirepository-1.0-1 libglib2.0-bin libgstreamer1.0-0 libpackagekit-glib2-18 libpam-cap libpam-systemd libpolkit-agent-1-0
+  libpolkit-backend-1-0 libpolkit-gobject-1-0 packagekit packagekit-tools policykit-1 python3-dbus python3-gi python3-pycurl python3-software-properties software-properties-common
+0 upgraded, 24 newly installed, 0 to remove and 7 not upgraded.
+Need to get 8,867 kB of archives.
+After this operation, 33.0 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+0% [Working]            Get:1 http://security.debian.org stretch/updates/main amd64 libpolkit-gobject-1-0 amd64 0.105-18+deb9u1 [43.8 kB]
+0% [Waiting for headers] [1 libpolkit-gobject-1-0 12.7 kB/43.8 kB 29%]                                                                      Get:2 http://deb.debian.org/debian stretch/main amd64 libpam-systemd amd64 232-25+deb9u6 [188 kB]
+0% [2 libpam-systemd 0 B/188 kB 0%] [1 libpolkit-gobject-1-0 12.7 kB/43.8 kB 29%]                                                                                 2% [2 libpam-systemd 40.8 kB/188 kB 22%] [Waiting for headers]                                                              Get:3 http://security.debian.org stretch/updates/main amd64 libpolkit-agent-1-0 amd64 0.105-18+deb9u1 [24.4 kB]
+                                                              Get:4 http://security.debian.org stretch/updates/main amd64 libpolkit-backend-1-0 amd64 0.105-18+deb9u1 [45.7 kB]
+3% [2 libpam-systemd 97.2 kB/188 kB 52%] [4 libpolkit-backend-1-0 0 B/45.7 kB 0%]                                                                                 5% [4 libpolkit-backend-1-0 28.2 kB/45.7 kB 62%]                                                Get:5 http://security.debian.org stretch/updates/main amd64 policykit-1 amd64 0.105-18+deb9u1 [63.5 kB]
+                                                7% [Waiting for headers]                        Get:6 http://deb.debian.org/debian stretch/main amd64 apt-transport-https amd64 1.4.8 [171 kB]
+7% [6 apt-transport-https 0 B/171 kB 0%]                                        10% [Working]             Get:7 http://deb.debian.org/debian stretch/main amd64 libgirepository-1.0-1 amd64 1.50.0-1+b1 [89.0 kB]
+10% [7 libgirepository-1.0-1 0 B/89.0 kB 0%]                                            11% [Working]             Get:8 http://deb.debian.org/debian stretch/main amd64 gir1.2-glib-2.0 amd64 1.50.0-1+b1 [139 kB]
+11% [8 gir1.2-glib-2.0 0 B/139 kB 0%]                                     14% [Working]             Get:9 http://deb.debian.org/debian stretch/main amd64 libpackagekit-glib2-18 amd64 1.1.5-2+deb9u1 [114 kB]
+14% [9 libpackagekit-glib2-18 0 B/114 kB 0%]                                            15% [Working]             Get:10 http://deb.debian.org/debian stretch/main amd64 gir1.2-packagekitglib-1.0 amd64 1.1.5-2+deb9u1 [34.7 kB]
+15% [10 gir1.2-packagekitglib-1.0 0 B/34.7 kB 0%]                                                 17% [Working]             Get:11 http://deb.debian.org/debian stretch/main amd64 gnupg2 all 2.1.18-8~deb9u3 [299 kB]
+17% [11 gnupg2 0 B/299 kB 0%]                             20% [Working]             Get:12 http://deb.debian.org/debian stretch/main amd64 iso-codes all 3.75-1 [2,389 kB]
+20% [12 iso-codes 0 B/2,389 kB 0%]                                  42% [Working]             Get:13 http://deb.debian.org/debian stretch/main amd64 libcap2-bin amd64 1:2.25-1 [26.5 kB]
+42% [13 libcap2-bin 0 B/26.5 kB 0%]                                   44% [Working]             Get:14 http://deb.debian.org/debian stretch/main amd64 libdbus-glib-1-2 amd64 0.108-2 [206 kB]
+44% [14 libdbus-glib-1-2 0 B/206 kB 0%]                                       46% [Working]             Get:15 http://deb.debian.org/debian stretch/main amd64 libglib2.0-bin amd64 2.50.3-2 [1,615 kB]
+46% [15 libglib2.0-bin 0 B/1,615 kB 0%]                                       62% [Working]             Get:16 http://deb.debian.org/debian stretch/main amd64 libgstreamer1.0-0 amd64 1.10.4-1 [1,962 kB]
+62% [16 libgstreamer1.0-0 0 B/1,962 kB 0%]                                          80% [Working]             Get:17 http://deb.debian.org/debian stretch/main amd64 libpam-cap amd64 1:2.25-1 [13.5 kB]
+80% [17 libpam-cap 0 B/13.5 kB 0%]                                  81% [Working]             Get:18 http://deb.debian.org/debian stretch/main amd64 packagekit amd64 1.1.5-2+deb9u1 [546 kB]
+81% [18 packagekit 0 B/546 kB 0%]                                 87% [Working]             Get:19 http://deb.debian.org/debian stretch/main amd64 packagekit-tools amd64 1.1.5-2+deb9u1 [45.3 kB]
+87% [19 packagekit-tools 0 B/45.3 kB 0%]                                        88% [Working]             Get:20 http://deb.debian.org/debian stretch/main amd64 python3-dbus amd64 1.2.4-1+b1 [184 kB]
+88% [20 python3-dbus 0 B/184 kB 0%]                                   91% [Working]             Get:21 http://deb.debian.org/debian stretch/main amd64 python3-gi amd64 3.22.0-2 [473 kB]
+91% [21 python3-gi 0 B/473 kB 0%]                                 96% [Working]             Get:22 http://deb.debian.org/debian stretch/main amd64 python3-pycurl amd64 7.43.0-2 [61.3 kB]
+96% [22 python3-pycurl 0 B/61.3 kB 0%]                                      97% [Working]             Get:23 http://deb.debian.org/debian stretch/main amd64 python3-software-properties all 0.96.20.2-1 [49.5 kB]
+97% [23 python3-software-properties 0 B/49.5 kB 0%]                                                   98% [Working]             Get:24 http://deb.debian.org/debian stretch/main amd64 software-properties-common all 0.96.20.2-1 [83.6 kB]
+98% [24 software-properties-common 0 B/83.6 kB 0%]                                                  100% [Working]              Fetched 8,867 kB in 0s (59.1 MB/s)
+Selecting previously unselected package libpam-systemd:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 38063 files and directories currently installed.)
+Preparing to unpack .../00-libpam-systemd_232-25+deb9u6_amd64.deb ...
+Unpacking libpam-systemd:amd64 (232-25+deb9u6) ...
+Selecting previously unselected package apt-transport-https.
+Preparing to unpack .../01-apt-transport-https_1.4.8_amd64.deb ...
+Unpacking apt-transport-https (1.4.8) ...
+Selecting previously unselected package libgirepository-1.0-1:amd64.
+Preparing to unpack .../02-libgirepository-1.0-1_1.50.0-1+b1_amd64.deb ...
+Unpacking libgirepository-1.0-1:amd64 (1.50.0-1+b1) ...
+Selecting previously unselected package gir1.2-glib-2.0:amd64.
+Preparing to unpack .../03-gir1.2-glib-2.0_1.50.0-1+b1_amd64.deb ...
+Unpacking gir1.2-glib-2.0:amd64 (1.50.0-1+b1) ...
+Selecting previously unselected package libpackagekit-glib2-18:amd64.
+Preparing to unpack .../04-libpackagekit-glib2-18_1.1.5-2+deb9u1_amd64.deb ...
+Unpacking libpackagekit-glib2-18:amd64 (1.1.5-2+deb9u1) ...
+Selecting previously unselected package gir1.2-packagekitglib-1.0.
+Preparing to unpack .../05-gir1.2-packagekitglib-1.0_1.1.5-2+deb9u1_amd64.deb ...
+Unpacking gir1.2-packagekitglib-1.0 (1.1.5-2+deb9u1) ...
+Selecting previously unselected package gnupg2.
+Preparing to unpack .../06-gnupg2_2.1.18-8~deb9u3_all.deb ...
+Unpacking gnupg2 (2.1.18-8~deb9u3) ...
+Selecting previously unselected package iso-codes.
+Preparing to unpack .../07-iso-codes_3.75-1_all.deb ...
+Unpacking iso-codes (3.75-1) ...
+Selecting previously unselected package libcap2-bin.
+Preparing to unpack .../08-libcap2-bin_1%3a2.25-1_amd64.deb ...
+Unpacking libcap2-bin (1:2.25-1) ...
+Selecting previously unselected package libdbus-glib-1-2:amd64.
+Preparing to unpack .../09-libdbus-glib-1-2_0.108-2_amd64.deb ...
+Unpacking libdbus-glib-1-2:amd64 (0.108-2) ...
+Selecting previously unselected package libglib2.0-bin.
+Preparing to unpack .../10-libglib2.0-bin_2.50.3-2_amd64.deb ...
+Unpacking libglib2.0-bin (2.50.3-2) ...
+Selecting previously unselected package libgstreamer1.0-0:amd64.
+Preparing to unpack .../11-libgstreamer1.0-0_1.10.4-1_amd64.deb ...
+Unpacking libgstreamer1.0-0:amd64 (1.10.4-1) ...
+Selecting previously unselected package libpam-cap:amd64.
+Preparing to unpack .../12-libpam-cap_1%3a2.25-1_amd64.deb ...
+Unpacking libpam-cap:amd64 (1:2.25-1) ...
+Selecting previously unselected package libpolkit-gobject-1-0:amd64.
+Preparing to unpack .../13-libpolkit-gobject-1-0_0.105-18+deb9u1_amd64.deb ...
+Unpacking libpolkit-gobject-1-0:amd64 (0.105-18+deb9u1) ...
+Selecting previously unselected package libpolkit-agent-1-0:amd64.
+Preparing to unpack .../14-libpolkit-agent-1-0_0.105-18+deb9u1_amd64.deb ...
+Unpacking libpolkit-agent-1-0:amd64 (0.105-18+deb9u1) ...
+Selecting previously unselected package libpolkit-backend-1-0:amd64.
+Preparing to unpack .../15-libpolkit-backend-1-0_0.105-18+deb9u1_amd64.deb ...
+Unpacking libpolkit-backend-1-0:amd64 (0.105-18+deb9u1) ...
+Selecting previously unselected package policykit-1.
+Preparing to unpack .../16-policykit-1_0.105-18+deb9u1_amd64.deb ...
+Unit polkit.service does not exist, proceeding anyway.
+Created symlink /run/systemd/system/polkit.service → /dev/null.
+Unpacking policykit-1 (0.105-18+deb9u1) ...
+Selecting previously unselected package packagekit.
+Preparing to unpack .../17-packagekit_1.1.5-2+deb9u1_amd64.deb ...
+Unpacking packagekit (1.1.5-2+deb9u1) ...
+Selecting previously unselected package packagekit-tools.
+Preparing to unpack .../18-packagekit-tools_1.1.5-2+deb9u1_amd64.deb ...
+Unpacking packagekit-tools (1.1.5-2+deb9u1) ...
+Selecting previously unselected package python3-dbus.
+Preparing to unpack .../19-python3-dbus_1.2.4-1+b1_amd64.deb ...
+Unpacking python3-dbus (1.2.4-1+b1) ...
+Selecting previously unselected package python3-gi.
+Preparing to unpack .../20-python3-gi_3.22.0-2_amd64.deb ...
+Unpacking python3-gi (3.22.0-2) ...
+Selecting previously unselected package python3-pycurl.
+Preparing to unpack .../21-python3-pycurl_7.43.0-2_amd64.deb ...
+Unpacking python3-pycurl (7.43.0-2) ...
+Selecting previously unselected package python3-software-properties.
+Preparing to unpack .../22-python3-software-properties_0.96.20.2-1_all.deb ...
+Unpacking python3-software-properties (0.96.20.2-1) ...
+Selecting previously unselected package software-properties-common.
+Preparing to unpack .../23-software-properties-common_0.96.20.2-1_all.deb ...
+Unpacking software-properties-common (0.96.20.2-1) ...
+Setting up python3-pycurl (7.43.0-2) ...
+Setting up apt-transport-https (1.4.8) ...
+Setting up libpam-systemd:amd64 (232-25+deb9u6) ...
+Setting up libpam-cap:amd64 (1:2.25-1) ...
+Setting up iso-codes (3.75-1) ...
+Setting up libcap2-bin (1:2.25-1) ...
+Setting up libdbus-glib-1-2:amd64 (0.108-2) ...
+Setting up libpackagekit-glib2-18:amd64 (1.1.5-2+deb9u1) ...
+Processing triggers for sgml-base (1.29) ...
+Setting up libgirepository-1.0-1:amd64 (1.50.0-1+b1) ...
+Setting up gnupg2 (2.1.18-8~deb9u3) ...
+Setting up gir1.2-glib-2.0:amd64 (1.50.0-1+b1) ...
+Processing triggers for libc-bin (2.24-11+deb9u3) ...
+Processing triggers for man-db (2.7.6.1-2) ...
+Setting up gir1.2-packagekitglib-1.0 (1.1.5-2+deb9u1) ...
+Setting up python3-software-properties (0.96.20.2-1) ...
+Processing triggers for dbus (1.10.26-0+deb9u1) ...
+Setting up libglib2.0-bin (2.50.3-2) ...
+Setting up libpolkit-gobject-1-0:amd64 (0.105-18+deb9u1) ...
+Setting up python3-dbus (1.2.4-1+b1) ...
+Setting up libgstreamer1.0-0:amd64 (1.10.4-1) ...
+Setcap worked! gst-ptp-helper is not suid!
+Setting up libpolkit-agent-1-0:amd64 (0.105-18+deb9u1) ...
+Setting up python3-gi (3.22.0-2) ...
+Setting up libpolkit-backend-1-0:amd64 (0.105-18+deb9u1) ...
+Setting up software-properties-common (0.96.20.2-1) ...
+Setting up policykit-1 (0.105-18+deb9u1) ...
+Removed /run/systemd/system/polkit.service.
+polkit.service is a disabled or a static unit not running, not starting it.
+Setting up packagekit (1.1.5-2+deb9u1) ...
+Setting up packagekit-tools (1.1.5-2+deb9u1) ...
+Processing triggers for libc-bin (2.24-11+deb9u3) ...
+Processing triggers for dbus (1.10.26-0+deb9u1) ...
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2/MOCC-Exercises/exercise2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2/MOCC-Exercises/exercise2[00m$ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+OK
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2/MOCC-Exercises/exercise2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2/MOCC-Exercises/exercise2[00m$ sudo apt-key fingerprint 0EBFCD88
+pub   rsa4096 2017-02-22 [SCEA]
+      9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+uid           [ unknown] Docker Release (CE deb) <docker@docker.com>
+sub   rsa4096 2017-02-22 [S]
+
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2/MOCC-Exercises/exercise2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2/MOCC-Exercises/exercise2[00m$ sudo add-apt-repository \
+>    "deb [arch=amd64] https://download.docker.com/linux/debian \
+>    $(lsb_release -cs) \
+>    stable"
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2/MOCC-Exercises/exercise2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2/MOCC-Exercises/exercise2[00m$ sudo apt-get update
+0% [Working]            Hit:1 http://security.debian.org stretch/updates InRelease
+0% [Connecting to prod.debian.map.fastly.net (151.101.120.204)] [Waiting for headers]                                                                                     0% [1 InRelease gpgv 94.3 kB] [Waiting for headers] [Waiting for headers]                                                                         Ign:2 http://deb.debian.org/debian stretch InRelease
+0% [1 InRelease gpgv 94.3 kB] [Waiting for headers] [Waiting for headers]                                                                         Hit:3 http://deb.debian.org/debian stretch-updates InRelease
+0% [1 InRelease gpgv 94.3 kB] [Waiting for headers] [Waiting for headers]                                                                         Hit:4 http://deb.debian.org/debian stretch-backports InRelease
+0% [1 InRelease gpgv 94.3 kB] [Waiting for headers] [Waiting for headers]                                                                         Hit:5 http://deb.debian.org/debian stretch Release
+                                                                         0% [1 InRelease gpgv 94.3 kB] [Waiting for headers]                                                   0% [Waiting for headers]0% [3 InRelease gpgv 91.0 kB] [Waiting for headers]                                                   Hit:6 http://packages.cloud.google.com/apt cloud-sdk-stretch InRelease
+0% [3 InRelease gpgv 91.0 kB] [Waiting for headers]                                                   0% [Waiting for headers]0% [4 InRelease gpgv 91.8 kB] [Waiting for headers]                                                   Hit:7 http://packages.cloud.google.com/apt google-compute-engine-stretch-stable InRelease
+0% [4 InRelease gpgv 91.8 kB] [Waiting for headers]                                                   0% [Waiting for headers]0% [Release.gpg gpgv 118 kB] [Waiting for headers]                                                  Hit:8 http://packages.cloud.google.com/apt google-cloud-packages-archive-keyring-stretch InRelease
+                                                  0% [Release.gpg gpgv 118 kB]                            0% [Working]0% [6 InRelease gpgv 6,377 B]                             0% [Working]0% [7 InRelease gpgv 3,843 B]                             0% [Working]0% [8 InRelease gpgv 3,876 B]                             0% [Working]            Get:10 https://download.docker.com/linux/debian stretch InRelease [44.8 kB]
+0% [10 InRelease 0 B/44.8 kB 0%]                                0% [Working]0% [10 InRelease gpgv 44.8 kB]                              91% [Working]             Get:11 https://download.docker.com/linux/debian stretch/stable amd64 Packages [5,447 B]
+100% [Working]100% [11 Packages store 0 B]                            100% [Working]              Fetched 50.3 kB in 1s (48.5 kB/s)
+Reading package lists... 0%Reading package lists... 0%Reading package lists... 1%Reading package lists... 51%Reading package lists... 51%Reading package lists... 86%Reading package lists... 86%Reading package lists... 90%Reading package lists... 90%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 96%Reading package lists... 96%Reading package lists... 98%Reading package lists... 98%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... Done
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2/MOCC-Exercises/exercise2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2/MOCC-Exercises/exercise2[00m$ sudo apt-get install docker-ce
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following additional packages will be installed:
+  aufs-dkms aufs-tools binutils cgroupfs-mount containerd.io cpp cpp-6 dkms docker-ce-cli fakeroot gcc gcc-6 libasan3 libatomic1 libc-dev-bin libc6-dev libcc1-0 libcilkrts5 libfakeroot libgcc-6-dev libgomp1 libisl15 libitm1 liblsan0
+  libltdl7 libmpc3 libmpfr4 libmpx2 libquadmath0 libtsan0 libubsan0 linux-compiler-gcc-6-x86 linux-headers-4.9.0-8-amd64 linux-headers-4.9.0-8-common linux-headers-amd64 linux-kbuild-4.9 linux-libc-dev make manpages manpages-dev pigz
+Suggested packages:
+  aufs-dev binutils-doc cpp-doc gcc-6-locales python3-apport menu gcc-multilib autoconf automake libtool flex bison gdb gcc-doc gcc-6-multilib gcc-6-doc libgcc1-dbg libgomp1-dbg libitm1-dbg libatomic1-dbg libasan3-dbg liblsan0-dbg
+  libtsan0-dbg libubsan0-dbg libcilkrts5-dbg libmpx2-dbg libquadmath0-dbg glibc-doc make-doc
+The following NEW packages will be installed:
+  aufs-dkms aufs-tools binutils cgroupfs-mount containerd.io cpp cpp-6 dkms docker-ce docker-ce-cli fakeroot gcc gcc-6 libasan3 libatomic1 libc-dev-bin libc6-dev libcc1-0 libcilkrts5 libfakeroot libgcc-6-dev libgomp1 libisl15 libitm1
+  liblsan0 libltdl7 libmpc3 libmpfr4 libmpx2 libquadmath0 libtsan0 libubsan0 linux-compiler-gcc-6-x86 linux-headers-4.9.0-8-amd64 linux-headers-4.9.0-8-common linux-headers-amd64 linux-kbuild-4.9 linux-libc-dev make manpages
+  manpages-dev pigz
+0 upgraded, 42 newly installed, 0 to remove and 7 not upgraded.
+Need to get 90.3 MB of archives.
+After this operation, 417 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+0% [Working]            Get:1 http://deb.debian.org/debian stretch/main amd64 pigz amd64 2.3.4-1 [55.4 kB]
+0% [1 pigz 0 B/55.4 kB 0%]                          1% [Waiting for headers]                        Get:2 http://deb.debian.org/debian stretch/main amd64 manpages all 4.10-2 [1,222 kB]
+1% [2 manpages 0 B/1,222 kB 0%]                               2% [Working]            Get:3 http://deb.debian.org/debian stretch/main amd64 libisl15 amd64 0.18-1 [564 kB]
+2% [3 libisl15 0 B/564 kB 0%]                             3% [Working]            Get:4 http://deb.debian.org/debian stretch/main amd64 libmpfr4 amd64 3.1.5-1 [556 kB]
+3% [4 libmpfr4 0 B/556 kB 0%]                             4% [Working]            Get:5 http://deb.debian.org/debian stretch/main amd64 libmpc3 amd64 1.0.3-1+b2 [39.9 kB]
+4% [5 libmpc3 0 B/39.9 kB 0%]                             5% [Working]            Get:6 http://deb.debian.org/debian stretch/main amd64 cpp-6 amd64 6.3.0-18+deb9u1 [6,584 kB]
+5% [6 cpp-6 0 B/6,584 kB 0%]                            Get:7 https://download.docker.com/linux/debian stretch/stable amd64 containerd.io amd64 1.2.0-1 [19.9 MB]
+8% [6 cpp-6 3,801 kB/6,584 kB 58%] [7 containerd.io 0 B/19.9 MB 0%]                                                                   12% [7 containerd.io 880 kB/19.9 MB 4%]                                       Get:8 http://deb.debian.org/debian stretch/main amd64 cpp amd64 4:6.3.0-4 [18.7 kB]
+12% [8 cpp 0 B/18.7 kB 0%] [7 containerd.io 978 kB/19.9 MB 5%]                                                              12% [7 containerd.io 978 kB/19.9 MB 5%]                                       Get:9 http://deb.debian.org/debian stretch/main amd64 libcc1-0 amd64 6.3.0-18+deb9u1 [30.6 kB]
+12% [9 libcc1-0 0 B/30.6 kB 0%] [7 containerd.io 1,142 kB/19.9 MB 6%]                                                                     13% [7 containerd.io 1,142 kB/19.9 MB 6%]                                         Get:10 http://deb.debian.org/debian stretch/main amd64 binutils amd64 2.28-5 [3,770 kB]
+13% [10 binutils 0 B/3,770 kB 0%] [7 containerd.io 1,142 kB/19.9 MB 6%]                                                                       19% [7 containerd.io 3,214 kB/19.9 MB 16%]                                          Get:11 http://deb.debian.org/debian stretch/main amd64 libgomp1 amd64 6.3.0-18+deb9u1 [73.3 kB]
+19% [11 libgomp1 0 B/73.3 kB 0%] [7 containerd.io 3,215 kB/19.9 MB 16%]                                                                       19% [7 containerd.io 3,215 kB/19.9 MB 16%]                                          Get:12 http://deb.debian.org/debian stretch/main amd64 libitm1 amd64 6.3.0-18+deb9u1 [27.3 kB]
+19% [12 libitm1 0 B/27.3 kB 0%] [7 containerd.io 3,378 kB/19.9 MB 17%]                                                                      20% [7 containerd.io 3,378 kB/19.9 MB 17%]                                          Get:13 http://deb.debian.org/debian stretch/main amd64 libatomic1 amd64 6.3.0-18+deb9u1 [8,966 B]
+20% [13 libatomic1 0 B/8,966 B 0%] [7 containerd.io 3,378 kB/19.9 MB 17%]                                                                         20% [7 containerd.io 3,378 kB/19.9 MB 17%]                                          Get:14 http://deb.debian.org/debian stretch/main amd64 libasan3 amd64 6.3.0-18+deb9u1 [311 kB]
+20% [14 libasan3 0 B/311 kB 0%] [7 containerd.io 3,378 kB/19.9 MB 17%]                                                                      21% [7 containerd.io 3,607 kB/19.9 MB 18%]                                          Get:15 http://deb.debian.org/debian stretch/main amd64 liblsan0 amd64 6.3.0-18+deb9u1 [115 kB]
+21% [15 liblsan0 0 B/115 kB 0%] [7 containerd.io 3,607 kB/19.9 MB 18%]                                                                      22% [7 containerd.io 3,607 kB/19.9 MB 18%]                                          Get:16 http://deb.debian.org/debian stretch/main amd64 libtsan0 amd64 6.3.0-18+deb9u1 [257 kB]
+22% [16 libtsan0 0 B/257 kB 0%] [7 containerd.io 3,607 kB/19.9 MB 18%]                                                                      23% [7 containerd.io 3,853 kB/19.9 MB 19%]                                          Get:17 http://deb.debian.org/debian stretch/main amd64 libubsan0 amd64 6.3.0-18+deb9u1 [107 kB]
+23% [17 libubsan0 0 B/107 kB 0%] [7 containerd.io 3,853 kB/19.9 MB 19%]                                                                       23% [7 containerd.io 3,853 kB/19.9 MB 19%]                                          Get:18 http://deb.debian.org/debian stretch/main amd64 libcilkrts5 amd64 6.3.0-18+deb9u1 [40.5 kB]
+23% [18 libcilkrts5 0 B/40.5 kB 0%] [7 containerd.io 3,853 kB/19.9 MB 19%]                                                                          24% [7 containerd.io 4,050 kB/19.9 MB 20%]                                          Get:19 http://deb.debian.org/debian stretch/main amd64 libmpx2 amd64 6.3.0-18+deb9u1 [11.2 kB]
+24% [19 libmpx2 0 B/11.2 kB 0%] [7 containerd.io 4,050 kB/19.9 MB 20%]                                                                      24% [7 containerd.io 4,050 kB/19.9 MB 20%]                                          Get:20 http://deb.debian.org/debian stretch/main amd64 libquadmath0 amd64 6.3.0-18+deb9u1 [131 kB]
+24% [20 libquadmath0 0 B/131 kB 0%] [7 containerd.io 4,050 kB/19.9 MB 20%]                                                                          25% [7 containerd.io 4,050 kB/19.9 MB 20%]                                          Get:21 http://deb.debian.org/debian stretch/main amd64 libgcc-6-dev amd64 6.3.0-18+deb9u1 [2,296 kB]
+25% [21 libgcc-6-dev 0 B/2,296 kB 0%] [7 containerd.io 4,050 kB/19.9 MB 20%]                                                                            29% [7 containerd.io 5,520 kB/19.9 MB 28%]                                          Get:22 http://deb.debian.org/debian stretch/main amd64 gcc-6 amd64 6.3.0-18+deb9u1 [6,900 kB]
+29% [22 gcc-6 110 kB/6,900 kB 2%] [7 containerd.io 5,520 kB/19.9 MB 28%]                                                                        40% [7 containerd.io 10.6 MB/19.9 MB 53%]                                         Get:23 http://deb.debian.org/debian stretch/main amd64 gcc amd64 4:6.3.0-4 [5,196 B]
+40% [23 gcc 0 B/5,196 B 0%] [7 containerd.io 10.6 MB/19.9 MB 53%]                                                                 40% [7 containerd.io 10.6 MB/19.9 MB 53%]                                         Get:24 http://deb.debian.org/debian stretch/main amd64 make amd64 4.1-9.1 [302 kB]
+40% [24 make 0 B/302 kB 0%] [7 containerd.io 10.6 MB/19.9 MB 53%]                                                                 41% [7 containerd.io 10.8 MB/19.9 MB 54%]                                         Get:25 http://deb.debian.org/debian stretch/main amd64 dkms all 2.3-2 [74.8 kB]
+41% [25 dkms 0 B/74.8 kB 0%] [7 containerd.io 10.8 MB/19.9 MB 54%]                                                                  42% [7 containerd.io 10.9 MB/19.9 MB 55%]                                         Get:26 http://deb.debian.org/debian stretch/main amd64 linux-kbuild-4.9 amd64 4.9.130-2 [789 kB]
+42% [26 linux-kbuild-4.9 0 B/789 kB 0%] [7 containerd.io 10.9 MB/19.9 MB 55%]                                                                             Get:27 http://deb.debian.org/debian stretch/main amd64 aufs-dkms amd64 4.9+20161219-1 [169 kB]
+                                                                             44% [27 aufs-dkms 131 kB/169 kB 78%] [7 containerd.io 11.5 MB/19.9 MB 58%]                                                                          44% [7 containerd.io 11.5 MB/19.9 MB 58%]                                         Get:28 http://deb.debian.org/debian stretch/main amd64 aufs-tools amd64 1:4.1+20161219-1 [102 kB]
+44% [28 aufs-tools 0 B/102 kB 0%] [7 containerd.io 11.6 MB/19.9 MB 59%]                                                                       45% [7 containerd.io 11.6 MB/19.9 MB 59%]                                         Get:29 http://deb.debian.org/debian stretch/main amd64 cgroupfs-mount all 1.3 [5,716 B]
+45% [29 cgroupfs-mount 0 B/5,716 B 0%] [7 containerd.io 11.6 MB/19.9 MB 59%]                                                                            45% [7 containerd.io 11.6 MB/19.9 MB 59%]                                         Get:30 http://deb.debian.org/debian stretch/main amd64 libltdl7 amd64 2.4.6-2 [389 kB]
+45% [30 libltdl7 0 B/389 kB 0%] [7 containerd.io 11.6 MB/19.9 MB 59%]                                                                     46% [7 containerd.io 11.9 MB/19.9 MB 60%]                                         Get:31 http://deb.debian.org/debian stretch/main amd64 libfakeroot amd64 1.21-3.1 [45.7 kB]
+46% [31 libfakeroot 0 B/45.7 kB 0%] [7 containerd.io 11.9 MB/19.9 MB 60%]                                                                         47% [7 containerd.io 12.1 MB/19.9 MB 61%]                                         Get:32 http://deb.debian.org/debian stretch/main amd64 fakeroot amd64 1.21-3.1 [85.6 kB]
+47% [32 fakeroot 0 B/85.6 kB 0%] [7 containerd.io 12.1 MB/19.9 MB 61%]                                                                      48% [7 containerd.io 12.1 MB/19.9 MB 61%]                                         Get:33 http://deb.debian.org/debian stretch/main amd64 libc-dev-bin amd64 2.24-11+deb9u3 [258 kB]
+48% [33 libc-dev-bin 0 B/258 kB 0%] [7 containerd.io 12.1 MB/19.9 MB 61%]                                                                         48% [7 containerd.io 12.2 MB/19.9 MB 61%]                                         Get:34 http://deb.debian.org/debian stretch/main amd64 linux-libc-dev amd64 4.9.130-2 [1,373 kB]
+48% [34 linux-libc-dev 0 B/1,373 kB 0%] [7 containerd.io 12.2 MB/19.9 MB 61%]                                                                             51% [7 containerd.io 13.3 MB/19.9 MB 67%]                                         Get:35 http://deb.debian.org/debian stretch/main amd64 libc6-dev amd64 2.24-11+deb9u3 [2,361 kB]
+51% [35 libc6-dev 0 B/2,361 kB 0%] [7 containerd.io 13.3 MB/19.9 MB 67%]                                                                        55% [7 containerd.io 14.5 MB/19.9 MB 73%]                                         Get:36 http://deb.debian.org/debian stretch/main amd64 linux-compiler-gcc-6-x86 amd64 4.9.130-2 [582 kB]
+55% [36 linux-compiler-gcc-6-x86 0 B/582 kB 0%] [7 containerd.io 14.5 MB/19.9 MB 73%]                                                                                     56% [7 containerd.io 15.1 MB/19.9 MB 76%]                                         Get:37 http://deb.debian.org/debian stretch/main amd64 linux-headers-4.9.0-8-common all 4.9.130-2 [7,620 kB]
+56% [37 linux-headers-4.9.0-8-common 0 B/7,620 kB 0%] [7 containerd.io 15.1 MB/19.9 MB 76%]                                                                                           68% [7 containerd.io 19.9 MB/19.9 MB 100%]                                          Get:38 http://deb.debian.org/debian stretch/main amd64 linux-headers-4.9.0-8-amd64 amd64 4.9.130-2 [450 kB]
+68% [38 linux-headers-4.9.0-8-amd64 0 B/450 kB 0%] [7 containerd.io 19.9 MB/19.9 MB 100%]                                                                                         68% [38 linux-headers-4.9.0-8-amd64 181 kB/450 kB 40%]                                                      69% [Working]             Get:39 http://deb.debian.org/debian stretch/main amd64 linux-headers-amd64 amd64 4.9+80+deb9u6 [6,024 B]
+69% [39 linux-headers-amd64 0 B/6,024 B 0%]                                           70% [Working]             Get:40 http://deb.debian.org/debian stretch/main amd64 manpages-dev all 4.10-2 [2,145 kB]
+70% [40 manpages-dev 0 B/2,145 kB 0%]                                     Get:41 https://download.docker.com/linux/debian stretch/stable amd64 docker-ce-cli amd64 5:18.09.0~3-0~debian-stretch [13.1 MB]
+70% [40 manpages-dev 461 kB/2,145 kB 21%] [41 docker-ce-cli 15.9 kB/13.1 MB 0%]                                                                               74% [41 docker-ce-cli 1,785 kB/13.1 MB 14%]                                           84% [Working]             Get:42 https://download.docker.com/linux/debian stretch/stable amd64 docker-ce amd64 5:18.09.0~3-0~debian-stretch [17.4 MB]
+84% [42 docker-ce 0 B/17.4 MB 0%]                                 100% [Working]              Fetched 90.3 MB in 1s (64.0 MB/s)
+Extracting templates from packages: 71%Extracting templates from packages: 100%
+Selecting previously unselected package pigz.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 39507 files and directories currently installed.)
+Preparing to unpack .../00-pigz_2.3.4-1_amd64.deb ...
+Unpacking pigz (2.3.4-1) ...
+Selecting previously unselected package manpages.
+Preparing to unpack .../01-manpages_4.10-2_all.deb ...
+Unpacking manpages (4.10-2) ...
+Selecting previously unselected package libisl15:amd64.
+Preparing to unpack .../02-libisl15_0.18-1_amd64.deb ...
+Unpacking libisl15:amd64 (0.18-1) ...
+Selecting previously unselected package libmpfr4:amd64.
+Preparing to unpack .../03-libmpfr4_3.1.5-1_amd64.deb ...
+Unpacking libmpfr4:amd64 (3.1.5-1) ...
+Selecting previously unselected package libmpc3:amd64.
+Preparing to unpack .../04-libmpc3_1.0.3-1+b2_amd64.deb ...
+Unpacking libmpc3:amd64 (1.0.3-1+b2) ...
+Selecting previously unselected package cpp-6.
+Preparing to unpack .../05-cpp-6_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking cpp-6 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package cpp.
+Preparing to unpack .../06-cpp_4%3a6.3.0-4_amd64.deb ...
+Unpacking cpp (4:6.3.0-4) ...
+Selecting previously unselected package libcc1-0:amd64.
+Preparing to unpack .../07-libcc1-0_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libcc1-0:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package binutils.
+Preparing to unpack .../08-binutils_2.28-5_amd64.deb ...
+Unpacking binutils (2.28-5) ...
+Selecting previously unselected package libgomp1:amd64.
+Preparing to unpack .../09-libgomp1_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libgomp1:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libitm1:amd64.
+Preparing to unpack .../10-libitm1_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libitm1:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libatomic1:amd64.
+Preparing to unpack .../11-libatomic1_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libatomic1:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libasan3:amd64.
+Preparing to unpack .../12-libasan3_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libasan3:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package liblsan0:amd64.
+Preparing to unpack .../13-liblsan0_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking liblsan0:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libtsan0:amd64.
+Preparing to unpack .../14-libtsan0_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libtsan0:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libubsan0:amd64.
+Preparing to unpack .../15-libubsan0_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libubsan0:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libcilkrts5:amd64.
+Preparing to unpack .../16-libcilkrts5_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libcilkrts5:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libmpx2:amd64.
+Preparing to unpack .../17-libmpx2_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libmpx2:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libquadmath0:amd64.
+Preparing to unpack .../18-libquadmath0_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libquadmath0:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package libgcc-6-dev:amd64.
+Preparing to unpack .../19-libgcc-6-dev_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking libgcc-6-dev:amd64 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package gcc-6.
+Preparing to unpack .../20-gcc-6_6.3.0-18+deb9u1_amd64.deb ...
+Unpacking gcc-6 (6.3.0-18+deb9u1) ...
+Selecting previously unselected package gcc.
+Preparing to unpack .../21-gcc_4%3a6.3.0-4_amd64.deb ...
+Unpacking gcc (4:6.3.0-4) ...
+Selecting previously unselected package make.
+Preparing to unpack .../22-make_4.1-9.1_amd64.deb ...
+Unpacking make (4.1-9.1) ...
+Selecting previously unselected package dkms.
+Preparing to unpack .../23-dkms_2.3-2_all.deb ...
+Unpacking dkms (2.3-2) ...
+Selecting previously unselected package linux-kbuild-4.9.
+Preparing to unpack .../24-linux-kbuild-4.9_4.9.130-2_amd64.deb ...
+Unpacking linux-kbuild-4.9 (4.9.130-2) ...
+Selecting previously unselected package aufs-dkms.
+Preparing to unpack .../25-aufs-dkms_4.9+20161219-1_amd64.deb ...
+Unpacking aufs-dkms (4.9+20161219-1) ...
+Selecting previously unselected package aufs-tools.
+Preparing to unpack .../26-aufs-tools_1%3a4.1+20161219-1_amd64.deb ...
+Unpacking aufs-tools (1:4.1+20161219-1) ...
+Selecting previously unselected package cgroupfs-mount.
+Preparing to unpack .../27-cgroupfs-mount_1.3_all.deb ...
+Unpacking cgroupfs-mount (1.3) ...
+Selecting previously unselected package containerd.io.
+Preparing to unpack .../28-containerd.io_1.2.0-1_amd64.deb ...
+Unpacking containerd.io (1.2.0-1) ...
+Selecting previously unselected package libltdl7:amd64.
+Preparing to unpack .../29-libltdl7_2.4.6-2_amd64.deb ...
+Unpacking libltdl7:amd64 (2.4.6-2) ...
+Selecting previously unselected package docker-ce-cli.
+Preparing to unpack .../30-docker-ce-cli_5%3a18.09.0~3-0~debian-stretch_amd64.deb ...
+Unpacking docker-ce-cli (5:18.09.0~3-0~debian-stretch) ...
+Selecting previously unselected package docker-ce.
+Preparing to unpack .../31-docker-ce_5%3a18.09.0~3-0~debian-stretch_amd64.deb ...
+Unpacking docker-ce (5:18.09.0~3-0~debian-stretch) ...
+Selecting previously unselected package libfakeroot:amd64.
+Preparing to unpack .../32-libfakeroot_1.21-3.1_amd64.deb ...
+Unpacking libfakeroot:amd64 (1.21-3.1) ...
+Selecting previously unselected package fakeroot.
+Preparing to unpack .../33-fakeroot_1.21-3.1_amd64.deb ...
+Unpacking fakeroot (1.21-3.1) ...
+Selecting previously unselected package libc-dev-bin.
+Preparing to unpack .../34-libc-dev-bin_2.24-11+deb9u3_amd64.deb ...
+Unpacking libc-dev-bin (2.24-11+deb9u3) ...
+Selecting previously unselected package linux-libc-dev:amd64.
+Preparing to unpack .../35-linux-libc-dev_4.9.130-2_amd64.deb ...
+Unpacking linux-libc-dev:amd64 (4.9.130-2) ...
+Selecting previously unselected package libc6-dev:amd64.
+Preparing to unpack .../36-libc6-dev_2.24-11+deb9u3_amd64.deb ...
+Unpacking libc6-dev:amd64 (2.24-11+deb9u3) ...
+Selecting previously unselected package linux-compiler-gcc-6-x86.
+Preparing to unpack .../37-linux-compiler-gcc-6-x86_4.9.130-2_amd64.deb ...
+Unpacking linux-compiler-gcc-6-x86 (4.9.130-2) ...
+Selecting previously unselected package linux-headers-4.9.0-8-common.
+Preparing to unpack .../38-linux-headers-4.9.0-8-common_4.9.130-2_all.deb ...
+Unpacking linux-headers-4.9.0-8-common (4.9.130-2) ...
+Selecting previously unselected package linux-headers-4.9.0-8-amd64.
+Preparing to unpack .../39-linux-headers-4.9.0-8-amd64_4.9.130-2_amd64.deb ...
+Unpacking linux-headers-4.9.0-8-amd64 (4.9.130-2) ...
+Selecting previously unselected package linux-headers-amd64.
+Preparing to unpack .../40-linux-headers-amd64_4.9+80+deb9u6_amd64.deb ...
+Unpacking linux-headers-amd64 (4.9+80+deb9u6) ...
+Selecting previously unselected package manpages-dev.
+Preparing to unpack .../41-manpages-dev_4.10-2_all.deb ...
+Unpacking manpages-dev (4.10-2) ...
+Setting up libquadmath0:amd64 (6.3.0-18+deb9u1) ...
+Setting up aufs-tools (1:4.1+20161219-1) ...
+Setting up libgomp1:amd64 (6.3.0-18+deb9u1) ...
+Setting up libatomic1:amd64 (6.3.0-18+deb9u1) ...
+Setting up manpages (4.10-2) ...
+Setting up libcc1-0:amd64 (6.3.0-18+deb9u1) ...
+Setting up make (4.1-9.1) ...
+Setting up libasan3:amd64 (6.3.0-18+deb9u1) ...
+Setting up linux-headers-4.9.0-8-common (4.9.130-2) ...
+Setting up containerd.io (1.2.0-1) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service → /lib/systemd/system/containerd.service.
+Setting up libcilkrts5:amd64 (6.3.0-18+deb9u1) ...
+Setting up libubsan0:amd64 (6.3.0-18+deb9u1) ...
+Setting up libtsan0:amd64 (6.3.0-18+deb9u1) ...
+Setting up linux-libc-dev:amd64 (4.9.130-2) ...
+Setting up cgroupfs-mount (1.3) ...
+Setting up liblsan0:amd64 (6.3.0-18+deb9u1) ...
+Setting up libmpx2:amd64 (6.3.0-18+deb9u1) ...
+Setting up libisl15:amd64 (0.18-1) ...
+Setting up linux-kbuild-4.9 (4.9.130-2) ...
+Processing triggers for libc-bin (2.24-11+deb9u3) ...
+Setting up libfakeroot:amd64 (1.21-3.1) ...
+Processing triggers for systemd (232-25+deb9u6) ...
+Setting up libltdl7:amd64 (2.4.6-2) ...
+Setting up libmpfr4:amd64 (3.1.5-1) ...
+Processing triggers for man-db (2.7.6.1-2) ...
+Setting up libmpc3:amd64 (1.0.3-1+b2) ...
+Setting up binutils (2.28-5) ...
+Setting up cpp-6 (6.3.0-18+deb9u1) ...
+Setting up libc-dev-bin (2.24-11+deb9u3) ...
+Setting up docker-ce-cli (5:18.09.0~3-0~debian-stretch) ...
+Setting up manpages-dev (4.10-2) ...
+Setting up libc6-dev:amd64 (2.24-11+deb9u3) ...
+Setting up pigz (2.3.4-1) ...
+Setting up libitm1:amd64 (6.3.0-18+deb9u1) ...
+Setting up cpp (4:6.3.0-4) ...
+Setting up docker-ce (5:18.09.0~3-0~debian-stretch) ...
+update-alternatives: using /usr/bin/dockerd-ce to provide /usr/bin/dockerd (dockerd) in auto mode
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /lib/systemd/system/docker.service.
+Setting up libgcc-6-dev:amd64 (6.3.0-18+deb9u1) ...
+Setting up fakeroot (1.21-3.1) ...
+update-alternatives: using /usr/bin/fakeroot-sysv to provide /usr/bin/fakeroot (fakeroot) in auto mode
+Setting up gcc-6 (6.3.0-18+deb9u1) ...
+Setting up gcc (4:6.3.0-4) ...
+Setting up linux-compiler-gcc-6-x86 (4.9.130-2) ...
+Setting up dkms (2.3-2) ...
+Setting up linux-headers-4.9.0-8-amd64 (4.9.130-2) ...
+Setting up aufs-dkms (4.9+20161219-1) ...
+Loading new aufs-4.9+20161219 DKMS files...
+Building for 4.9.0-8-amd64
+Building initial module for 4.9.0-8-amd64
+Done.
+
+aufs:
+Running module version sanity check.
+ - Original module
+   - No original module exists within this kernel
+ - Installation
+   - Installing to /lib/modules/4.9.0-8-amd64/updates/dkms/
+
+depmod........
+
+DKMS: install completed.
+Setting up linux-headers-amd64 (4.9+80+deb9u6) ...
+Processing triggers for libc-bin (2.24-11+deb9u3) ...
+]0;julianweise@mocc-machine-2: ~/mocc-exercise-2/MOCC-Exercises/exercise2[01;32mjulianweise@mocc-machine-2[00m:[01;34m~/mocc-exercise-2/MOCC-Exercises/exercise2[00m$ exit
+exit
+
+Script done on Mon 10 Dec 2018 06:37:33 PM UTC
