@@ -1,11 +1,11 @@
 import os
-import pipes
 import shutil
 import subprocess
 import urllib.request
 
-FILE_SYSTEM_DOWNLOAD_URL = 'http://tinycorelinux.net/9.x/x86_64/release/CorePure64-9.0.iso'
-FILE_SYSTEM_FILE = 'root_file_system' + "." + FILE_SYSTEM_DOWNLOAD_URL.split(".")[-1]
+FILE_SYSTEM_DOWNLOAD_URL = 'https://cloud-images.ubuntu.com/minimal/releases/bionic/release/' \
+                           'ubuntu-18.04-minimal-cloudimg-amd64-root.tar.xz'
+FILE_SYSTEM_FILE = 'root_file_system' + ".tar.xz"
 
 
 class Container:
@@ -18,18 +18,20 @@ class Container:
         self._mount_file_system()
 
     def map(self, host_path, target_path):
-        pass
+        path_in_container = self.path + target_path[1:] if target_path[0] == "/" else self.path + target_path
+        process = subprocess.Popen(['ln', '-s', host_path, path_in_container], stdout=subprocess.PIPE, cwd=self.path)
+        process = subprocess.Popen(['chmod', '555', path_in_container], stdout=subprocess.PIPE, cwd=self.path)
+        # output, error = process.communicate()
 
     def run(self, executable):
         pass
 
     def _download_image(self):
-        location = self.path + FILE_SYSTEM_FILE
+        location = os.path.join(self.path, FILE_SYSTEM_FILE)
         with urllib.request.urlopen(FILE_SYSTEM_DOWNLOAD_URL) as response, open(location, 'wb') as out_file:
             shutil.copyfileobj(response, out_file)
 
     def _mount_file_system(self):
-        command = f"mount -o loop '{self.path + FILE_SYSTEM_FILE}' '{self.path}'"
-        process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
-        output, error = process.communicate()
+        process = subprocess.Popen(['tar', 'xf', self.path + FILE_SYSTEM_FILE], stdout=subprocess.PIPE, cwd=self.path)
+        # output, error = process.communicate()
         os.remove(self.path + FILE_SYSTEM_FILE)

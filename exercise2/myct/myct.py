@@ -14,7 +14,7 @@ def main():
     if args.action == 'init':
         container.setup()
     elif args.action == 'map':
-        container.map_directory(args.host_path, args.target_path)
+        container.map(args.host_path, args.target_path)
     elif args.action == 'run':
         # TODO: Handle limit and namespace / Probably set directly on container
         container.run(args.executable)
@@ -43,7 +43,7 @@ def _initialize_map_parsers(subparsers):
     map_parser.set_defaults(action='map')
     map_parser.add_argument('container_path', help='Which container to map to?', action=AccessibleDir)
     map_parser.add_argument('host_path', help='Which directory to map?', action=AccessibleDir)
-    map_parser.add_argument('target_path', help='Where to map the directory to?', action=AccessibleDir)
+    map_parser.add_argument('target_path', help='Where to map the directory to?')
 
 
 def _initialize_run_parser(subparsers):
