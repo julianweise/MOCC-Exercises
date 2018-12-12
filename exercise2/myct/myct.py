@@ -11,7 +11,6 @@ def main():
     args = parser.parse_args()
 
     container = Container(args.container_path)
-
     if args.action == 'init':
         container.setup()
     elif args.action == 'map':
