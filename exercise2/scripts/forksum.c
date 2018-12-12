@@ -26,6 +26,9 @@ bool mainProcess = true;
 int lowerChildPid = 0;
 int upperChildPid = 0;
 
+int lowerChildResult = 0;
+int upperChildResult = 0;
+
 int sendMessageToParentPipe[2];
 int receiveMessageFromParentPipe[2];
 
@@ -185,6 +188,10 @@ int main(int argc, char** argv) {
         if (lowerChildPid > 0) {
             writeIntervalToChildPipe(sendMessageToLowerChildPipe, &(tuple.lowerInterval));
 
+            wait(NULL);
+            lowerChildResult = readFromPipe(receiveMessageFromLowerChildPipe);
+            close(receiveMessageFromLowerChildPipe[C_PIPE_READ_END]);
+
             forkUpperChild();
         }
 
@@ -195,31 +202,24 @@ int main(int argc, char** argv) {
 
         if (upperChildPid > 0) {
             writeIntervalToChildPipe(sendMessageToUpperChildPipe, &(tuple.upperInterval));
+
+            wait(NULL);
+            upperChildResult = readFromPipe(receiveMessageFromUpperChildPipe);
+            close(receiveMessageFromUpperChildPipe[C_PIPE_READ_END]);
             break;
         }
     }
 
     exitIfIntervalIsClosed(&myInterval);
 
-    if (lowerChildPid > 0 && upperChildPid > 0) {
-        wait(NULL);
-        wait(NULL);
-
-        int lowerResult = readFromPipe(receiveMessageFromLowerChildPipe);
-        close(receiveMessageFromLowerChildPipe[C_PIPE_READ_END]);
-
-        int upperResult = readFromPipe(receiveMessageFromUpperChildPipe);
-        close(receiveMessageFromUpperChildPipe[C_PIPE_READ_END]);
-
-        if (mainProcess) {
-            fprintf(stdout, "%d\n", lowerResult + upperResult);
-            exit(EXIT_SUCCESS);
-        }
-        else {
-            writeToPipe(sendMessageToParentPipe, lowerResult + upperResult);
-            close(sendMessageToParentPipe[C_PIPE_WRITE_END]);
-            exit(EXIT_SUCCESS);
-        }
+    if (mainProcess) {
+        fprintf(stdout, "%d\n", lowerChildResult + upperChildResult);
+        exit(EXIT_SUCCESS);
+    }
+    else {
+        writeToPipe(sendMessageToParentPipe, lowerChildResult + upperChildResult);
+        close(sendMessageToParentPipe[C_PIPE_WRITE_END]);
+        exit(EXIT_SUCCESS);
     }
 
     fprintf(stderr, "[%d] did not terminate\n", getpid());
