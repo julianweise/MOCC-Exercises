@@ -7,7 +7,7 @@ clear_caches() {
 ENVIRONMENT="native"
 TIME_TO_WAIT_BETWEEN=15s
 
-for i in `seq 1 42`;
+for i in `seq 1 48`;
 do
 	echo $(date +\%s)","$(./measure-cpu.sh) >> "../results/${ENVIRONMENT}-cpu.csv"
 	clear_caches
