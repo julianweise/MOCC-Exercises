@@ -21,4 +21,4 @@ do
 	echo $(date +\%s)","$(./measure-fork.sh) >> "../results/${ENVIRONMENT}-fork.csv"
 	clear_caches
 	sleep TIME_TO_WAIT_BETWEEN
-done   
+done
