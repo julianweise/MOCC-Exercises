@@ -5,7 +5,7 @@ clear_caches() {
 }
 
 ENVIRONMENT="native"
-TIME_TO_WAIT_BETWEEN="15s"
+TIME_TO_WAIT_BETWEEN="3s"
 
 for i in `seq 1 48`;
 do
