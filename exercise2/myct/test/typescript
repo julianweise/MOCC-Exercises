@@ -1,0 +1,18 @@
+Script started on Fri 14 Dec 2018 01:23:39 PM UTC
+]0;julian_weise93@mocc-machine-2: ~/MOCC-Exercises/exercise2/myct[01;32mjulian_weise93@mocc-machine-2[00m:[01;34m~/MOCC-Exercises/exercise2/myct[00m$ mkdir container
+]0;julian_weise93@mocc-machine-2: ~/MOCC-Exercises/exercise2/myct[01;32mjulian_weise93@mocc-machine-2[00m:[01;34m~/MOCC-Exercises/exercise2/myct[00m$ python3 mc[Kyct.py init container/
+]0;julian_weise93@mocc-machine-2: ~/MOCC-Exercises/exercise2/myct[01;32mjulian_weise93@mocc-machine-2[00m:[01;34m~/MOCC-Exercises/exercise2/myct[00m$ python3 myct.py map container/ test/ /home/test
+mount: /home/julian_weise93/MOCC-Exercises/exercise2/myct/container/home/test is busy
+]0;julian_weise93@mocc-machine-2: ~/MOCC-Exercises/exercise2/myct[01;32mjulian_weise93@mocc-machine-2[00m:[01;34m~/MOCC-Exercises/exercise2/myct[00m$ python3 myct.py run container/ --limit memory.limit_in_ bytr[Kes=536870912 sh
+# cd /home/test
+# python3 run   mem_test.py
+Traceback (most recent call last):
+  File "mem_test.py", line 2, in <module>
+    result = [0]*536870912
+MemoryError
+# exit
+sh: 3: Cannot set tty process group (No such process)
+]0;julian_weise93@mocc-machine-2: ~/MOCC-Exercises/exercise2/myct[01;32mjulian_weise93@mocc-machine-2[00m:[01;34m~/MOCC-Exercises/exercise2/myct[00m$ exit
+exit
+
+Script done on Fri 14 Dec 2018 01:25:17 PM UTC

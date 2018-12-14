@@ -35,7 +35,7 @@ class Container:
 
     def run(self, join_namespace, limitations, executable, args):
         nsenter_command = self.create_nsenter_command(join_namespace)
-        unshare_command = ['unshare', '--pid', '--fork', '--mount-proc=' + self.path + '/proc']
+        unshare_command = ['unshare', '--pid', '--fork', '--mount-proc=' + self.path + 'proc']
         chroot_command = ['chroot', self.path]
         cgroup_command = []
 
@@ -43,7 +43,7 @@ class Container:
             limited_resources, group_name = self.create_cgroup(limitations)
             cgroup_command = ['cgexec', '-g', limited_resources + ":" + group_name]
 
-        process = subprocess.Popen(['sudo'] + nsenter_command + unshare_command + chroot_command + cgroup_command + [executable] + args, stdin=sys.stdin, stdout=sys.stdout, stderr=sys.stderr, cwd=self.path)
+        process = subprocess.Popen(['sudo'] + nsenter_command + unshare_command + cgroup_command + chroot_command + [executable] + args, stdin=sys.stdin, stdout=sys.stdout, stderr=sys.stderr, cwd=self.path)
         process.communicate()
 
         if limitations:
