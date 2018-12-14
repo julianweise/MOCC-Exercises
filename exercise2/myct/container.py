@@ -43,9 +43,7 @@ class Container:
             limited_resources, group_name = self.create_cgroup(limitations)
             cgroup_command = ['cgexec', '-g', limited_resources + ":" + group_name]
 
-        print(['sudo'] + nsenter_command + unshare_command + chroot_command + cgroup_command + [executable] + args)
-
-        process = subprocess.Popen(['sudo'] + nsenter_command + unshare_command + chroot_command + cgroup_command + [executable] + args, stdin=sys.stdin, stdout=sys.stdout, stderr=sys.stderr, cwd=self.path)
+        process = subprocess.Popen(['sudo'] + nsenter_command + unshare_command + cgroup_command + chroot_command + [executable] + args, stdin=sys.stdin, stdout=sys.stdout, stderr=sys.stderr, cwd=self.path)
         process.communicate()
 
         if limitations:
