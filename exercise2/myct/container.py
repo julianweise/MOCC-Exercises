@@ -35,7 +35,7 @@ class Container:
 
     def run(self, join_namespace, limitations, executable, args):
         nsenter_command = self.create_nsenter_command(join_namespace)
-        unshare_command = ['unshare', '--pid', '--fork', '--mount-proc=' + self.path + '/proc']
+        unshare_command = ['unshare', '--pid', '--fork', '--mount-proc=' + self.path + 'proc']
         chroot_command = ['chroot', self.path]
         cgroup_command = []
 
