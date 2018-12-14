@@ -33,18 +33,33 @@ class Container:
         process = subprocess.Popen(['sudo', 'mount', '-o', 'remount,ro', path_in_container], stdout=subprocess.PIPE, cwd=self.path)
         process.communicate()
 
-    def run(self, limitations, executable, args):
+    def run(self, join_namespace, limitations, executable, args):
+        nsenter_command = self.create_nsenter_command(join_namespace)
+        unshare_command = ['unshare', '--pid', '--fork', '--mount-proc=' + self.path + '/proc']
+        chroot_command = ['chroot', self.path]
         cgroup_command = []
 
         if limitations:
             limited_resources, group_name = self.create_cgroup(limitations)
             cgroup_command = ['cgexec', '-g', limited_resources + ":" + group_name]
 
-        process = subprocess.Popen(['sudo'] + cgroup_command + ['chroot', self.path] + ['unshare', executable] + args, stdin=sys.stdin, stdout=sys.stdout, stderr=sys.stderr, cwd=self.path)
+        process = subprocess.Popen(['sudo'] + nsenter_command + unshare_command + chroot_command + cgroup_command + [executable] + args, stdin=sys.stdin, stdout=sys.stdout, stderr=sys.stderr, cwd=self.path)
         process.communicate()
 
         if limitations:
             self.delete_cgroup(limited_resources, group_name)
+
+    def create_nsenter_command(self, namespace_args):
+        if not namespace_args or len(namespace_args) < 1:
+            return []
+
+        command = ['nsenter']
+
+        for namespace_arg in namespace_args:
+            split = namespace_arg.split('=')
+            command += ['--' + split[0] + '=/proc/' + split[1] + '/ns/' + split[0]]
+
+        return command
 
     def create_cgroup(self, limitations):
         group_name = uuid.uuid4().hex
