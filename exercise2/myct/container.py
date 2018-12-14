@@ -38,7 +38,6 @@ class Container:
 
     def create_cgroup(self, limitations):
         group_name = uuid.uuid4().hex
-        print('cgroup = ' + str(group_name))
 
         limited_resources = []
         limited_resource_keys=[]
