@@ -10,6 +10,10 @@ def main():
 
     args = parser.parse_args()
 
+    if 'action' not in args or not args.action:
+        parser.print_usage()
+        return
+
     container = Container(args.container_path)
     if args.action == 'init':
         container.setup()
@@ -17,7 +21,7 @@ def main():
         container.map(args.host_path, args.target_path)
     elif args.action == 'run':
         # TODO: Handle limit and namespace / Probably set directly on container
-        container.run(args.executable)
+        container.run(args.limit, args.executable, args.executable_args)
 
 
 def _initialize_parser():
@@ -51,8 +55,9 @@ def _initialize_run_parser(subparsers):
     run_parser.set_defaults(action='run')
     run_parser.add_argument('container_path', help='Which container to run?', action=AccessibleDir)
     run_parser.add_argument('--namespace', type=str, help='Define a namespace to join: Format: <kind>=<pid>')
-    run_parser.add_argument('--limit', type=str, help='Limit resources; Format: <controller.key>=<value>')
+    run_parser.add_argument('--limit', type=str, help='Limit resources; Format: <controller.key>=<value>', action='append')
     run_parser.add_argument('executable', help='Which executable to run?')
+    run_parser.add_argument('executable_args', type=str, nargs='*', help='Arguments for the executable.')
 
 
 def _is_valid_directory(path):
