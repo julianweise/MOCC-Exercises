@@ -69,6 +69,6 @@ class Container:
         urllib.request.urlretrieve(FILE_SYSTEM_DOWNLOAD_URL, location)
 
     def _mount_file_system(self):
-        process = subprocess.Popen(['tar', 'xf', self.path + FILE_SYSTEM_FILE], stdout=subprocess.PIPE, cwd=self.path)
+        process = subprocess.Popen(['sudo', 'tar', 'xf', self.path + FILE_SYSTEM_FILE], stdout=subprocess.PIPE, cwd=self.path)
         process.communicate()
         os.remove(self.path + FILE_SYSTEM_FILE)
