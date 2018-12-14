@@ -34,12 +34,17 @@ class Container:
         process.communicate()
 
     def run(self, limitations, executable, args):
-        limited_resources, group_name = self.create_cgroup(limitations)
+        cgroup_command = []
 
-        process = subprocess.Popen(['sudo', 'cgexec', '-g', limited_resources + ":" + group_name, 'chroot', self.path] + [executable] + args, stdin=sys.stdin, stdout=sys.stdout, stderr=sys.stderr, cwd=self.path)
+        if limitations:
+            limited_resources, group_name = self.create_cgroup(limitations)
+            cgroup_command = ['cgexec', '-g', limited_resources + ":" + group_name]
+
+        process = subprocess.Popen(['sudo'] + cgroup_command + ['chroot', self.path] + ['unshare', executable] + args, stdin=sys.stdin, stdout=sys.stdout, stderr=sys.stderr, cwd=self.path)
         process.communicate()
 
-        self.delete_cgroup(limited_resources, group_name)
+        if limitations:
+            self.delete_cgroup(limited_resources, group_name)
 
     def create_cgroup(self, limitations):
         group_name = uuid.uuid4().hex
