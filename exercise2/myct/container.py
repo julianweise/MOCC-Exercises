@@ -24,8 +24,10 @@ class Container:
 
     def map(self, host_path, target_path):
         path_in_container = self.path + target_path[1:] if target_path[0] == "/" else self.path + target_path
-        process = subprocess.Popen(['ln', '-s', host_path, path_in_container], stdout=subprocess.PIPE, cwd=self.path)
-        process = subprocess.Popen(['chmod', '555', path_in_container], stdout=subprocess.PIPE, cwd=self.path)
+        process = subprocess.Popen(['sudo', 'mount', '--bind', host_path, target_path], stdout=subprocess.PIPE, cwd=self.path)
+        process.communicate()
+
+        process = subprocess.Popen(['sudo', '-o', 'remount,ro', target_path], stdout=subprocess.PIPE, cwd=self.path)
         process.communicate()
 
     def run(self, limitations, executable, args):
