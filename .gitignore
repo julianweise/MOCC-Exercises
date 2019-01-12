@@ -1,7 +1,12 @@
+# General stuff
 .idea/
 cmake-build-debug/
 .DS_Store
 venv/
 temp/
 __pycache__/
+
+# Exercise 3
 mocc-3-3ceca0912709.json
+exercise3/kubespray
+exercise3/ansible2.6

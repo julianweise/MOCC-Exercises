@@ -1,0 +1,45 @@
+# Setting up a virtualenv running python3 for ansible version 2.6
+virtualenv -p python3 ansible2.6
+
+# activate virtual env
+source ansible2.6/bin/activate
+
+# Installing Ansible
+pip3 install ansible==2.6
+
+# Cloning Kubernetes repo
+git clone git@github.com:kubernetes-sigs/kubespray.git
+
+# Jump into repo
+cd kubespray
+
+# Checkout specific tag
+fetch --all --tags --prune
+git checkout v2.8.1
+
+# Install dependencies
+pip3 install -r requirements.txt
+
+# Create inenvotry of hosts
+cp -rfp inventory/sample inventory/mocc-cluster
+
+# Start gcloud compute instances
+gcloud compute instances start mocc-machine-1
+gcloud compute instances start mocc-machine-2
+gcloud compute instances start mocc-machine-3
+
+# Get IP addresses of gcloud compute instances
+gcloud compute instances list
+
+# Configure ansible inventory
+declare -a IPS=(34.76.26.205 34.76.215.247 34.76.194.121)
+CONFIG_FILE=inventory/mocc-cluster/hosts.ini python3 contrib/inventory_builder/inventory.py ${IPS[@]}
+
+# Ensure that all nodes are master and worker. Also set ip (second ip per host) to internal IP of gcloud
+sublime inventory/mocc-cluster/hosts.ini
+
+# Set SSH Key to gCloud ssh key
+echo 'ansible_ssh_private_key_file: "{{ lookup('env', 'HOME') }}/.ssh/google_compute_engine"' >> inventory/mocc-clster/group_vars/all/all.yml
+
+# Run ANSIBLE playbook
+ansible-playbook -i inventory/mocc-cluster/hosts.ini --become --become-user=root cluster.yml
