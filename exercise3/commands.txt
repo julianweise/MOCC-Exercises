@@ -43,3 +43,18 @@ echo 'ansible_ssh_private_key_file: "{{ lookup('env', 'HOME') }}/.ssh/google_com
 
 # Run ANSIBLE playbook
 ansible-playbook -i inventory/mocc-cluster/hosts.ini --become --become-user=root cluster.yml
+
+### EXERCISE 2
+
+# Build frontend docker image based on frontend dockerfile; Make sure to be in the same directory as the dockerfile
+docker build -t julianweise/frontend-nginx -f frontend.Dockerfile .
+
+# Build frontend docker image based on frontend dockerfile ; Make sure to be in the same directory as the dockerfile
+docker build -t julianweise/backend-nginx -f backend.Dockerfile .
+
+# Login to docker hub
+docker login
+
+# Push images to docker hub
+docker push julianweise/frontend-nginx:latest
+docker push julianweise/backend-nginx:latest
