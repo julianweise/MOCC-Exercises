@@ -58,3 +58,26 @@ docker login
 # Push images to docker hub
 docker push julianweise/frontend-nginx:latest
 docker push julianweise/backend-nginx:latest
+
+# Setup new venv for new ansible version
+virtualenv -p python3 ansible2.7.5
+source ansible2.7.5/bin/activate
+pip install ansible
+
+# Execute ansible playbook
+ansible-playbook -i hosts.ini cc-webapp.yml --private-key=~/.ssh/google_compute_engine  -v
+
+# Login to VM
+gcloud compute ssh mocc-machine-1
+
+# Get node port
+kubectl get all -n mocc-exercise-3
+
+# Scalling up backend
+kubectl scale --current-replicas=3 --replicas=6 deployment/backend
+
+# Scalling up frontend
+kubectl scale --current-replicas=3 --replicas=4 deployment/frontend
+
+# Starting test script
+python3 test-deployment.py 35.187.190.98:32537 34.76.132.39:32537 5.187.112.115:32537

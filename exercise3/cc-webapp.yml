@@ -1,0 +1,148 @@
+---
+- hosts: kube-master[0]
+  gather_facts: false
+  tasks:
+  - name: Install openshift
+    pip:
+      name: openshift
+
+  - name: Create a k8s namespace
+    k8s:
+      name: mocc-exercise-3
+      api_version: v1
+      kind: Namespace
+      state: present
+
+  - name: Deployment of backend
+    k8s:
+      state: present
+      definition:
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: backend
+          namespace: mocc-exercise-3
+          labels:
+            app: backend
+        spec:
+          replicas: 3
+          selector:
+            matchLabels:
+              app: backend
+          template:
+            metadata:
+              labels:
+                app: backend
+            spec:
+              containers:
+              - name: backend
+                image: julianweise/backend:latest
+                imagePullPolicy: Always
+                ports:
+                - containerPort: 80
+                readinessProbe:
+                  httpGet:
+                    path: /ready
+                    port: 80
+                    httpHeaders:
+                    - name: CC-Ready
+                      value: Backend
+                  initialDelaySeconds: 3
+                  periodSeconds: 3
+                livenessProbe:
+                  httpGet:
+                    path: /ready
+                    port: 80
+                    httpHeaders:
+                    - name: CC-Ready
+                      value: Backend
+                  initialDelaySeconds: 3
+                  periodSeconds: 3
+
+  - name: Create a Backend Service
+    k8s:
+      state: present
+      definition:
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: backend
+          namespace: mocc-exercise-3
+          labels:
+            app: backend
+        spec:
+          selector:
+            app: backend
+          ports:
+          - protocol: TCP
+            targetPort: 80
+            name: port-80-tcp
+            port: 80
+  - name: Deployment of frontend
+    k8s:
+      state: present
+      definition:
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: frontend
+          namespace: mocc-exercise-3
+          labels:
+            app: frontend
+        spec:
+          replicas: 3
+          selector:
+            matchLabels:
+              app: frontend
+          template:
+            metadata:
+              labels:
+                app: frontend
+            spec:
+              containers:
+              - name: frontend
+                image: julianweise/frontend:latest
+                imagePullPolicy: Always
+                ports:
+                - containerPort: 80
+                  port: 80
+                readinessProbe:
+                  httpGet:
+                    path: /ready
+                    port: 80
+                    httpHeaders:
+                    - name: CC-Ready
+                      value: Frontend
+                  initialDelaySeconds: 3
+                  periodSeconds: 3
+                livenessProbe:
+                  httpGet:
+                    path: /ready
+                    port: 80
+                    httpHeaders:
+                    - name: CC-Ready
+                      value: Frontend
+                  initialDelaySeconds: 3
+                  periodSeconds: 3
+
+  - name: Create a Frontend Service
+    k8s:
+      state: present
+      definition:
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: frontend
+          namespace: mocc-exercise-3
+          labels:
+            app: frontend
+        spec:
+          selector:
+            app: frontend
+          type: NodePort
+          ports:
+          - protocol: TCP
+            targetPort: 80
+            nodePort: 30080
+            name: port-80-tcp
+            port: 80

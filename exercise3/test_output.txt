@@ -1,0 +1,45 @@
+Sending 100 requests to 35.187.190.98:30080...
+Sending 100 requests to 34.76.132.39:30080...
+Sending 100 requests to 35.187.112.115:30080...
+
+Encountered 4 frontends:
+frontend-7c4c66695f-jrbnb
+frontend-7c4c66695f-wjnz4
+frontend-7c4c66695f-9np9m
+frontend-7c4c66695f-bjmr6
+
+Encountered 6 backends:
+backend-77dbf7478c-2ps8p
+backend-77dbf7478c-np9rq
+backend-77dbf7478c-vr8js
+backend-77dbf7478c-5hrvq
+backend-77dbf7478c-qfvpq
+backend-77dbf7478c-6cpwd
+
+Encountered 24 reply texts:
+Hello! You are 10.233.75.26 and requested /etc/nginx/html/ from 10.233.71.25 (backend-77dbf7478c-5hrvq)
+Hello! You are 10.233.102.155 and requested /etc/nginx/html/ from 10.233.102.156 (backend-77dbf7478c-np9rq)
+Hello! You are 10.233.71.24 and requested /etc/nginx/html/ from 10.233.75.27 (backend-77dbf7478c-2ps8p)
+Hello! You are 10.233.71.24 and requested /etc/nginx/html/ from 10.233.102.154 (backend-77dbf7478c-6cpwd)
+Hello! You are 10.233.102.155 and requested /etc/nginx/html/ from 10.233.71.23 (backend-77dbf7478c-qfvpq)
+Hello! You are 10.233.75.26 and requested /etc/nginx/html/ from 10.233.102.154 (backend-77dbf7478c-6cpwd)
+Hello! You are 10.233.71.26 and requested /etc/nginx/html/ from 10.233.75.27 (backend-77dbf7478c-2ps8p)
+Hello! You are 10.233.75.26 and requested /etc/nginx/html/ from 10.233.71.23 (backend-77dbf7478c-qfvpq)
+Hello! You are 10.233.71.26 and requested /etc/nginx/html/ from 10.233.102.156 (backend-77dbf7478c-np9rq)
+Hello! You are 10.233.75.26 and requested /etc/nginx/html/ from 10.233.75.25 (backend-77dbf7478c-vr8js)
+Hello! You are 10.233.71.26 and requested /etc/nginx/html/ from 10.233.71.25 (backend-77dbf7478c-5hrvq)
+Hello! You are 10.233.71.24 and requested /etc/nginx/html/ from 10.233.75.25 (backend-77dbf7478c-vr8js)
+Hello! You are 10.233.102.155 and requested /etc/nginx/html/ from 10.233.75.25 (backend-77dbf7478c-vr8js)
+Hello! You are 10.233.102.155 and requested /etc/nginx/html/ from 10.233.71.25 (backend-77dbf7478c-5hrvq)
+Hello! You are 10.233.71.24 and requested /etc/nginx/html/ from 10.233.71.25 (backend-77dbf7478c-5hrvq)
+Hello! You are 10.233.71.26 and requested /etc/nginx/html/ from 10.233.71.23 (backend-77dbf7478c-qfvpq)
+Hello! You are 10.233.71.26 and requested /etc/nginx/html/ from 10.233.102.154 (backend-77dbf7478c-6cpwd)
+Hello! You are 10.233.71.26 and requested /etc/nginx/html/ from 10.233.75.25 (backend-77dbf7478c-vr8js)
+Hello! You are 10.233.102.155 and requested /etc/nginx/html/ from 10.233.75.27 (backend-77dbf7478c-2ps8p)
+Hello! You are 10.233.71.24 and requested /etc/nginx/html/ from 10.233.102.156 (backend-77dbf7478c-np9rq)
+Hello! You are 10.233.75.26 and requested /etc/nginx/html/ from 10.233.102.156 (backend-77dbf7478c-np9rq)
+Hello! You are 10.233.102.155 and requested /etc/nginx/html/ from 10.233.102.154 (backend-77dbf7478c-6cpwd)
+Hello! You are 10.233.71.24 and requested /etc/nginx/html/ from 10.233.71.23 (backend-77dbf7478c-qfvpq)
+Hello! You are 10.233.75.26 and requested /etc/nginx/html/ from 10.233.75.27 (backend-77dbf7478c-2ps8p)
+
+All tests passed.
