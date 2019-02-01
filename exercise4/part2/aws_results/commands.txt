@@ -1,0 +1,21 @@
+# Knowledge Source: https://medium.com/@chengzhizhao/the-journey-of-learning-apache-flink-2-simple-wikipedia-streaming-bdeb56aa2085
+# Knowledge Source: https://docs.aws.amazon.com/de_de/emr/latest/ReleaseGuide/emr-flink.html
+# Knowledge Source: https://ci.apache.org/projects/flink/flink-docs-stable/ops/deployment/aws.html
+
+# Created Cluster via AWS EMR Web Console
+
+# Started AWS EMR Cluster via AWS EMR Web Console
+
+$ Uploaded dataset via AWS S3 Web Console to bucket of recently created EMR cluster
+
+# Coping far-jar from local machine to flink master
+scp -i ~/.ssh/mocc-4-key.pem original-part2-3.1.0.jar hadoop@ec2-3-122-228-67.eu-central-1.compute.amazonaws.com:/home/hadoop/
+
+# Connecting via SSH to Flink Master Node
+# More details can be found here https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-connect-master-node-ssh.html
+ssh -i ~/.ssh/mocc-4-key.pem hadoop@ec2-3-122-228-67.eu-central-1.compute.amazonaws.com
+
+# Running flink on AWS EMR cluster using S3 as input source and output sink
+flink run -m yarn-cluster -c de.hpi.mocc.jujo.exercise4.CellCluster original-part2-3.1.0.jar --input s3://aws-logs-087442621978-eu-central-1/elasticmapreduce/berlin.csv --output s3://aws-logs-087442621978-eu-central-1/elasticmapreduce/output_berlin_k_1000_iterations_20.csv --k 1000 --iterations 20
+
+# Stopped AWS EMR Cluster via AWS EMR Web Console
