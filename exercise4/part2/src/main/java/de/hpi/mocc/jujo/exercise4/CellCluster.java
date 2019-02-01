@@ -159,13 +159,9 @@ public class CellCluster {
 				.ignoreFirstLine()
 				.fieldDelimiter(",")
 				.includeFields(true, false, true, false, true, false, true, true, false, false, false, false, false, false)
-				.pojoType(Centroid.class, "radio", "operator", "id", "x", "y");
-
-		centroids = centroids.filter(centroid -> centroid.radio.equalsIgnoreCase("LTE"));
-
-		if (mobileOperators.size() > 0) {
-			centroids = centroids.filter(centroid -> mobileOperators.contains(centroid.operator));
-		}
+				.pojoType(Centroid.class, "radio", "operator", "id", "x", "y")
+				.filter(centroid -> centroid.radio.equalsIgnoreCase("LTE"))
+				.filter(centroid -> (mobileOperators.size() < 1 || mobileOperators.contains(centroid.operator)));
 
 		if (numberOfClusters > 0) {
 			centroids = centroids.first((int) numberOfClusters);
@@ -182,13 +178,9 @@ public class CellCluster {
 				.ignoreFirstLine()
 				.fieldDelimiter(",")
 				.includeFields(true, false, true, false, false, false, true, true, false, false, false, false, false, false)
-				.pojoType(Tower.class, "radio", "operator", "x", "y");
-
-		towers = towers.filter(tower -> !tower.radio.equalsIgnoreCase("LTE"));
-
-		if (mobileOperators.size() > 0) {
-			towers = towers.filter(tower -> mobileOperators.contains(tower.operator));
-		}
+				.pojoType(Tower.class, "radio", "operator", "x", "y")
+				.filter(tower -> !tower.radio.equalsIgnoreCase("LTE"))
+				.filter(tower -> (mobileOperators.size() < 1 || mobileOperators.contains(tower.operator)));
 
 		return towers;
 	}
