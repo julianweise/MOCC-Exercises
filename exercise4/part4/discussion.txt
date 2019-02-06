@@ -1,0 +1,29 @@
+1.)
+For the Berlin test data we chose a mix of different mobile service providers (e.g. Telekom, O2 and Vodafone), which changed the initial placing of the clusters.
+Additionally, we modified the number of iterations as well as the number of paritions.
+Overall, we combined the following sets:
+MNC = {Telekom, O2, Vodafone}
+K   = {1.000, 10.000}
+iter= {20, 100}
+
+The resulting outputs vastly different in their runtime, where more iterations and more paritions resulted in longer runtimes.
+
+Regarding the results, we noticed that more clusters (k) caused the overall output data to be more fine grained.
+The impact of more iterations however, is barely noticable.
+
+2.)
+
+* 
+Our program uses a single file from an AWS bucket, which means, that the program reads the file in a single threaded manner.
+After the file has been read, the pipeline branches out to the configured amount of workers (3 worker nodes with 4 CPUs each).
+Within our pipeline, we used the `groupBy` statement, which is a wide transformation leading to a forced synchronisation of all workers.
+However, the pipeline afterwards again, branches out only to be synchonized at the very end, when we write the results to a single file.
+
+*
+Our implementation is mainly bound to CPU.
+That is, because the given data (Berlin data set) is small enough not to cause any problems with too low amounts of main memory.
+The same reasoning also works for the network. The data is simply too small to cause serious problems for that resource.
+
+*
+The initial data file could be partitioned to use parallel reading right at the start of the pipeline. (e.g. by placing the data on an HDFS rather than plain AWS buckets)
+Additionally, adding more cores (workers) to the cluster would cause more internal partitioning of the data, which would lead to a better runtime.
