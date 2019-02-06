@@ -1,21 +1,114 @@
 # Knowledge Source: https://medium.com/@chengzhizhao/the-journey-of-learning-apache-flink-2-simple-wikipedia-streaming-bdeb56aa2085
 # Knowledge Source: https://docs.aws.amazon.com/de_de/emr/latest/ReleaseGuide/emr-flink.html
 # Knowledge Source: https://ci.apache.org/projects/flink/flink-docs-stable/ops/deployment/aws.html
+# Knowledge SourceL https://docs.aws.amazon.com/de_de/emr/latest/ReleaseGuide/emr-flink.html
 
-# Created Cluster via AWS EMR Web Console
+# Create S3 Bucket first
+aws s3api create-bucket --bucket mocc-cluster-emr --region eu-central-1 --create-bucket-configuration LocationConstraint=eu-central-1
 
-# Started AWS EMR Cluster via AWS EMR Web Console
+# Create default roles for AWS EMR
+aws create-default-roles
 
-$ Uploaded dataset via AWS S3 Web Console to bucket of recently created EMR cluster
+# Created Cluster via AWS CLI
+
+aws emr create-cluster --name "Mooc-Cluster" \
+--release-label emr-5.7.0 \
+--applications Name=Flink \
+--configurations file://configurations.json \
+--region eu-central-1 \
+--log-uri s3://mocc-cluster-emr \
+--instance-type m4.large \
+--instance-count 4 \
+--auto-scaling-role EMR_AutoScaling_DefaultRole \
+--ec2-attributes KeyName=mocc-4-key,InstanceProfile=EMR_EC2_DefaultRole,EmrManagedMasterSecurityGroup=sg-0c9ef5230cc0dfdc5,EmrManagedSlaveSecurityGroup=sg-0c9ef5230cc0dfdc5
+
+# Get IP / hostname of master node
+aws emr describe-cluster --cluster-id j-E8H6MROFOPNA
 
 # Coping far-jar from local machine to flink master
-scp -i ~/.ssh/mocc-4-key.pem original-part2-3.1.0.jar hadoop@ec2-3-122-228-67.eu-central-1.compute.amazonaws.com:/home/hadoop/
+scp -i ~/.ssh/mocc-4-key.pem original-part2-3.1.0.jar hadoop@ec2-18-197-115-213.eu-central-1.compute.amazonaws.com:/home/hadoop/
 
-# Connecting via SSH to Flink Master Node
-# More details can be found here https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-connect-master-node-ssh.html
-ssh -i ~/.ssh/mocc-4-key.pem hadoop@ec2-3-122-228-67.eu-central-1.compute.amazonaws.com
+# Adding and runnning a flink step to/on the cluster
+aws emr add-steps --cluster-id j-E8H6MROFOPNA \
+--steps Type=CUSTOM_JAR,Name=CellClusterBerlin_k1000_Telekom_i20,Jar=command-runner.jar,\
+Args="flink","run","-m","yarn-cluster","-yn","3","-c","de.hpi.mocc.jujo.exercise4.CellCluster",\
+"/home/hadoop/original-part2-3.1.0.jar",\
+"--input","s3://mocc-cluster-emr/berlin.csv","--output","s3://mocc-cluster-emr/output_berlin_k1000_telekom_i20.csv",\
+"--k","1000",\
+"--mnc","1\,6\,78",\
+"--iterations","20"\
+&&\
+aws emr add-steps --cluster-id j-E8H6MROFOPNA \
+--steps Type=CUSTOM_JAR,Name=CellClusterBerlin_k1000_Telekom_i100,Jar=command-runner.jar,\
+Args="flink","run","-m","yarn-cluster","-yn","3","-c","de.hpi.mocc.jujo.exercise4.CellCluster",\
+"/home/hadoop/original-part2-3.1.0.jar",\
+"--input","s3://mocc-cluster-emr/berlin.csv","--output","s3://mocc-cluster-emr/output_berlin_k1000_telekom_i100.csv",\
+"--k","1000",\
+"--mnc","1\,6\,78",\
+"--iterations","100"\
+&&\
+aws emr add-steps --cluster-id j-E8H6MROFOPNA \
+--steps Type=CUSTOM_JAR,Name=CellClusterBerlin_k10000_Telekom_i100,Jar=command-runner.jar,\
+Args="flink","run","-m","yarn-cluster","-yn","3","-c","de.hpi.mocc.jujo.exercise4.CellCluster",\
+"/home/hadoop/original-part2-3.1.0.jar",\
+"--input","s3://mocc-cluster-emr/berlin.csv","--output","s3://mocc-cluster-emr/output_berlin_k10000_telekom_i100.csv",\
+"--k","10000",\
+"--mnc","1\,6\,78",\
+"--iterations","100"\
+&&\
+aws emr add-steps --cluster-id j-E8H6MROFOPNA \
+--steps Type=CUSTOM_JAR,Name=CellClusterBerlin_k1000_O2_i20,Jar=command-runner.jar,\
+Args="flink","run","-m","yarn-cluster","-yn","3","-c","de.hpi.mocc.jujo.exercise4.CellCluster",\
+"/home/hadoop/original-part2-3.1.0.jar",\
+"--input","s3://mocc-cluster-emr/berlin.csv","--output","s3://mocc-cluster-emr/output_berlin_k1000_02_i20.csv",\
+"--k","1000",\
+"--mnc","3\,5\,7\,8\,11\,17\,77",\
+"--iterations","20"\
+&&\
+aws emr add-steps --cluster-id j-E8H6MROFOPNA \
+--steps Type=CUSTOM_JAR,Name=CellClusterBerlin_k10000_O2_i20,Jar=command-runner.jar,\
+Args="flink","run","-m","yarn-cluster","-yn","3","-c","de.hpi.mocc.jujo.exercise4.CellCluster",\
+"/home/hadoop/original-part2-3.1.0.jar",\
+"--input","s3://mocc-cluster-emr/berlin.csv","--output","s3://mocc-cluster-emr/output_berlin_k10000_02_i20.csv",\
+"--k","10000",\
+"--mnc","3\,5\,7\,8\,11\,17\,77",\
+"--iterations","20"\
+&&\
+aws emr add-steps --cluster-id j-E8H6MROFOPNA \
+--steps Type=CUSTOM_JAR,Name=CellClusterBerlin_k1000_O2_i100,Jar=command-runner.jar,\
+Args="flink","run","-m","yarn-cluster","-yn","3","-c","de.hpi.mocc.jujo.exercise4.CellCluster",\
+"/home/hadoop/original-part2-3.1.0.jar",\
+"--input","s3://mocc-cluster-emr/berlin.csv","--output","s3://mocc-cluster-emr/output_berlin_k1000_02_i100.csv",\
+"--k","1000",\
+"--mnc","3\,5\,7\,8\,11\,17\,77",\
+"--iterations","100"\
+&&\
+aws emr add-steps --cluster-id j-E8H6MROFOPNA \
+--steps Type=CUSTOM_JAR,Name=CellClusterBerlin_k1000_Vodafone_i20,Jar=command-runner.jar,\
+Args="flink","run","-m","yarn-cluster","-yn","3","-c","de.hpi.mocc.jujo.exercise4.CellCluster",\
+"/home/hadoop/original-part2-3.1.0.jar",\
+"--input","s3://mocc-cluster-emr/berlin.csv","--output","s3://mocc-cluster-emr/output_berlin_k1000_vodafone_i20.csv",\
+"--k","1000",\
+"--mnc","2\,4\,9",\
+"--iterations","20"\
+&&\
+aws emr add-steps --cluster-id j-E8H6MROFOPNA \
+--steps Type=CUSTOM_JAR,Name=CellClusterBerlin_k10000_Vodafone_i20,Jar=command-runner.jar,\
+Args="flink","run","-m","yarn-cluster","-yn","3","-c","de.hpi.mocc.jujo.exercise4.CellCluster",\
+"/home/hadoop/original-part2-3.1.0.jar",\
+"--input","s3://mocc-cluster-emr/berlin.csv","--output","s3://mocc-cluster-emr/output_berlin_k10000_vodafone_i20.csv",\
+"--k","10000",\
+"--mnc","2\,4\,9",\
+"--iterations","20"\
+&&\
+aws emr add-steps --cluster-id j-E8H6MROFOPNA \
+--steps Type=CUSTOM_JAR,Name=CellClusterBerlin_k1000_Vodafone_i100,Jar=command-runner.jar,\
+Args="flink","run","-m","yarn-cluster","-yn","3","-c","de.hpi.mocc.jujo.exercise4.CellCluster",\
+"/home/hadoop/original-part2-3.1.0.jar",\
+"--input","s3://mocc-cluster-emr/berlin.csv","--output","s3://mocc-cluster-emr/output_berlin_k1000_vodafone_i100.csv",\
+"--k","1000",\
+"--mnc","2\,4\,9",\
+"--iterations","100"
 
-# Running flink on AWS EMR cluster using S3 as input source and output sink
-flink run -m yarn-cluster -c de.hpi.mocc.jujo.exercise4.CellCluster original-part2-3.1.0.jar --input s3://aws-logs-087442621978-eu-central-1/elasticmapreduce/berlin.csv --output s3://aws-logs-087442621978-eu-central-1/elasticmapreduce/output_berlin_k_1000_iterations_20.csv --k 1000 --iterations 20
-
-# Stopped AWS EMR Cluster via AWS EMR Web Console
+# Stopped AWS EMR Cluster
+aws emr terminate-clusters --cluster-ids j-E8H6MROFOPNA
