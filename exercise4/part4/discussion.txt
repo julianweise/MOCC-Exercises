@@ -1,0 +1,11 @@
+We chose a mix of different mobile service providers (e.g. Telekom, O2 and Vodafone), which changed the initial placing of the clusters.
+Additionally, we modified the number of iterations as well as the number of paritions.
+Overall, we combined the following sets:
+MNC = {Telekom, O2, Vodafone}
+K   = {1.000, 10.000}
+iter= {20, 100}
+
+The resulting outputs vastly different in their runtime, where more iterations and more paritions resulted in longer runtimes.
+
+Regarding the results, we noticed that more clusters (k) caused the overall output data to be more fine grained.
+The impact of more iterations however, is barely noticable.
